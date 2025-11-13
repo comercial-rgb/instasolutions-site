@@ -207,6 +207,11 @@ function Footer() {
               </Link>
             </li>
             <li>
+              <Link className="hover:underline" to="/quem-somos">
+                Quem Somos
+              </Link>
+            </li>
+            <li>
               <Link className="hover:underline" to="/rede">
                 Rede
               </Link>
@@ -369,12 +374,15 @@ function HomePage() {
 
       {/* MÓDULOS + CTA CONHEÇA */}
       <Section className="pb-4">
-        <SolucoesGrid />
-        <div className="flex justify-center mt-8">
-          <GeoButton size="lg" onClick={() => navigate("/solucoes")}>
-            Conheça nossas soluções
-          </GeoButton>
+        <div className="flex flex-wrap justify-center gap-4 mb-8">
+          <Link to="/parceiros/credenciar">
+            <GeoButton size="lg">Quero me credenciar</GeoButton>
+          </Link>
+          <Link to="/solucoes">
+            <GeoButton size="lg">Conheça nossas soluções</GeoButton>
+          </Link>
         </div>
+        <SolucoesGrid />
       </Section>
 
       {/* Seções descritivas */}
@@ -529,10 +537,20 @@ function SolucoesPage() {
                 >
                   Manutenção
                 </h3>
-                <ul className="list-disc ml-6 text-neutral-700 mt-2">
-                  <li>Ordens de serviço digitais com fluxo e histórico.</li>
-                  <li>Orçamentos com auditoria e aprovação centralizada.</li>
-                  <li>Rede de oficinas credenciadas com SLA e qualidade.</li>
+                <ul className="list-disc ml-6 text-neutral-700 mt-2 space-y-1">
+                  <li>Software moderno com acesso 24/7</li>
+                  <li>Controle de saldos</li>
+                  <li>Múltiplos usuários</li>
+                  <li>Relatórios personalizados</li>
+                  <li>Equipe de suporte</li>
+                  <li>Aprovação e auditoria de orçamentos em tempo real</li>
+                  <li>Histórico completo de serviços e peças utilizadas</li>
+                  <li>Rede nacional com mais de 500 oficinas homologadas</li>
+                  <li>Gestão de ordens de serviço com fluxos automáticos</li>
+                  <li>Indicadores de performance e custos por veículo ou centro de custo</li>
+                  <li>Cadastros de fornecedores e controle de garantias</li>
+                  <li>Comparação automática de preços e prazos</li>
+                  <li>Registro fotográfico e documental integrado</li>
                 </ul>
               </div>
               <ImageCarousel
@@ -555,11 +573,21 @@ function SolucoesPage() {
                 >
                   Abastecimento
                 </h3>
-                <ul className="list-disc ml-6 text-neutral-700 mt-2">
-                  <li>Rede de postos integrada com preços competitivos.</li>
-                  <li>Controle de consumo e prevenção de fraudes.</li>
-                  <li>Relatórios por centro de custo.</li>
-                  <li>Aplicativo e camadas de segurança.</li>
+                <ul className="list-disc ml-6 text-neutral-700 mt-2 space-y-1">
+                  <li>Múltiplos usuários</li>
+                  <li>Relatórios personalizados</li>
+                  <li>Equipe de suporte</li>
+                  <li>Software moderno com acesso 24/7</li>
+                  <li>Rede de postos parceiros em todo o Brasil</li>
+                  <li>Monitoramento de consumo e variações por veículo</li>
+                  <li>Prevenção ativa de fraudes em abastecimentos</li>
+                  <li>Relatórios detalhados por período, posto, motorista ou veículo</li>
+                  <li>Conciliação automática de abastecimentos</li>
+                  <li>Importação de notas e integração com ERP</li>
+                  <li>Controle por centro de custo e regras personalizadas</li>
+                  <li>Painel unificado de despesas de combustível</li>
+                  <li>Aplicativo com registro instantâneo e validações geográficas</li>
+                  <li>Economia</li>
                 </ul>
               </div>
               <ImageCarousel
@@ -582,11 +610,18 @@ function SolucoesPage() {
                 >
                   Rastreamento
                 </h3>
-                <ul className="list-disc ml-6 text-neutral-700 mt-2">
-                  <li>Localização em tempo real com telemetria.</li>
-                  <li>Alertas e cercas virtuais.</li>
-                  <li>Análise de direção e rotas.</li>
-                  <li>Alertas de manutenção.</li>
+                <ul className="list-disc ml-6 text-neutral-700 mt-2 space-y-1">
+                  <li>Monitoramento em tempo real com atualização contínua</li>
+                  <li>Alertas automáticos de velocidade, rota e comportamento de direção</li>
+                  <li>Cercas virtuais configuráveis para entradas e saídas de áreas</li>
+                  <li>Histórico completo de trajetos, eventos e deslocamentos</li>
+                  <li>Relatórios de telemetria e análise de condução</li>
+                  <li>Identificação de ociosidade e desvios operacionais</li>
+                  <li>Painel de manutenção preventiva baseado em quilometragem</li>
+                  <li>Integração com aplicativos e sistemas de gestão</li>
+                  <li>Rastreadores homologados e suporte técnico especializado</li>
+                  <li>Segurança reforçada com camadas de autenticação e controle</li>
+                  <li>Alertas inteligentes para manutenções preventivas</li>
                 </ul>
               </div>
               <ImageCarousel
@@ -831,11 +866,20 @@ function ClientesQueroSerPage() {
           Venha ser InstaSolutions e descomplique sua gestão de frotas
         </h2>
         <div className="grid md:grid-cols-2 gap-6 items-center mt-4">
-          <p className="text-neutral-700">
-            Nossa plataforma integra manutenção, abastecimento e rastreamento em um
-            único ambiente, reduzindo custos, acelerando aprovações e oferecendo
-            indicadores confiáveis para decisões rápidas.
-          </p>
+          <div className="text-neutral-700 space-y-3">
+            <p>
+              Gerenciar uma frota não precisa ser complexo. Com a InstaSolutions, você conecta sua operação a uma plataforma completa que integra manutenção, abastecimento e rastreamento em um único sistema, oferecendo controle total e decisões rápidas baseadas em dados.
+            </p>
+            <p>
+              Nossa rede nacional com mais de 500 oficinas e postos credenciados garante atendimento padronizado, econômico e confiável em qualquer região do Brasil. Tudo isso aliado a dashboards inteligentes, processos automatizados e total transparência nos custos.
+            </p>
+            <p>
+              Ao escolher a InstaSolutions, você reduz despesas, aumenta a disponibilidade da frota e simplifica o dia a dia da sua equipe com uma solução moderna, segura e pensada para empresas e instituições que exigem eficiência e performance.
+            </p>
+            <p>
+              <strong>Seja InstaSolutions e leve sua gestão de frotas a um novo nível.</strong>
+            </p>
+          </div>
           <div className="rounded-2xl shadow mx-auto overflow-hidden bg-white max-w-sm">
             <img
               src="/imagens/contato_foto.png"
@@ -991,31 +1035,25 @@ function RedePage() {
             >
               Rede nacional de atendimento
             </h3>
-            <p className="text-neutral-700 mt-3">
-              Mais de 500 oficinas credenciadas e rede de postos parceira para garantir
-              disponibilidade e padronização.
-            </p>
-            <ul className="mt-6 grid sm:grid-cols-2 gap-3 text-sm">
-              {[
-                "Qualificação técnica & auditoria",
-                "SLA de prazos e qualidade",
-                "Condições comerciais negociadas",
-                "Cobertura Brasil inteiro"
-              ].map((t, i) => (
-                <li key={i} className="inline-flex items-center gap-2">
-                  <CheckCircle2
-                    className="w-4 h-4"
-                    style={{ color: COLORS.azulTech }}
-                  />{" "}
-                  {t}
-                </li>
-              ))}
-            </ul>
+            <div className="text-neutral-700 mt-3 space-y-3">
+              <p>
+                A InstaSolutions conecta sua frota a uma rede nacional com mais de 500 oficinas e postos credenciados, garantindo atendimento rápido, padronizado e de qualidade em qualquer região do Brasil. Cada parceiro é cuidadosamente selecionado e auditado para assegurar técnica, confiabilidade e condições comerciais competitivas.
+              </p>
+              <p>
+                Nossa rede atua integrada ao sistema de gestão de frotas, permitindo que manutenções, abastecimentos e serviços sejam registrados em tempo real, com total transparência, governança e controle dos custos. Isso reduz riscos, acelera decisões e aumenta a disponibilidade da frota.
+              </p>
+              <p>
+                Para empresas e órgãos públicos, isso significa conveniência, economia e segurança em cada atendimento. Para nossos parceiros, é a oportunidade de ampliar negócios e atender clientes qualificados.
+              </p>
+              <p>
+                <strong>Com a InstaSolutions, sua frota tem suporte em todo o Brasil — com eficiência, tecnologia e confiança.</strong>
+              </p>
+            </div>
             <div className="mt-8">
               <img
                 src="/imagens/rede-01.png"
                 alt="Rede de atendimento"
-                className="rounded-3xl shadow-lg w-full max-w-md mx-auto"
+                className="rounded-3xl shadow-lg w-full max-w-md"
               />
             </div>
           </div>
@@ -1079,10 +1117,32 @@ function SobrePage() {
           >
             Tecnologia corporativa para decisões rápidas e seguras
           </h3>
-          <p className="text-neutral-700 mt-3">
-            Integramos manutenção (rede de oficinas), abastecimento (rede de postos) e
-            rastreamento, oferecendo indicadores em tempo real.
-          </p>
+          <div className="text-neutral-700 mt-3 space-y-3">
+            <p>
+              Em um cenário operacional cada vez mais dinâmico, competitivo e orientado por dados, empresas que trabalham com frotas enfrentam desafios diários: manter veículos disponíveis, controlar custos, garantir transparência, acompanhar o desempenho em tempo real e, acima de tudo, tomar decisões rápidas e precisas.
+              É justamente nesse ponto que a InstaSolutions se destaca — unindo tecnologia, inteligência operacional e uma rede nacional de credenciados para transformar a forma como organizações gerenciam seus veículos.
+            </p>
+            <p>
+              Nossa missão é clara: simplificar a gestão de frotas e torná-la mais inteligente, econômica e eficiente. Para isso, desenvolvemos uma plataforma completa que integra manutenção, abastecimento e rastreamento em um único ecossistema digital, conectando gestores, fornecedores e operações em tempo real.
+              Com dashboards intuitivos, análises avançadas e processos automatizados, proporcionamos uma visão completa da operação, permitindo que cada decisão seja tomada com base em dados confiáveis e atualizados.
+            </p>
+            <p>
+              A tecnologia da InstaSolutions foi construída para oferecer agilidade, segurança e governança, atendendo tanto instituições públicas quanto empresas privadas que exigem alto desempenho e compliance absoluto. Nosso sistema reduz custos, elimina retrabalhos, padroniza processos e identifica oportunidades de melhoria em toda a cadeia operacional — desde a abertura de uma ordem de serviço até a finalização do abastecimento ou acompanhamento de um alerta de telemetria.
+            </p>
+            <p>
+              Outro grande diferencial é nossa rede de mais de 500 oficinas credenciadas e postos parceiros, cuidadosamente selecionados e auditados para garantir qualidade, prazo e condições comerciais competitivas.
+              Ao utilizar nossa plataforma, o cliente tem acesso imediato a essa rede, garantindo transparência, agilidade e segurança em todas as etapas do atendimento. Cada serviço contratado gera dados que retornam para o gestor em forma de relatórios, insights e indicadores — fortalecendo ainda mais o ciclo de melhoria contínua da frota.
+            </p>
+            <p>
+              Somos movidos por inovação, mas também pela proximidade com nossos clientes. Por isso, contamos com uma equipe especializada em implantação, suporte e expansão, pronta para acompanhar cada parceiro com atenção e excelência.
+              Seja em uma prefeitura, uma empresa de transporte, uma locadora ou uma frota pequena que está iniciando sua jornada de digitalização, oferecemos uma experiência completa, confiável e escalável.
+            </p>
+            <p>
+              <strong>A InstaSolutions nasceu para ser mais do que um software:</strong><br />
+              somos uma solução corporativa que conecta pessoas, tecnologia e resultados.
+              E continuamos evoluindo para que cada gestor execute suas decisões com máxima confiança, visão ampla da operação e total segurança — hoje e no futuro.
+            </p>
+          </div>
         </div>
         <div>
           <ImageCarousel
@@ -1094,6 +1154,70 @@ function SobrePage() {
             alt="Operação InstaSolutions"
             objectFit="contain"
           />
+        </div>
+      </Section>
+    </Layout>
+  );
+}
+
+function QuemSomosPage() {
+  const title = "Quem Somos | InstaSolutions — Nossa História";
+  const description = "Conheça a trajetória da InstaSolutions desde 2022 e nossa missão de transformar a gestão de frotas no Brasil.";
+
+  return (
+    <Layout>
+      <Helmet>
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <link rel="canonical" href={buildCanonical("/quem-somos")} />
+      </Helmet>
+
+      <Section className="py-12">
+        <div className="max-w-4xl mx-auto">
+          <span
+            className="inline-flex items-center gap-2 text-xs font-medium rounded-full px-3 py-1 w-max"
+            style={{ backgroundColor: "#E6E7F7", color: COLORS.azulCorp }}
+          >
+            <Layers className="w-4 h-4" /> Quem somos
+          </span>
+          <h2
+            className="text-2xl sm:text-4xl font-bold mt-3"
+            style={{ color: COLORS.azulCorp }}
+          >
+            Nossa História
+          </h2>
+          <div className="text-neutral-700 mt-6 space-y-4 leading-relaxed">
+            <p>
+              A história da InstaSolutions começa com uma inquietação: por que a gestão de frotas, algo tão essencial para empresas e instituições públicas, ainda era marcada por processos lentos, falta de transparência e decisões tomadas "no escuro"?
+              Foi observando essa realidade no dia a dia do setor automotivo que nasceu o desejo de fazer diferente.
+            </p>
+            <p>
+              Em 16 de setembro de 2022, em Campo Grande (MS), a empresa deu seus primeiros passos como uma jovem iniciativa focada na venda de peças. Mas, desde o início, havia algo maior nos bastidores: a convicção de que a tecnologia poderia transformar completamente a forma como as frotas eram administradas no Brasil.
+            </p>
+            <p>
+              Ao acompanhar os desafios de clientes e parceiros, percebemos que o problema não estava apenas no fornecimento de peças — estava na falta de integração, na ausência de dados confiáveis, na dificuldade de acompanhar serviços, na burocracia e no custo elevado que muitos enfrentavam sem sequer perceber.
+              Foi então que surgiu a primeira grande virada de chave: desenvolver um sistema próprio de gestão de manutenção que conectasse empresas e instituições públicas a uma rede credenciada de oficinas de forma simples, rápida e transparente.
+            </p>
+            <p>
+              A ideia cresceu, ganhou forma e ganhou força.
+              Em dois anos, aquilo que começou como um pequeno projeto com grande propósito se tornou uma empresa sólida, inovadora e em expansão nacional. Transferimos nossa matriz para Barueri (SP), um dos ecossistemas corporativos mais estratégicos do país, e levamos nossa cultura jovem e colaborativa para outras regiões com as filiais de Campo Grande (MS) e Fortaleza (CE).
+            </p>
+            <p>
+              Hoje, atendemos mais de 20 clientes em seis estados, conectando-os a uma rede com mais de 500 oficinas credenciadas e postos parceiros. Mas mais do que números, o que realmente importa é o impacto: cada ordem de serviço aberta, cada manutenção aprovada, cada abastecimento registrado e cada frota otimizada representa tempo economizado, dinheiro poupado e operações mais seguras e eficientes.
+            </p>
+            <p>
+              A InstaSolutions nasceu da inquietação de poucos, mas cresceu com o esforço de muitos.
+              Cresceu porque ouviu seus clientes, aprendeu com o mercado e acreditou na força da inovação.
+              Cresceu porque entendeu que tecnologia só faz sentido quando traz simplicidade, clareza e resultados reais.
+            </p>
+            <p>
+              E seguimos em movimento. Seguimos expandindo nossa presença, ampliando nossa rede, aperfeiçoando nossos produtos e construindo diariamente a confiança de quem coloca a frota em nossas mãos.
+            </p>
+            <p className="text-lg font-semibold" style={{ color: COLORS.azulCorp }}>
+              Somos a InstaSolutions — uma empresa jovem, inovadora e comprometida com a evolução contínua.<br />
+              E esta é apenas a primeira parte de uma história que ainda tem muito para crescer, junto com cada cliente que confia no nosso propósito.
+            </p>
+          </div>
         </div>
       </Section>
     </Layout>
@@ -1113,55 +1237,67 @@ function ContatoPage() {
         <link rel="canonical" href={buildCanonical("/contato")} />
       </Helmet>
 
-      <Section className="py-12 grid lg:grid-cols-2 gap-8">
-        <div>
-          <h2
-            className="text-2xl sm:text-4xl font-bold"
-            style={{ color: COLORS.azulCorp }}
-          >
-            Vamos conversar
-          </h2>
-          <p className="text-neutral-700 mt-3">
-            Preencha o formulário e retornaremos para agendar uma demonstração.
-          </p>
-          <ContactForm />
-        </div>
-
-        <div className="space-y-6">
-          <img
-            src="/imagens/contato_foto.png"
-            alt="Contato InstaSolutions"
-            className="rounded-3xl shadow-lg w-full max-w-md mx-auto"
-          />
-          <Card>
-            <CardHeader>
-              <CardTitle>Contatos</CardTitle>
-            </CardHeader>
-            <CardContent className="grid gap-3 text-sm">
-              <div>
-                <div className="font-medium">Endereço Matriz</div>
+      <Section className="py-12">
+        <h2
+          className="text-2xl sm:text-4xl font-bold text-center mb-8"
+          style={{ color: COLORS.azulCorp }}
+        >
+          Vamos conversar
+        </h2>
+        <p className="text-neutral-700 text-center mb-8">
+          Preencha o formulário e retornaremos para agendar uma demonstração.
+        </p>
+        
+        <div className="grid lg:grid-cols-2 gap-8">
+          {/* Coluna Esquerda - Imagem e Card */}
+          <div className="space-y-6">
+            <img
+              src="/imagens/contato_foto.png"
+              alt="Contato InstaSolutions"
+              className="rounded-3xl shadow-lg w-full max-w-md mx-auto"
+            />
+            <Card>
+              <CardHeader>
+                <CardTitle>Contatos</CardTitle>
+              </CardHeader>
+              <CardContent className="grid gap-3 text-sm">
                 <div>
-                  Alameda Rio Negro, 1030, Edifício Stadium Corporate Alphaville,
-                  Escritório 2304 - Alphaville
+                  <div className="font-medium">Endereço Matriz</div>
+                  <div>
+                    Alameda Rio Negro, 1030, Edifício Stadium Corporate Alphaville,
+                    Escritório 2304 - Alphaville
+                  </div>
+                  <div>Barueri - SP, 06454-000</div>
                 </div>
-                <div>Barueri - SP, 06454-000</div>
-              </div>
-              <div>
-                <div className="font-medium">Entre em contato conosco</div>
-                <div>(11) 3336-6941</div>
-                <div>(67) 98218-2448 - WhatsApp</div>
-              </div>
-              <div>
-                <div className="font-medium">E-mail</div>
-                <a
-                  className="text-blue-700 hover:underline"
-                  href={`mailto:${EMAIL}`}
-                >
-                  {EMAIL}
-                </a>
-              </div>
-            </CardContent>
-          </Card>
+                <div>
+                  <div className="font-medium">Entre em contato conosco</div>
+                  <div>(11) 3336-6941</div>
+                  <div>(67) 98218-2448 - WhatsApp</div>
+                </div>
+                <div>
+                  <div className="font-medium">E-mail</div>
+                  <a
+                    className="text-blue-700 hover:underline"
+                    href={`mailto:${EMAIL}`}
+                  >
+                    {EMAIL}
+                  </a>
+                  <br />
+                  <a
+                    className="text-blue-700 hover:underline"
+                    href="mailto:financeiro@instasolutions.com.br"
+                  >
+                    financeiro@instasolutions.com.br
+                  </a>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Coluna Direita - Formulário */}
+          <div>
+            <ContactForm />
+          </div>
         </div>
       </Section>
     </Layout>
@@ -1169,6 +1305,8 @@ function ContatoPage() {
 }
 
 function ContactForm() {
+  const [uf, setUf] = useState("SP");
+
   function handleFormSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
@@ -1177,16 +1315,83 @@ function ContactForm() {
       .then(() => alert("Mensagem enviada com sucesso! Entraremos em contato em breve."))
       .catch(() => alert("Erro ao enviar. Tente novamente."));
   }
+
   return (
-    <form className="grid gap-4 mt-6" onSubmit={handleFormSubmit}>
+    <form className="grid gap-4" onSubmit={handleFormSubmit}>
       <input type="hidden" name="_captcha" value="false" />
       <input type="hidden" name="_subject" value="[Site] Novo contato" />
       <input type="hidden" name="_template" value="table" />
       <input type="hidden" name="_next" value={`${DOMAIN}/obrigado`} />
-      <Input name="nome" label="Nome" required />
-      <Input name="email" type="email" label="E-mail" required />
-      <Input name="empresa" label="Empresa" />
-      <Textarea name="mensagem" label="Como podemos ajudar?" rows={5} required />
+      
+      <div className="grid md:grid-cols-2 gap-4">
+        <Input name="CNPJ" label="CNPJ" />
+        <Input name="Razao Social" label="Razão social" />
+        <Input name="Nome Fantasia" label="Nome Fantasia" />
+        <Input name="Bairro" label="Bairro" />
+        <Input name="Endereco" label="Endereço c/ número" className="md:col-span-2" />
+        <div>
+          <Label>Estado</Label>
+          <select
+            value={uf}
+            onChange={(e) => setUf(e.target.value)}
+            name="Estado"
+            className="border rounded-xl px-3 py-2 w-full"
+          >
+            {UFS.map((u) => (
+              <option key={u} value={u}>
+                {u}
+              </option>
+            ))}
+          </select>
+        </div>
+        <Input name="Cidade" label="Cidade" />
+        <Input name="Email" type="email" label="E-mail" required />
+        <Input name="Responsavel" label="Responsável" />
+        <div>
+          <Label> Segmento de atuação </Label>
+          <select
+            name="Segmento de atuacao"
+            className="border rounded-xl px-3 py-2 w-full"
+          >
+            {["Transportadora", "Órgão Público", "Locadora", "Microempresa", "Outro"].map((s) => (
+              <option key={s} value={s}>
+                {s}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <Label> Quantidade de veículos </Label>
+          <select
+            name="Quantidade de veiculos"
+            className="border rounded-xl px-3 py-2 w-full"
+          >
+            {["1-25", "26-100", "101-500", "500+"].map((q) => (
+              <option key={q} value={q}>
+                {q}
+              </option>
+            ))}
+          </select>
+        </div>
+        <Input name="DDD_Celular" label="DDD / Celular" />
+        <Input name="DDD_Fixo" label="DDD / Fixo" />
+        <div className="md:col-span-2">
+          <Label> Qual solução deseja contratar ? </Label>
+          <select name="Solucao" className="border rounded-xl px-3 py-2 w-full">
+            {[
+              "Manutenção",
+              "Combustível",
+              "Rastreamento",
+              "Sistema completo",
+              "Personalizado"
+            ].map((s) => (
+              <option key={s} value={s}>
+                {s}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
       <GeoButton size="lg">Enviar</GeoButton>
     </form>
   );
@@ -1630,6 +1835,7 @@ export default function App() {
         <Route path="/solucoes" element={<SolucoesPage />} />
         <Route path="/rede" element={<RedePage />} />
         <Route path="/sobre" element={<SobrePage />} />
+        <Route path="/quem-somos" element={<QuemSomosPage />} />
         <Route path="/contato" element={<ContatoPage />} />
         <Route path="/obrigado" element={<ObrigadoPage />} />
         {/* Parceiros */}
