@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useEffect, type CSSProperties } from "react";
+import React, { useMemo, useState, useEffect, createContext, useContext, type CSSProperties } from "react";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { motion } from "framer-motion";
@@ -11,8 +11,71 @@ import {
   Layers,
   ShieldCheck,
   ChevronDown,
-  ExternalLink
+  ExternalLink,
+  Globe
 } from "lucide-react";
+
+/**********************
+ * LANGUAGE CONTEXT *
+ **********************/
+type Language = "pt" | "en";
+
+const LanguageContext = createContext<{
+  language: Language;
+  setLanguage: (lang: Language) => void;
+  t: (key: string) => string;
+}>({
+  language: "pt",
+  setLanguage: () => {},
+  t: (key: string) => key
+});
+
+const translations: Record<Language, Record<string, string>> = {
+  pt: {
+    "nav.solutions": "Soluções",
+    "nav.partners": "Parceiros",
+    "nav.clients": "Sou cliente",
+    "nav.network": "Rede",
+    "nav.about": "Sobre",
+    "nav.contact": "Contato",
+    "home.title": "Plataforma corporativa para gestão de frotas com módulos integrados",
+    "home.subtitle": "Manutenção com rede de oficinas, abastecimento com rede de postos e rastreamento — tudo em um só lugar.",
+    "button.seeSolutions": "Ver soluções",
+    "button.requestDemo": "Solicitar demonstração",
+    "button.credential": "Quero me credenciar",
+    "button.knowSolutions": "Conheça nossas soluções"
+  },
+  en: {
+    "nav.solutions": "Solutions",
+    "nav.partners": "Partners",
+    "nav.clients": "I'm a client",
+    "nav.network": "Network",
+    "nav.about": "About",
+    "nav.contact": "Contact",
+    "home.title": "Corporate platform for fleet management with integrated modules",
+    "home.subtitle": "Maintenance with workshop network, fuel with gas station network and tracking — all in one place.",
+    "button.seeSolutions": "See solutions",
+    "button.requestDemo": "Request demo",
+    "button.credential": "I want to be accredited",
+    "button.knowSolutions": "Know our solutions"
+  }
+};
+
+function LanguageProvider({ children }: { children: React.ReactNode }) {
+  const [language, setLanguage] = useState<Language>("pt");
+  
+  const t = (key: string) => translations[language][key] || key;
+  
+  return (
+    <LanguageContext.Provider value={{ language, setLanguage, t }}>
+      {children}
+    </LanguageContext.Provider>
+  );
+}
+
+function useLanguage() {
+  return useContext(LanguageContext);
+}
 
 /**********************
  * CONFIG & CONSTANTS *
@@ -150,6 +213,8 @@ function getCitiesForUF(uf: string): string[] {
  * LAYOUT UI *
  **************/
 function Layout({ children }: { children: React.ReactNode }) {
+  const { language, setLanguage } = useLanguage();
+  
   return (
     <div className="min-h-screen bg-white text-neutral-900">
       <nav className="sticky top-0 bg-white/90 backdrop-blur border-b z-40 flex justify-between items-center px-6 py-3">
@@ -178,9 +243,19 @@ function Layout({ children }: { children: React.ReactNode }) {
           <NavPill to="/sobre">Sobre</NavPill>
           <NavPill to="/contato">Contato</NavPill>
         </div>
-        <Link to="/contato">
-          <GeoButton size="sm">Fale com o time</GeoButton>
-        </Link>
+        <div className="flex items-center gap-3">
+          <button
+            onClick={() => setLanguage(language === "pt" ? "en" : "pt")}
+            className="flex items-center gap-1 px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors"
+            title={language === "pt" ? "Switch to English" : "Mudar para Português"}
+          >
+            <Globe className="w-4 h-4" />
+            <span className="text-xs font-medium uppercase">{language}</span>
+          </button>
+          <Link to="/contato">
+            <GeoButton size="sm">Fale com o time</GeoButton>
+          </Link>
+        </div>
       </nav>
       {children}
       <Footer />
@@ -337,21 +412,25 @@ function HomePage() {
                 </GeoButton>
               </Link>
             </div>
-            <ul className="grid grid-cols-2 sm:grid-cols-3 gap-3 text-sm mt-4">
-              {[
-                "+500 oficinas credenciadas",
-                "Rede de postos integrada",
-                "Dashboards em tempo real"
-              ].map((t, i) => (
-                <li key={i} className="inline-flex items-center gap-2">
-                  <CheckCircle2
-                    className="w-4 h-4"
-                    style={{ color: COLORS.azulTech }}
-                  />{" "}
-                  {t}
-                </li>
-              ))}
-            </ul>
+            <Card className="mt-6">
+              <CardContent className="pt-6">
+                <ul className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
+                  {[
+                    "+500 Parceiros e Fornecedores",
+                    "Rede de postos integrada",
+                    "Dashboards em tempo real"
+                  ].map((t, i) => (
+                    <li key={i} className="flex flex-col items-center justify-center text-center gap-2 p-3">
+                      <CheckCircle2
+                        className="w-6 h-6"
+                        style={{ color: COLORS.azulTech }}
+                      />
+                      <span className="font-medium">{t}</span>
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
           </motion.div>
 
           <motion.div {...fadeUp} transition={{ duration: 0.5, delay: 0.05 }}>
@@ -376,10 +455,10 @@ function HomePage() {
       <Section className="pb-4">
         <div className="flex flex-wrap justify-center gap-4 mb-8">
           <Link to="/parceiros/credenciar">
-            <GeoButton size="lg">Quero me credenciar</GeoButton>
+            <GeoButton size="lg" className="text-lg px-8 py-6">Quero me credenciar</GeoButton>
           </Link>
           <Link to="/solucoes">
-            <GeoButton size="lg">Conheça nossas soluções</GeoButton>
+            <GeoButton size="lg" className="text-lg px-8 py-6">Conheça nossas soluções</GeoButton>
           </Link>
         </div>
         <SolucoesGrid />
@@ -693,7 +772,11 @@ function ParceirosCredenciarPage() {
         <link rel="canonical" href={buildCanonical("/parceiros/credenciar")} />
       </Helmet>
 
-      <Banner title="Preencha o formulario abaixo para credenciamento" />
+      <BannerWithImage 
+        title="Venha fazer parte da rede de parceiros que mais Cresce no Brasil." 
+        subtitle="Para credenciamento preencha os dados abaixo."
+        image="/imagens/rede-01.png"
+      />
 
       <Section className="py-10">
         <div className="flex gap-2 mb-6">
@@ -863,7 +946,7 @@ function ClientesQueroSerPage() {
           className="text-2xl sm:text-3xl font-bold mt-2 text-center"
           style={{ color: COLORS.azulCorp }}
         >
-          Venha ser InstaSolutions e descomplique sua gestão de frotas
+          Venha ser InstaSolutions e descomplique sua gestão de frotas !
         </h2>
         <div className="grid md:grid-cols-2 gap-6 items-center mt-4">
           <div className="text-neutral-700 space-y-3">
@@ -1074,6 +1157,20 @@ function RedePage() {
                   city="Port. St. Lucie - Florida - US"
                   label="Filiais"
                   detail="Operação e suporte regional"
+                />
+              </CardContent>
+            </Card>
+            <Card className="mt-6">
+              <CardHeader>
+                <CardTitle className="text-center">
+                  <MapPin className="w-5 h-5 inline mr-2" /> Filial Destaque
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="flex justify-center">
+                <Location
+                  city="Campo Grande/MS"
+                  label="Filial - Brasil"
+                  detail="Operação regional Centro-Oeste"
                 />
               </CardContent>
             </Card>
@@ -1699,7 +1796,7 @@ function SolucoesGrid() {
         icon={<Satellite className="w-6 h-6" />}
         title="Rastreamento"
         items={[
-          "Localização e telemetria",
+          "Localização em tempo real",
           "Alertas e cercas virtuais",
           "Análise de direção e rotas"
         ]}
@@ -1773,6 +1870,33 @@ function Banner({ title }: { title: string }) {
   );
 }
 
+function BannerWithImage({ title, subtitle, image }: { title: string; subtitle?: string; image?: string }) {
+  return (
+    <div className="w-full min-h-60 bg-gradient-to-r from-blue-600 to-blue-800 relative overflow-hidden">
+      <div className="absolute inset-0 opacity-20">
+        {image && (
+          <img 
+            src={image} 
+            alt="Banner" 
+            className="w-full h-full object-cover"
+            style={{ clipPath: "polygon(0 0, 100% 0, 85% 100%, 0% 100%)" }}
+          />
+        )}
+      </div>
+      <div className="relative z-10 flex flex-col items-center justify-center text-center px-6 py-12">
+        <h1 className="text-2xl sm:text-4xl font-bold text-white mb-3">
+          {title}
+        </h1>
+        {subtitle && (
+          <p className="text-lg sm:text-xl text-blue-100 max-w-2xl">
+            {subtitle}
+          </p>
+        )}
+      </div>
+    </div>
+  );
+}
+
 function AccessCard({ title, href }: { title: string; href: string }) {
   return (
     <Card>
@@ -1822,7 +1946,7 @@ function TabButton({
  ****************/
 export default function App() {
   return (
-    <>
+    <LanguageProvider>
       <Helmet>
         <meta
           name="keywords"
@@ -1850,7 +1974,7 @@ export default function App() {
 
       {/* RUNTIME TESTS (não quebram build, apenas logam no console se algo errado) */}
       <RuntimeTests />
-    </>
+    </LanguageProvider>
   );
 }
 
