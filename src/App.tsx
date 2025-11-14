@@ -750,6 +750,7 @@ function ParceirosCredenciarPage() {
   const navigate = useNavigate();
   const [tipo, setTipo] = useState<"postos" | "linha">("postos");
   const [uf, setUf] = useState("SP");
+  const [showSuccess, setShowSuccess] = useState(false);
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -757,12 +758,34 @@ function ParceirosCredenciarPage() {
     const data = new FormData(form);
     fetch(`https://formsubmit.co/${EMAIL}`, { method: "POST", body: data })
       .then(() => {
-        alert(
-          "Formulario enviado com sucesso, nossa equipe entrará em contato em até 24 horas para finalização do credenciamento, se atente ao telefone e e-mail informados"
-        );
-        navigate("/");
+        setShowSuccess(true);
+        setTimeout(() => {
+          navigate("/");
+        }, 6000);
       })
       .catch(() => alert("Erro ao enviar. Tente novamente."));
+  }
+
+  if (showSuccess) {
+    return (
+      <Layout>
+        <Section className="py-20">
+          <div className="flex flex-col items-center justify-center text-center max-w-2xl mx-auto">
+            <img 
+              src="/imagens/enviar_formulario.png" 
+              alt="Formulário enviado com sucesso" 
+              className="w-full max-w-md mb-6 rounded-2xl shadow-lg"
+            />
+            <p className="text-lg text-neutral-700 leading-relaxed">
+              Formulário enviado com sucesso! Nossa equipe entrará em contato em até 24 horas para finalização do credenciamento. Atente-se ao telefone e e-mail informados.
+            </p>
+            <p className="text-sm text-neutral-500 mt-4">
+              Redirecionando para a página inicial...
+            </p>
+          </div>
+        </Section>
+      </Layout>
+    );
   }
 
   return (
@@ -774,11 +797,13 @@ function ParceirosCredenciarPage() {
 
       <BannerWithImage 
         title="Venha fazer parte da rede de parceiros que mais Cresce no Brasil." 
-        subtitle="Para credenciamento preencha os dados abaixo."
         image="/imagens/rede-01.png"
       />
 
       <Section className="py-10">
+        <p className="text-center text-lg text-neutral-700 mb-6">
+          Para credenciamento preencha os dados abaixo.
+        </p>
         <div className="flex gap-2 mb-6">
           <TabButton active={tipo === "postos"} onClick={() => setTipo("postos")}>
             Postos de combustível
@@ -1873,7 +1898,7 @@ function Banner({ title }: { title: string }) {
 function BannerWithImage({ title, subtitle, image }: { title: string; subtitle?: string; image?: string }) {
   return (
     <div className="w-full min-h-60 bg-gradient-to-r from-blue-600 to-blue-800 relative overflow-hidden">
-      <div className="absolute inset-0 opacity-20">
+      <div className="absolute inset-0 opacity-40">
         {image && (
           <img 
             src={image} 
