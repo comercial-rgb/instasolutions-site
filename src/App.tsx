@@ -32,6 +32,7 @@ const LanguageContext = createContext<{
 
 const translations: Record<Language, Record<string, string>> = {
   pt: {
+    // Navegação
     "nav.home": "Home",
     "nav.solutions": "Soluções",
     "nav.partners": "Parceiros",
@@ -40,6 +41,16 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.about": "Sobre",
     "nav.contact": "Contato",
     "nav.talkToTeam": "Fale com o time",
+    "nav.whoWeAre": "Quem Somos",
+    "nav.credential": "Quero me Credenciar",
+    "nav.systemAccess": "Acesso ao sistema",
+    "nav.suppliers": "Fornecedores",
+    "nav.clients2": "Clientes",
+    "nav.financial": "Portal Financeiro",
+    "nav.beClient": "Quero ser Cliente",
+    
+    // Home
+    "home.fleetManagement": "Gestão completa de frotas",
     "home.title": "Plataforma corporativa para gestão de frotas com módulos integrados",
     "home.subtitle": "Manutenção com rede de oficinas, abastecimento com rede de postos e rastreamento — tudo em um só lugar.",
     "home.partnersSuppliers": "+500 Parceiros e Fornecedores",
@@ -49,10 +60,20 @@ const translations: Record<Language, Record<string, string>> = {
     "home.coverage": "Cobertura",
     "home.integrations": "Integrações",
     "home.brazilWide": "Brasil inteiro",
+    "home.costBenefit": "Excelente custo-benefício",
+    "home.costBenefitDesc": "A InstaSolutions atua na intermediação de contratação de serviços e peças automotivas para empresas e instituições públicas.",
+    "home.costBenefitDesc2": "Através de um software próprio e aplicativo, oferece aos clientes acesso a uma rede de credenciados que oferece seus serviços e produtos a um preço competitivo e condições de pagamento diferenciadas.",
+    
+    // Botões
     "button.seeSolutions": "Ver soluções",
     "button.requestDemo": "Solicitar demonstração",
     "button.credential": "Quero me credenciar",
     "button.knowSolutions": "Conheça nossas soluções",
+    "button.submit": "Enviar",
+    "button.send": "Enviar formulário",
+    
+    // Soluções
+    "solutions.title": "Soluções",
     "solutions.maintenance": "Manutenção",
     "solutions.fueling": "Abastecimento",
     "solutions.tracking": "Rastreamento",
@@ -65,12 +86,102 @@ const translations: Record<Language, Record<string, string>> = {
     "solutions.tracking.item1": "Localização em tempo real",
     "solutions.tracking.item2": "Alertas e cercas virtuais",
     "solutions.tracking.item3": "Análise de direção e rotas",
+    
+    // Rede
+    "network.title": "Rede nacional de atendimento",
+    "network.desc1": "A InstaSolutions conecta sua frota a uma rede nacional com mais de 500 oficinas e postos credenciados, garantindo atendimento rápido, padronizado e de qualidade em qualquer região do Brasil. Cada parceiro é cuidadosamente selecionado e auditado para assegurar técnica, confiabilidade e condições comerciais competitivas.",
+    "network.desc2": "Nossa rede atua integrada ao sistema de gestão de frotas, permitindo que manutenções, abastecimentos e serviços sejam registrados em tempo real, com total transparência, governança e controle dos custos. Isso reduz riscos, acelera decisões e aumenta a disponibilidade da frota.",
+    "network.desc3": "Para empresas e órgãos públicos, isso significa conveniência, economia e segurança em cada atendimento. Para nossos parceiros, é a oportunidade de ampliar negócios e atender clientes qualificados.",
+    "network.desc4": "Com a InstaSolutions, sua frota tem suporte em todo o Brasil — com eficiência, tecnologia e confiança.",
+    "network.whereWeAre": "Onde estamos",
+    "network.headquarters": "Matriz - Brasil",
+    "network.branch": "Filiais",
+    "network.branchHighlight": "Filial Destaque",
+    "network.nationalService": "Atendimento nacional",
+    "network.regionalOperation": "Operação e suporte regional",
+    "network.regionalOperationMidwest": "Operação regional Centro-Oeste",
+    
+    // Sobre
+    "about.badge": "Quem somos",
+    "about.title": "Tecnologia corporativa para decisões rápidas e seguras",
+    "about.p1": "Em um cenário operacional cada vez mais dinâmico, competitivo e orientado por dados, empresas que trabalham com frotas enfrentam desafios diários: manter veículos disponíveis, controlar custos, garantir transparência, acompanhar o desempenho em tempo real e, acima de tudo, tomar decisões rápidas e precisas. É justamente nesse ponto que a InstaSolutions se destaca — unindo tecnologia, inteligência operacional e uma rede nacional de credenciados para transformar a forma como organizações gerenciam seus veículos.",
+    "about.p2": "Nossa missão é clara: simplificar a gestão de frotas e torná-la mais inteligente, econômica e eficiente. Para isso, desenvolvemos uma plataforma completa que integra manutenção, abastecimento e rastreamento em um único ecossistema digital, conectando gestores, fornecedores e operações em tempo real. Com dashboards intuitivos, análises avançadas e processos automatizados, proporcionamos uma visão completa da operação, permitindo que cada decisão seja tomada com base em dados confiáveis e atualizados.",
+    "about.p3": "A tecnologia da InstaSolutions foi construída para oferecer agilidade, segurança e governança, atendendo tanto instituições públicas quanto empresas privadas que exigem alto desempenho e compliance absoluto. Nosso sistema reduz custos, elimina retrabalhos, padroniza processos e identifica oportunidades de melhoria em toda a cadeia operacional — desde a abertura de uma ordem de serviço até a finalização do abastecimento ou acompanhamento de um alerta de telemetria.",
+    "about.p4": "Outro grande diferencial é nossa rede de mais de 500 oficinas credenciadas e postos parceiros, cuidadosamente selecionados e auditados para garantir qualidade, prazo e condições comerciais competitivas. Ao utilizar nossa plataforma, o cliente tem acesso imediato a essa rede, garantindo transparência, agilidade e segurança em todas as etapas do atendimento. Cada serviço contratado gera dados que retornam para o gestor em forma de relatórios, insights e indicadores — fortalecendo ainda mais o ciclo de melhoria contínua da frota.",
+    "about.p5": "Somos movidos por inovação, mas também pela proximidade com nossos clientes. Por isso, contamos com uma equipe especializada em implantação, suporte e expansão, pronta para acompanhar cada parceiro com atenção e excelência. Seja em uma prefeitura, uma empresa de transporte, uma locadora ou uma frota pequena que está iniciando sua jornada de digitalização, oferecemos uma experiência completa, confiável e escalável.",
+    "about.p6": "A InstaSolutions nasceu para ser mais do que um software:",
+    "about.p6b": "somos uma solução corporativa que conecta pessoas, tecnologia e resultados. E continuamos evoluindo para que cada gestor execute suas decisões com máxima confiança, visão ampla da operação e total segurança — hoje e no futuro.",
+    
+    // Contato
+    "contact.title": "Fale Conosco",
+    "contact.email": "E-mail",
+    "contact.phone": "Telefone",
+    "contact.address": "Endereço",
+    "contact.followUs": "Siga-nos",
+    "contact.title2": "Vamos conversar",
+    "contact.subtitle": "Preencha o formulário e retornaremos para agendar uma demonstração.",
+    "contact.contacts": "Contatos",
+    "contact.headquartersAddress": "Endereço Matriz",
+    "contact.contactUs": "Entre em contato conosco",
+    "contact.successMsg": "Mensagem enviada com sucesso! Entraremos em contato em breve.",
+    "contact.errorMsg": "Erro ao enviar. Tente novamente.",
+    
+    // Formulários
+    "form.name": "Nome",
+    "form.email": "E-mail",
+    "form.phone": "Telefone",
+    "form.company": "Empresa",
+    "form.cnpj": "CNPJ",
+    "form.message": "Mensagem",
+    "form.state": "Estado",
+    "form.city": "Cidade",
+    "form.segment": "Segmento de atuação",
+    "form.fleetSize": "Quantidade de veículos",
+    "form.tradeName": "Nome Fantasia",
+    "form.companyName": "Razão social",
+    "form.neighborhood": "Bairro",
+    "form.address": "Endereço c/ número",
+    
+    // Credenciar
+    "credential.title": "Venha fazer parte da rede de parceiros que mais Cresce no Brasil.",
+    "credential.subtitle": "Para credenciamento preencha os dados abaixo.",
+    "credential.gasStations": "Postos de combustível",
+    "credential.automotive": "Linha Automotiva",
+    "credential.successTitle": "Formulário enviado com sucesso!",
+    "credential.successMsg": "Nossa equipe entrará em contato em até 24 horas para finalização do credenciamento. Atente-se ao telefone e e-mail informados.",
+    "credential.redirecting": "Redirecionando para a página inicial...",
+    
+    // Cliente
+    "client.title": "Venha ser InstaSolutions e descomplique sua gestão de frotas !",
+    "client.desc1": "Gerenciar uma frota não precisa ser complexo. Com a InstaSolutions, você conecta sua operação a uma plataforma completa que integra manutenção, abastecimento e rastreamento em um único sistema, oferecendo controle total e decisões rápidas baseadas em dados.",
+    "client.desc2": "Nossa rede nacional com mais de 500 oficinas e postos credenciados garante atendimento padronizado, econômico e confiável em qualquer região do Brasil. Tudo isso aliado a dashboards inteligentes, processos automatizados e total transparência nos custos.",
+    "client.desc3": "Ao escolher a InstaSolutions, você reduz despesas, aumenta a disponibilidade da frota e simplifica o dia a dia da sua equipe com uma solução moderna, segura e pensada para empresas e instituições que exigem eficiência e performance.",
+    "client.desc4": "Seja InstaSolutions e leve sua gestão de frotas a um novo nível.",
+    
+    // Rodapé
     "footer.institutional": "Institucional",
     "footer.partners": "Parceiros",
     "footer.solutions": "Soluções",
-    "footer.rights": "Todos os direitos reservados"
+    "footer.rights": "Todos os direitos reservados",
+    "footer.overview": "Visão geral",
+    
+    // Acesso ao sistema
+    "access.welcome": "Bem vindo",
+    "access.supplier": "Fornecedor",
+    "access.client": "Cliente",
+    "access.description": "Para acessar nosso sistema para clicar no botão \"Acessar\" abaixo e você será redirecionado para nosso site.",
+    "access.generalSystem": "Acesso geral ao sistema",
+    "access.fuelSystem": "Acesso combustível",
+    "access.underConstruction": "Página em construção. Aguarde lançamento em breve !",
+    "access.maintenanceTracking": "Acesso manutenção & rastreamento",
+    
+    // Página Obrigado
+    "thankyou.title": "Obrigado!",
+    "thankyou.message": "Recebemos sua mensagem e retornaremos em breve.",
+    "thankyou.backHome": "Voltar à página inicial",
   },
   en: {
+    // Navigation
     "nav.home": "Home",
     "nav.solutions": "Solutions",
     "nav.partners": "Partners",
@@ -79,6 +190,16 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.about": "About",
     "nav.contact": "Contact",
     "nav.talkToTeam": "Talk to the team",
+    "nav.whoWeAre": "Who We Are",
+    "nav.credential": "Get Accredited",
+    "nav.systemAccess": "System Access",
+    "nav.suppliers": "Suppliers",
+    "nav.clients2": "Clients",
+    "nav.financial": "Financial Portal",
+    "nav.beClient": "Become a Client",
+    
+    // Home
+    "home.fleetManagement": "Complete fleet management",
     "home.title": "Corporate platform for fleet management with integrated modules",
     "home.subtitle": "Maintenance with workshop network, fuel with gas station network and tracking — all in one place.",
     "home.partnersSuppliers": "+500 Partners and Suppliers",
@@ -88,10 +209,20 @@ const translations: Record<Language, Record<string, string>> = {
     "home.coverage": "Coverage",
     "home.integrations": "Integrations",
     "home.brazilWide": "Nationwide",
+    "home.costBenefit": "Excellent cost-benefit",
+    "home.costBenefitDesc": "InstaSolutions acts as an intermediary in the contracting of automotive services and parts for companies and public institutions.",
+    "home.costBenefitDesc2": "Through proprietary software and app, it offers clients access to a network of accredited providers offering their services and products at competitive prices and differentiated payment terms.",
+    
+    // Buttons
     "button.seeSolutions": "See solutions",
     "button.requestDemo": "Request demo",
     "button.credential": "I want to be accredited",
     "button.knowSolutions": "Know our solutions",
+    "button.submit": "Submit",
+    "button.send": "Send form",
+    
+    // Solutions
+    "solutions.title": "Solutions",
     "solutions.maintenance": "Maintenance",
     "solutions.fueling": "Fueling",
     "solutions.tracking": "Tracking",
@@ -104,10 +235,99 @@ const translations: Record<Language, Record<string, string>> = {
     "solutions.tracking.item1": "Real-time location",
     "solutions.tracking.item2": "Alerts and virtual fences",
     "solutions.tracking.item3": "Driving and route analysis",
+    
+    // Network
+    "network.title": "Nationwide service network",
+    "network.desc1": "InstaSolutions connects your fleet to a nationwide network with over 500 accredited workshops and gas stations, ensuring fast, standardized, and quality service in any region of Brazil. Each partner is carefully selected and audited to ensure technical expertise, reliability, and competitive business terms.",
+    "network.desc2": "Our network operates integrated with the fleet management system, allowing maintenance, fueling, and services to be recorded in real-time, with total transparency, governance, and cost control. This reduces risks, accelerates decisions, and increases fleet availability.",
+    "network.desc3": "For companies and public agencies, this means convenience, economy, and security in every service. For our partners, it's the opportunity to expand business and serve qualified clients.",
+    "network.desc4": "With InstaSolutions, your fleet has support throughout Brazil — with efficiency, technology, and trust.",
+    "network.whereWeAre": "Where we are",
+    "network.headquarters": "Headquarters - Brazil",
+    "network.branch": "Branches",
+    "network.branchHighlight": "Featured Branch",
+    "network.nationalService": "National service",
+    "network.regionalOperation": "Regional operation and support",
+    "network.regionalOperationMidwest": "Midwest regional operation",
+    
+    // About
+    "about.badge": "Who we are",
+    "about.title": "Corporate technology for fast and secure decisions",
+    "about.p1": "In an increasingly dynamic, competitive, and data-driven operational landscape, companies managing fleets face daily challenges: keeping vehicles available, controlling costs, ensuring transparency, monitoring performance in real-time and, above all, making fast and accurate decisions. This is where InstaSolutions stands out — combining technology, operational intelligence, and a nationwide network of partners to transform how organizations manage their vehicles.",
+    "about.p2": "Our mission is clear: simplify fleet management and make it smarter, more economical, and efficient. To achieve this, we developed a complete platform that integrates maintenance, fueling, and tracking into a single digital ecosystem, connecting managers, suppliers, and operations in real-time. With intuitive dashboards, advanced analytics, and automated processes, we provide a complete view of operations, enabling every decision to be based on reliable and up-to-date data.",
+    "about.p3": "InstaSolutions' technology was built to deliver agility, security, and governance, serving both public institutions and private companies that demand high performance and absolute compliance. Our system reduces costs, eliminates rework, standardizes processes, and identifies improvement opportunities throughout the operational chain — from opening a service order to completing fueling or tracking a telemetry alert.",
+    "about.p4": "Another major advantage is our network of over 500 accredited workshops and partner gas stations, carefully selected and audited to ensure quality, timeliness, and competitive commercial conditions. By using our platform, clients have immediate access to this network, ensuring transparency, agility, and security at every stage of service. Each contracted service generates data that returns to the manager in the form of reports, insights, and indicators — further strengthening the fleet's continuous improvement cycle.",
+    "about.p5": "We are driven by innovation, but also by proximity to our clients. That's why we have a specialized team in implementation, support, and expansion, ready to accompany each partner with attention and excellence. Whether in a city hall, a transport company, a rental company, or a small fleet starting its digitalization journey, we offer a complete, reliable, and scalable experience.",
+    "about.p6": "InstaSolutions was born to be more than software:",
+    "about.p6b": "we are a corporate solution that connects people, technology, and results. And we continue to evolve so that every manager can execute their decisions with maximum confidence, broad operational visibility, and total security — today and in the future.",
+    
+    // Contact
+    "contact.title": "Contact Us",
+    "contact.email": "Email",
+    "contact.phone": "Phone",
+    "contact.address": "Address",
+    "contact.followUs": "Follow us",
+    "contact.title2": "Let's talk",
+    "contact.subtitle": "Fill out the form and we will get back to you to schedule a demo.",
+    "contact.contacts": "Contacts",
+    "contact.headquartersAddress": "Headquarters Address",
+    "contact.contactUs": "Contact us",
+    "contact.successMsg": "Message sent successfully! We will contact you soon.",
+    "contact.errorMsg": "Error sending. Please try again.",
+    
+    // Forms
+    "form.name": "Name",
+    "form.email": "Email",
+    "form.phone": "Phone",
+    "form.company": "Company",
+    "form.cnpj": "CNPJ",
+    "form.message": "Message",
+    "form.state": "State",
+    "form.city": "City",
+    "form.segment": "Business segment",
+    "form.fleetSize": "Fleet size",
+    "form.tradeName": "Trade Name",
+    "form.companyName": "Company Name",
+    "form.neighborhood": "Neighborhood",
+    "form.address": "Address with number",
+    
+    // Credential
+    "credential.title": "Join the fastest-growing partner network in Brazil.",
+    "credential.subtitle": "Fill in the details below for accreditation.",
+    "credential.gasStations": "Gas Stations",
+    "credential.automotive": "Automotive Line",
+    "credential.successTitle": "Form submitted successfully!",
+    "credential.successMsg": "Our team will contact you within 24 hours to complete the accreditation process. Please check your phone and email.",
+    "credential.redirecting": "Redirecting to home page...",
+    
+    // Client
+    "client.title": "Become InstaSolutions and simplify your fleet management !",
+    "client.desc1": "Managing a fleet doesn't have to be complex. With InstaSolutions, you connect your operation to a complete platform that integrates maintenance, fueling, and tracking in a single system, offering total control and quick data-driven decisions.",
+    "client.desc2": "Our nationwide network with over 500 accredited workshops and gas stations guarantees standardized, economical, and reliable service in any region of Brazil. All this combined with intelligent dashboards, automated processes, and complete cost transparency.",
+    "client.desc3": "By choosing InstaSolutions, you reduce expenses, increase fleet availability, and simplify your team's daily routine with a modern, secure solution designed for companies and institutions that demand efficiency and performance.",
+    "client.desc4": "Be InstaSolutions and take your fleet management to a new level.",
+    
+    // Footer
     "footer.institutional": "Institutional",
     "footer.partners": "Partners",
     "footer.solutions": "Solutions",
-    "footer.rights": "All rights reserved"
+    "footer.rights": "All rights reserved",
+    "footer.overview": "Overview",
+    
+    // System Access
+    "access.welcome": "Welcome",
+    "access.supplier": "Supplier",
+    "access.client": "Client",
+    "access.description": "To access our system, click the \"Access\" button below and you will be redirected to our website.",
+    "access.generalSystem": "General system access",
+    "access.fuelSystem": "Fuel access",
+    "access.underConstruction": "Page under construction. Coming soon!",
+    "access.maintenanceTracking": "Maintenance & tracking access",
+    
+    // Thank You Page
+    "thankyou.title": "Thank you!",
+    "thankyou.message": "We have received your message and will get back to you soon.",
+    "thankyou.backHome": "Back to home page",
   }
 };
 
@@ -350,27 +570,27 @@ function Footer() {
           <ul className="space-y-1 text-sm">
             <li>
               <Link className="hover:underline" to="/solucoes">
-                Visão geral
+                {t("footer.overview")}
               </Link>
             </li>
           </ul>
         </div>
         <div>
-          <div className="font-semibold mb-2">Parceiros</div>
+          <div className="font-semibold mb-2">{t("footer.partners")}</div>
           <ul className="space-y-1 text-sm">
             <li>
               <Link className="hover:underline" to="/parceiros/credenciar">
-                Quero me Credenciar
+                {t("nav.credential")}
               </Link>
             </li>
             <li>
               <Link className="hover:underline" to="/parceiros/fornecedores">
-                Acesso ao sistema
+                {t("nav.systemAccess")}
               </Link>
             </li>
             <li>
               <Link className="hover:underline" to="/contato">
-                Contato
+                {t("nav.contact")}
               </Link>
             </li>
           </ul>
@@ -520,17 +740,13 @@ function HomePage() {
       <Section className="py-12 grid lg:grid-cols-2 gap-10 items-center">
         <div>
           <h3 className="text-2xl font-bold" style={{ color: COLORS.azulCorp }}>
-            Excelente custo-benefício
+            {t("home.costBenefit")}
           </h3>
           <p className="mt-3 text-neutral-700">
-            A InstaSolutions atua na intermediação de contratação de serviços e peças
-            automotivas para empresas e instituições públicas.
+            {t("home.costBenefitDesc")}
           </p>
           <p className="mt-2 text-neutral-700">
-            Através de um software próprio e aplicativo, oferece aos clientes acesso a
-            uma rede de credenciados que oferece seus serviços e produtos a um preço
-            competitivo. A rede de credenciados, por sua vez, paga uma taxa à
-            plataforma a cada serviço contratado.
+            {t("home.costBenefitDesc2")}
           </p>
         </div>
         <img
@@ -803,6 +1019,7 @@ function ParceirosCredenciarPage() {
   const [tipo, setTipo] = useState<"postos" | "linha">("postos");
   const [uf, setUf] = useState("SP");
   const [showSuccess, setShowSuccess] = useState(false);
+  const { t } = useLanguage();
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -829,10 +1046,10 @@ function ParceirosCredenciarPage() {
               className="w-full max-w-md mb-6 rounded-2xl shadow-lg"
             />
             <p className="text-lg text-neutral-700 leading-relaxed">
-              Formulário enviado com sucesso! Nossa equipe entrará em contato em até 24 horas para finalização do credenciamento. Atente-se ao telefone e e-mail informados.
+              {t("credential.successMsg")}
             </p>
             <p className="text-sm text-neutral-500 mt-4">
-              Redirecionando para a página inicial...
+              {t("credential.redirecting")}
             </p>
           </div>
         </Section>
@@ -848,20 +1065,20 @@ function ParceirosCredenciarPage() {
       </Helmet>
 
       <BannerWithImage 
-        title="Venha fazer parte da rede de parceiros que mais Cresce no Brasil." 
+        title={t("credential.title")} 
         image="/imagens/rede-01.png"
       />
 
       <Section className="py-10">
         <p className="text-center text-lg text-neutral-700 mb-6">
-          Para credenciamento preencha os dados abaixo.
+          {t("credential.subtitle")}
         </p>
         <div className="flex gap-2 mb-6">
           <TabButton active={tipo === "postos"} onClick={() => setTipo("postos")}>
-            Postos de combustível
+            {t("credential.gasStations")}
           </TabButton>
           <TabButton active={tipo === "linha"} onClick={() => setTipo("linha")}>
-            Linha Automotiva
+            {t("credential.automotive")}
           </TabButton>
         </div>
 
@@ -945,24 +1162,26 @@ function ParceirosCredenciarPage() {
 }
 
 function ParceirosFornecedoresPage() {
+  const { t } = useLanguage();
+  
   return (
     <Layout>
       <Helmet>
         <title>Parceiros | Acesso ao sistema</title>
         <link rel="canonical" href={buildCanonical("/parceiros/fornecedores")} />
       </Helmet>
-      <Banner title="Bem vindo Fornecedor" />
+      <Banner title={`${t("access.welcome")} ${t("access.supplier")}`} />
       <Section className="py-10">
         <p className="text-center text-neutral-700 mb-6">
-          Para acessar nosso sistema para clicar no botão "Acessar" abaixo e você será redirecionado para nosso site.
+          {t("access.description")}
         </p>
         <div className="grid md:grid-cols-2 gap-6">
           <AccessCard
-            title="Acesso geral ao sistema"
+            title={t("access.generalSystem")}
             href="https://app.frotainstasolutions.com.br/"
           />
           <AccessCard
-            title="Acesso combustível"
+            title={t("access.fuelSystem")}
             href="https://front.instasolutionscomb.com.br/login"
           />
         </div>
@@ -979,13 +1198,15 @@ function ParceirosFornecedoresPage() {
 }
 
 function ParceirosFinanceiroPage() {
+  const { t } = useLanguage();
+  
   return (
     <Layout>
       <Helmet>
         <title>Parceiros | Portal Financeiro</title>
         <link rel="canonical" href={buildCanonical("/parceiros/financeiro")} />
       </Helmet>
-      <Banner title="Página em construção. Aguarde lançamento em breve !" />
+      <Banner title={t("access.underConstruction")} />
     </Layout>
   );
 }
@@ -995,6 +1216,7 @@ function ParceirosFinanceiroPage() {
 function ClientesQueroSerPage() {
   const navigate = useNavigate();
   const [uf, setUf] = useState("SP");
+  const { t } = useLanguage();
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -1023,21 +1245,21 @@ function ClientesQueroSerPage() {
           className="text-2xl sm:text-3xl font-bold mt-2 text-center"
           style={{ color: COLORS.azulCorp }}
         >
-          Venha ser InstaSolutions e descomplique sua gestão de frotas !
+          {t("client.title")}
         </h2>
         <div className="grid md:grid-cols-2 gap-6 items-center mt-4">
           <div className="text-neutral-700 space-y-3">
             <p>
-              Gerenciar uma frota não precisa ser complexo. Com a InstaSolutions, você conecta sua operação a uma plataforma completa que integra manutenção, abastecimento e rastreamento em um único sistema, oferecendo controle total e decisões rápidas baseadas em dados.
+              {t("client.desc1")}
             </p>
             <p>
-              Nossa rede nacional com mais de 500 oficinas e postos credenciados garante atendimento padronizado, econômico e confiável em qualquer região do Brasil. Tudo isso aliado a dashboards inteligentes, processos automatizados e total transparência nos custos.
+              {t("client.desc2")}
             </p>
             <p>
-              Ao escolher a InstaSolutions, você reduz despesas, aumenta a disponibilidade da frota e simplifica o dia a dia da sua equipe com uma solução moderna, segura e pensada para empresas e instituições que exigem eficiência e performance.
+              {t("client.desc3")}
             </p>
             <p>
-              <strong>Seja InstaSolutions e leve sua gestão de frotas a um novo nível.</strong>
+              <strong>{t("client.desc4")}</strong>
             </p>
           </div>
           <div className="rounded-2xl shadow mx-auto overflow-hidden bg-white max-w-sm">
@@ -1127,24 +1349,26 @@ function ClientesQueroSerPage() {
 }
 
 function ClientesAcessoPage() {
+  const { t } = useLanguage();
+  
   return (
     <Layout>
       <Helmet>
         <title>Sou Cliente | Acesso ao sistema</title>
         <link rel="canonical" href={buildCanonical("/clientes/acesso")} />
       </Helmet>
-      <Banner title="Bem vindo Cliente" />
+      <Banner title={`${t("access.welcome")} ${t("access.client")}`} />
       <Section className="py-10">
         <p className="text-center text-neutral-700 mb-6">
-          Para acessar nosso sistema para clicar no botão "Acessar" abaixo e você será redirecionado para nosso site.
+          {t("access.description")}
         </p>
         <div className="grid md:grid-cols-2 gap-6">
           <AccessCard
-            title="Acesso manutenção & rastreamento"
+            title={t("access.maintenanceTracking")}
             href="https://app.frotainstasolutions.com.br/"
           />
           <AccessCard
-            title="Acesso combustível"
+            title={t("access.fuelSystem")}
             href="https://front.instasolutionscomb.com.br/login"
           />
         </div>
@@ -1161,13 +1385,15 @@ function ClientesAcessoPage() {
 }
 
 function ClientesFinanceiroPage() {
+  const { t } = useLanguage();
+  
   return (
     <Layout>
       <Helmet>
         <title>Sou Cliente | Portal Financeiro</title>
         <link rel="canonical" href={buildCanonical("/clientes/financeiro")} />
       </Helmet>
-      <Banner title="Página em construção. Aguarde lançamento em breve !" />
+      <Banner title={t("access.underConstruction")} />
     </Layout>
   );
 }
@@ -1175,6 +1401,7 @@ function ClientesFinanceiroPage() {
 /************ REDE / SOBRE / CONTATO / OBRIGADO ************/
 
 function RedePage() {
+  const { t } = useLanguage();
   const title = "Rede | InstaSolutions — Cobertura Brasil inteiro";
   const description = "Rede nacional com 500+ oficinas credenciadas e postos parceiros.";
 
@@ -1193,21 +1420,13 @@ function RedePage() {
               className="text-2xl sm:text-3xl font-bold"
               style={{ color: COLORS.azulCorp }}
             >
-              Rede nacional de atendimento
+              {t("network.title")}
             </h3>
             <div className="text-neutral-700 mt-3 space-y-3">
-              <p>
-                A InstaSolutions conecta sua frota a uma rede nacional com mais de 500 oficinas e postos credenciados, garantindo atendimento rápido, padronizado e de qualidade em qualquer região do Brasil. Cada parceiro é cuidadosamente selecionado e auditado para assegurar técnica, confiabilidade e condições comerciais competitivas.
-              </p>
-              <p>
-                Nossa rede atua integrada ao sistema de gestão de frotas, permitindo que manutenções, abastecimentos e serviços sejam registrados em tempo real, com total transparência, governança e controle dos custos. Isso reduz riscos, acelera decisões e aumenta a disponibilidade da frota.
-              </p>
-              <p>
-                Para empresas e órgãos públicos, isso significa conveniência, economia e segurança em cada atendimento. Para nossos parceiros, é a oportunidade de ampliar negócios e atender clientes qualificados.
-              </p>
-              <p>
-                <strong>Com a InstaSolutions, sua frota tem suporte em todo o Brasil — com eficiência, tecnologia e confiança.</strong>
-              </p>
+              <p>{t("network.desc1")}</p>
+              <p>{t("network.desc2")}</p>
+              <p>{t("network.desc3")}</p>
+              <p><strong>{t("network.desc4")}</strong></p>
             </div>
             <div className="mt-8">
               <img
@@ -1221,33 +1440,33 @@ function RedePage() {
             <Card>
               <CardHeader>
                 <CardTitle>
-                  <MapPin className="w-5 h-5 inline mr-2" /> Onde estamos
+                  <MapPin className="w-5 h-5 inline mr-2" /> {t("network.whereWeAre")}
                 </CardTitle>
               </CardHeader>
               <CardContent className="grid sm:grid-cols-2 gap-4">
                 <Location
                   city="Barueri/SP"
-                  label="Matriz - Brasil"
-                  detail="Atendimento nacional"
+                  label={t("network.headquarters")}
+                  detail={t("network.nationalService")}
                 />
                 <Location
                   city="Port. St. Lucie - Florida - US"
-                  label="Filiais"
-                  detail="Operação e suporte regional"
+                  label={t("network.branch")}
+                  detail={t("network.regionalOperation")}
                 />
               </CardContent>
             </Card>
             <Card className="mt-6">
               <CardHeader>
                 <CardTitle className="text-center">
-                  <MapPin className="w-5 h-5 inline mr-2" /> Filial Destaque
+                  <MapPin className="w-5 h-5 inline mr-2" /> {t("network.branchHighlight")}
                 </CardTitle>
               </CardHeader>
               <CardContent className="flex justify-center">
                 <Location
                   city="Campo Grande/MS"
-                  label="Filial - Brasil"
-                  detail="Operação regional Centro-Oeste"
+                  label={t("network.headquarters").replace("Matriz", "Filial")}
+                  detail={t("network.regionalOperationMidwest")}
                 />
               </CardContent>
             </Card>
@@ -1266,6 +1485,7 @@ function RedePage() {
 }
 
 function SobrePage() {
+  const { t } = useLanguage();
   const title = "Sobre | InstaSolutions — Produtos e Gestão Empresarial";
   const description = "Integração total entre manutenção, abastecimento e rastreamento.";
 
@@ -1283,38 +1503,33 @@ function SobrePage() {
             className="inline-flex items-center gap-2 text-xs font-medium rounded-full px-3 py-1 w-max"
             style={{ backgroundColor: "#E6E7F7", color: COLORS.azulCorp }}
           >
-            <Layers className="w-4 h-4" /> Quem somos
+            <Layers className="w-4 h-4" /> {t("about.badge")}
           </span>
           <h3
             className="text-2xl sm:text-3xl font-bold mt-3"
             style={{ color: COLORS.azulCorp }}
           >
-            Tecnologia corporativa para decisões rápidas e seguras
+            {t("about.title")}
           </h3>
           <div className="text-neutral-700 mt-3 space-y-3">
             <p>
-              Em um cenário operacional cada vez mais dinâmico, competitivo e orientado por dados, empresas que trabalham com frotas enfrentam desafios diários: manter veículos disponíveis, controlar custos, garantir transparência, acompanhar o desempenho em tempo real e, acima de tudo, tomar decisões rápidas e precisas.
-              É justamente nesse ponto que a InstaSolutions se destaca — unindo tecnologia, inteligência operacional e uma rede nacional de credenciados para transformar a forma como organizações gerenciam seus veículos.
+              {t("about.p1")}
             </p>
             <p>
-              Nossa missão é clara: simplificar a gestão de frotas e torná-la mais inteligente, econômica e eficiente. Para isso, desenvolvemos uma plataforma completa que integra manutenção, abastecimento e rastreamento em um único ecossistema digital, conectando gestores, fornecedores e operações em tempo real.
-              Com dashboards intuitivos, análises avançadas e processos automatizados, proporcionamos uma visão completa da operação, permitindo que cada decisão seja tomada com base em dados confiáveis e atualizados.
+              {t("about.p2")}
             </p>
             <p>
-              A tecnologia da InstaSolutions foi construída para oferecer agilidade, segurança e governança, atendendo tanto instituições públicas quanto empresas privadas que exigem alto desempenho e compliance absoluto. Nosso sistema reduz custos, elimina retrabalhos, padroniza processos e identifica oportunidades de melhoria em toda a cadeia operacional — desde a abertura de uma ordem de serviço até a finalização do abastecimento ou acompanhamento de um alerta de telemetria.
+              {t("about.p3")}
             </p>
             <p>
-              Outro grande diferencial é nossa rede de mais de 500 oficinas credenciadas e postos parceiros, cuidadosamente selecionados e auditados para garantir qualidade, prazo e condições comerciais competitivas.
-              Ao utilizar nossa plataforma, o cliente tem acesso imediato a essa rede, garantindo transparência, agilidade e segurança em todas as etapas do atendimento. Cada serviço contratado gera dados que retornam para o gestor em forma de relatórios, insights e indicadores — fortalecendo ainda mais o ciclo de melhoria contínua da frota.
+              {t("about.p4")}
             </p>
             <p>
-              Somos movidos por inovação, mas também pela proximidade com nossos clientes. Por isso, contamos com uma equipe especializada em implantação, suporte e expansão, pronta para acompanhar cada parceiro com atenção e excelência.
-              Seja em uma prefeitura, uma empresa de transporte, uma locadora ou uma frota pequena que está iniciando sua jornada de digitalização, oferecemos uma experiência completa, confiável e escalável.
+              {t("about.p5")}
             </p>
             <p>
-              <strong>A InstaSolutions nasceu para ser mais do que um software:</strong><br />
-              somos uma solução corporativa que conecta pessoas, tecnologia e resultados.
-              E continuamos evoluindo para que cada gestor execute suas decisões com máxima confiança, visão ampla da operação e total segurança — hoje e no futuro.
+              <strong>{t("about.p6")}</strong><br />
+              {t("about.p6b")}
             </p>
           </div>
         </div>
@@ -1399,6 +1614,7 @@ function QuemSomosPage() {
 }
 
 function ContatoPage() {
+  const { t } = useLanguage();
   const title = "Contato | InstaSolutions — Fale com nosso time";
   const description =
     "Solicite uma demonstração ou envie uma mensagem. Responderemos em breve.";
@@ -1416,10 +1632,10 @@ function ContatoPage() {
           className="text-2xl sm:text-4xl font-bold text-center mb-8"
           style={{ color: COLORS.azulCorp }}
         >
-          Vamos conversar
+          {t("contact.title2")}
         </h2>
         <p className="text-neutral-700 text-center mb-8">
-          Preencha o formulário e retornaremos para agendar uma demonstração.
+          {t("contact.subtitle")}
         </p>
         
         <div className="grid lg:grid-cols-2 gap-8">
@@ -1432,11 +1648,11 @@ function ContatoPage() {
             />
             <Card>
               <CardHeader>
-                <CardTitle>Contatos</CardTitle>
+                <CardTitle>{t("contact.contacts")}</CardTitle>
               </CardHeader>
               <CardContent className="grid gap-3 text-sm">
                 <div>
-                  <div className="font-medium">Endereço Matriz</div>
+                  <div className="font-medium">{t("contact.headquartersAddress")}</div>
                   <div>
                     Alameda Rio Negro, 1030, Edifício Stadium Corporate Alphaville,
                     Escritório 2304 - Alphaville
@@ -1444,12 +1660,12 @@ function ContatoPage() {
                   <div>Barueri - SP, 06454-000</div>
                 </div>
                 <div>
-                  <div className="font-medium">Entre em contato conosco</div>
+                  <div className="font-medium">{t("contact.contactUs")}</div>
                   <div>(11) 3336-6941</div>
                   <div>(67) 98218-2448 - WhatsApp</div>
                 </div>
                 <div>
-                  <div className="font-medium">E-mail</div>
+                  <div className="font-medium">{t("contact.email")}</div>
                   <a
                     className="text-blue-700 hover:underline"
                     href={`mailto:${EMAIL}`}
@@ -1480,14 +1696,15 @@ function ContatoPage() {
 
 function ContactForm() {
   const [uf, setUf] = useState("SP");
+  const { t } = useLanguage();
 
   function handleFormSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
     const data = new FormData(form);
     fetch(`https://formsubmit.co/${EMAIL}`, { method: "POST", body: data })
-      .then(() => alert("Mensagem enviada com sucesso! Entraremos em contato em breve."))
-      .catch(() => alert("Erro ao enviar. Tente novamente."));
+      .then(() => alert(t("contact.successMsg")))
+      .catch(() => alert(t("contact.errorMsg")));
   }
 
   return (
@@ -1572,6 +1789,8 @@ function ContactForm() {
 }
 
 function ObrigadoPage() {
+  const { t } = useLanguage();
+  
   return (
     <Layout>
       <Helmet>
@@ -1584,14 +1803,14 @@ function ObrigadoPage() {
           className="text-3xl font-bold"
           style={{ color: COLORS.azulCorp }}
         >
-          Obrigado!
+          {t("thankyou.title")}
         </h1>
         <p className="text-neutral-700 mt-2">
-          Recebemos sua mensagem e retornaremos em breve.
+          {t("thankyou.message")}
         </p>
         <div className="mt-6">
           <Link to="/">
-            <GeoButton size="lg">Voltar à página inicial</GeoButton>
+            <GeoButton size="lg">{t("thankyou.backHome")}</GeoButton>
           </Link>
         </div>
       </Section>
