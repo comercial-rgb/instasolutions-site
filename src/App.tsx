@@ -32,32 +32,82 @@ const LanguageContext = createContext<{
 
 const translations: Record<Language, Record<string, string>> = {
   pt: {
+    "nav.home": "Home",
     "nav.solutions": "Soluções",
     "nav.partners": "Parceiros",
     "nav.clients": "Sou cliente",
     "nav.network": "Rede",
     "nav.about": "Sobre",
     "nav.contact": "Contato",
+    "nav.talkToTeam": "Fale com o time",
     "home.title": "Plataforma corporativa para gestão de frotas com módulos integrados",
     "home.subtitle": "Manutenção com rede de oficinas, abastecimento com rede de postos e rastreamento — tudo em um só lugar.",
+    "home.partnersSuppliers": "+500 Parceiros e Fornecedores",
+    "home.gasStationNetwork": "Rede de postos integrada",
+    "home.realtimeDashboards": "Dashboards em tempo real",
+    "home.workshops": "Oficinas",
+    "home.coverage": "Cobertura",
+    "home.integrations": "Integrações",
+    "home.brazilWide": "Brasil inteiro",
     "button.seeSolutions": "Ver soluções",
     "button.requestDemo": "Solicitar demonstração",
     "button.credential": "Quero me credenciar",
-    "button.knowSolutions": "Conheça nossas soluções"
+    "button.knowSolutions": "Conheça nossas soluções",
+    "solutions.maintenance": "Manutenção",
+    "solutions.fueling": "Abastecimento",
+    "solutions.tracking": "Rastreamento",
+    "solutions.maintenance.item1": "Ordens de serviço digitais",
+    "solutions.maintenance.item2": "Orçamentos, auditoria e aprovação",
+    "solutions.maintenance.item3": "Rede de oficinas credenciadas",
+    "solutions.fueling.item1": "Rede de postos integrada",
+    "solutions.fueling.item2": "Controle de consumo & fraudes",
+    "solutions.fueling.item3": "Relatórios por centro de custo",
+    "solutions.tracking.item1": "Localização em tempo real",
+    "solutions.tracking.item2": "Alertas e cercas virtuais",
+    "solutions.tracking.item3": "Análise de direção e rotas",
+    "footer.institutional": "Institucional",
+    "footer.partners": "Parceiros",
+    "footer.solutions": "Soluções",
+    "footer.rights": "Todos os direitos reservados"
   },
   en: {
+    "nav.home": "Home",
     "nav.solutions": "Solutions",
     "nav.partners": "Partners",
     "nav.clients": "I'm a client",
     "nav.network": "Network",
     "nav.about": "About",
     "nav.contact": "Contact",
+    "nav.talkToTeam": "Talk to the team",
     "home.title": "Corporate platform for fleet management with integrated modules",
     "home.subtitle": "Maintenance with workshop network, fuel with gas station network and tracking — all in one place.",
+    "home.partnersSuppliers": "+500 Partners and Suppliers",
+    "home.gasStationNetwork": "Integrated gas station network",
+    "home.realtimeDashboards": "Real-time dashboards",
+    "home.workshops": "Workshops",
+    "home.coverage": "Coverage",
+    "home.integrations": "Integrations",
+    "home.brazilWide": "Nationwide",
     "button.seeSolutions": "See solutions",
     "button.requestDemo": "Request demo",
     "button.credential": "I want to be accredited",
-    "button.knowSolutions": "Know our solutions"
+    "button.knowSolutions": "Know our solutions",
+    "solutions.maintenance": "Maintenance",
+    "solutions.fueling": "Fueling",
+    "solutions.tracking": "Tracking",
+    "solutions.maintenance.item1": "Digital service orders",
+    "solutions.maintenance.item2": "Budgets, audit and approval",
+    "solutions.maintenance.item3": "Accredited workshop network",
+    "solutions.fueling.item1": "Integrated gas station network",
+    "solutions.fueling.item2": "Consumption control & fraud prevention",
+    "solutions.fueling.item3": "Reports by cost center",
+    "solutions.tracking.item1": "Real-time location",
+    "solutions.tracking.item2": "Alerts and virtual fences",
+    "solutions.tracking.item3": "Driving and route analysis",
+    "footer.institutional": "Institutional",
+    "footer.partners": "Partners",
+    "footer.solutions": "Solutions",
+    "footer.rights": "All rights reserved"
   }
 };
 
@@ -213,7 +263,7 @@ function getCitiesForUF(uf: string): string[] {
  * LAYOUT UI *
  **************/
 function Layout({ children }: { children: React.ReactNode }) {
-  const { language, setLanguage } = useLanguage();
+  const { language, setLanguage, t } = useLanguage();
   
   return (
     <div className="min-h-screen bg-white text-neutral-900">
@@ -222,10 +272,10 @@ function Layout({ children }: { children: React.ReactNode }) {
           <img src="/imagens/logo_topo.png" alt="InstaSolutions" className="h-[60px]" />
         </Link>
         <div className="flex items-center gap-3 text-sm">
-          <NavPill to="/">Home</NavPill>
-          <NavPill to="/solucoes">Soluções</NavPill>
+          <NavPill to="/">{t("nav.home")}</NavPill>
+          <NavPill to="/solucoes">{t("nav.solutions")}</NavPill>
 
-          <NavDropdown label="Parceiros">
+          <NavDropdown label={t("nav.partners")}>
             <DropdownItem to="/parceiros/credenciar">Quero me Credenciar</DropdownItem>
             <DropdownItem to="/parceiros/fornecedores">
               Acesso ao sistema - Fornecedores
@@ -233,15 +283,15 @@ function Layout({ children }: { children: React.ReactNode }) {
             <DropdownItem to="/parceiros/financeiro">Portal Financeiro</DropdownItem>
           </NavDropdown>
 
-          <NavDropdown label="Sou cliente">
+          <NavDropdown label={t("nav.clients")}>
             <DropdownItem to="/clientes/queroser">Quero ser Cliente</DropdownItem>
             <DropdownItem to="/clientes/acesso">Acesso ao sistema - Clientes</DropdownItem>
             <DropdownItem to="/clientes/financeiro">Portal Financeiro</DropdownItem>
           </NavDropdown>
 
-          <NavPill to="/rede">Rede</NavPill>
-          <NavPill to="/sobre">Sobre</NavPill>
-          <NavPill to="/contato">Contato</NavPill>
+          <NavPill to="/rede">{t("nav.network")}</NavPill>
+          <NavPill to="/sobre">{t("nav.about")}</NavPill>
+          <NavPill to="/contato">{t("nav.contact")}</NavPill>
         </div>
         <div className="flex items-center gap-3">
           <button
@@ -253,7 +303,7 @@ function Layout({ children }: { children: React.ReactNode }) {
             <span className="text-xs font-medium uppercase">{language}</span>
           </button>
           <Link to="/contato">
-            <GeoButton size="sm">Fale com o time</GeoButton>
+            <GeoButton size="sm">{t("nav.talkToTeam")}</GeoButton>
           </Link>
         </div>
       </nav>
@@ -264,21 +314,23 @@ function Layout({ children }: { children: React.ReactNode }) {
 }
 
 function Footer() {
+  const { t } = useLanguage();
+  
   return (
     <footer className="border-t bg-white">
       <section className="max-w-7xl mx-auto px-6 py-10 grid md:grid-cols-4 gap-8 items-start">
         <div>
           <img src="/imagens/logo_rodapé.png" alt="InstaSolutions" className="h-16" />
           <div className="text-xs text-neutral-500 mt-3">
-            © {new Date().getFullYear()} {ORG_NAME}. Todos os direitos reservados.
+            © {new Date().getFullYear()} {ORG_NAME}. {t("footer.rights")}.
           </div>
         </div>
         <div>
-          <div className="font-semibold mb-2">Institucional</div>
+          <div className="font-semibold mb-2">{t("footer.institutional")}</div>
           <ul className="space-y-1 text-sm">
             <li>
               <Link className="hover:underline" to="/sobre">
-                Sobre
+                {t("nav.about")}
               </Link>
             </li>
             <li>
@@ -288,13 +340,13 @@ function Footer() {
             </li>
             <li>
               <Link className="hover:underline" to="/rede">
-                Rede
+                {t("nav.network")}
               </Link>
             </li>
           </ul>
         </div>
         <div>
-          <div className="font-semibold mb-2">Soluções</div>
+          <div className="font-semibold mb-2">{t("footer.solutions")}</div>
           <ul className="space-y-1 text-sm">
             <li>
               <Link className="hover:underline" to="/solucoes">
@@ -360,6 +412,7 @@ function Section({
  *****************/
 
 function HomePage() {
+  const { t } = useLanguage();
   const title = `${ORG_NAME} | Sistema de Gestão de Frotas`;
   const description =
     "Sistemas de gestão de frotas com manutenção, abastecimento e rastreamento integrados. 500+ oficinas credenciadas e cobertura Brasil inteiro.";
@@ -396,19 +449,18 @@ function HomePage() {
               className="text-3xl sm:text-5xl font-bold leading-tight"
               style={{ color: COLORS.azulCorp }}
             >
-              Plataforma corporativa para gestão de frotas com módulos integrados
+              {t("home.title")}
             </h1>
             <p className="text-neutral-700 text-lg">
-              Manutenção com rede de oficinas, abastecimento com rede de postos e
-              rastreamento — tudo em um só lugar.
+              {t("home.subtitle")}
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
               <Link to="/solucoes">
-                <GeoButton size="lg">Ver soluções</GeoButton>
+                <GeoButton size="lg">{t("button.seeSolutions")}</GeoButton>
               </Link>
               <Link to="/contato">
                 <GeoButton size="lg" variant="outline">
-                  Solicitar demonstração
+                  {t("button.requestDemo")}
                 </GeoButton>
               </Link>
             </div>
@@ -416,16 +468,16 @@ function HomePage() {
               <CardContent className="pt-6">
                 <ul className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
                   {[
-                    "+500 Parceiros e Fornecedores",
-                    "Rede de postos integrada",
-                    "Dashboards em tempo real"
-                  ].map((t, i) => (
+                    t("home.partnersSuppliers"),
+                    t("home.gasStationNetwork"),
+                    t("home.realtimeDashboards")
+                  ].map((text, i) => (
                     <li key={i} className="flex flex-col items-center justify-center text-center gap-2 p-3">
                       <CheckCircle2
                         className="w-6 h-6"
                         style={{ color: COLORS.azulTech }}
                       />
-                      <span className="font-medium">{t}</span>
+                      <span className="font-medium">{text}</span>
                     </li>
                   ))}
                 </ul>
@@ -443,9 +495,9 @@ function HomePage() {
               alt="Dashboard de Frotas"
             />
             <div className="grid grid-cols-3 gap-4 mt-4 text-center">
-              <Stat label="Oficinas" value="500+" />
-              <Stat label="Cobertura" value="Brasil inteiro" />
-              <Stat label="Integrações" value="> 30 APIs" />
+              <Stat label={t("home.workshops")} value="500+" />
+              <Stat label={t("home.coverage")} value={t("home.brazilWide")} />
+              <Stat label={t("home.integrations")} value="> 30 APIs" />
             </div>
           </motion.div>
         </Section>
@@ -455,10 +507,10 @@ function HomePage() {
       <Section className="pb-4">
         <div className="flex flex-wrap justify-center gap-4 mb-8">
           <Link to="/parceiros/credenciar">
-            <GeoButton size="lg" className="text-lg px-8 py-6">Quero me credenciar</GeoButton>
+            <GeoButton size="lg" className="text-lg px-8 py-6">{t("button.credential")}</GeoButton>
           </Link>
           <Link to="/solucoes">
-            <GeoButton size="lg" className="text-lg px-8 py-6">Conheça nossas soluções</GeoButton>
+            <GeoButton size="lg" className="text-lg px-8 py-6">{t("button.knowSolutions")}</GeoButton>
           </Link>
         </div>
         <SolucoesGrid />
@@ -1797,33 +1849,35 @@ function Stat({ label, value }: { label: string; value: string }) {
 }
 
 function SolucoesGrid() {
+  const { t } = useLanguage();
+  
   return (
     <div className="grid md:grid-cols-3 gap-6 mt-8">
       <Feature
         icon={<Wrench className="w-6 h-6" />}
-        title="Manutenção"
+        title={t("solutions.maintenance")}
         items={[
-          "Ordens de serviço digitais",
-          "Orçamentos, auditoria e aprovação",
-          "Rede de oficinas credenciadas"
+          t("solutions.maintenance.item1"),
+          t("solutions.maintenance.item2"),
+          t("solutions.maintenance.item3")
         ]}
       />
       <Feature
         icon={<Fuel className="w-6 h-6" />}
-        title="Abastecimento"
+        title={t("solutions.fueling")}
         items={[
-          "Rede de postos integrada",
-          "Controle de consumo & fraudes",
-          "Relatórios por centro de custo"
+          t("solutions.fueling.item1"),
+          t("solutions.fueling.item2"),
+          t("solutions.fueling.item3")
         ]}
       />
       <Feature
         icon={<Satellite className="w-6 h-6" />}
-        title="Rastreamento"
+        title={t("solutions.tracking")}
         items={[
-          "Localização em tempo real",
-          "Alertas e cercas virtuais",
-          "Análise de direção e rotas"
+          t("solutions.tracking.item1"),
+          t("solutions.tracking.item2"),
+          t("solutions.tracking.item3")
         ]}
       />
     </div>
