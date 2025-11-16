@@ -141,6 +141,13 @@ const translations: Record<Language, Record<string, string>> = {
     "form.companyName": "Razão social",
     "form.neighborhood": "Bairro",
     "form.address": "Endereço c/ número",
+    "form.responsible": "Responsável",
+    "form.cpfRg": "CPF/RG",
+    "form.mobilePhone": "DDD / Celular",
+    "form.landline": "DDD / Fixo",
+    "form.flag": "Bandeira",
+    "form.send": "Enviar",
+    "form.solution": "Qual solução deseja contratar ?",
     
     // Credenciar
     "credential.title": "Venha fazer parte da rede de parceiros que mais Cresce no Brasil.",
@@ -290,6 +297,13 @@ const translations: Record<Language, Record<string, string>> = {
     "form.companyName": "Company Name",
     "form.neighborhood": "Neighborhood",
     "form.address": "Address with number",
+    "form.responsible": "Responsible",
+    "form.cpfRg": "CPF/RG",
+    "form.mobilePhone": "Area Code / Mobile",
+    "form.landline": "Area Code / Landline",
+    "form.flag": "Flag",
+    "form.send": "Send",
+    "form.solution": "Which solution would you like to hire?",
     
     // Credential
     "credential.title": "Join the fastest-growing partner network in Brazil.",
@@ -844,6 +858,7 @@ function HomePage() {
 }
 
 function SolucoesPage() {
+  const { t } = useLanguage();
   const title = "Soluções | InstaSolutions — Manutenção, Abastecimento e Rastreamento";
   const description = "Módulos integrados com dashboards e SLAs.";
   const [tab, setTab] = useState<"manut" | "abast" | "rast">("manut");
@@ -861,17 +876,17 @@ function SolucoesPage() {
           className="text-2xl sm:text-4xl font-bold"
           style={{ color: COLORS.azulCorp }}
         >
-          Soluções
+          {t("solutions.title")}
         </h2>
         <div className="flex flex-wrap gap-2 mt-4">
           <TabButton active={tab === "manut"} onClick={() => setTab("manut")}>
-            Manutenção
+            {t("solutions.maintenance")}
           </TabButton>
           <TabButton active={tab === "abast"} onClick={() => setTab("abast")}>
-            Abastecimento
+            {t("solutions.fueling")}
           </TabButton>
           <TabButton active={tab === "rast"} onClick={() => setTab("rast")}>
-            Rastreamento
+            {t("solutions.tracking")}
           </TabButton>
         </div>
         <div className="mt-8">
@@ -882,7 +897,7 @@ function SolucoesPage() {
                   className="text-xl font-semibold"
                   style={{ color: COLORS.azulCorp }}
                 >
-                  Manutenção
+                  {t("solutions.maintenance")}
                 </h3>
                 <ul className="list-disc ml-6 text-neutral-700 mt-2 space-y-1">
                   <li>Software moderno com acesso 24/7</li>
@@ -918,7 +933,7 @@ function SolucoesPage() {
                   className="text-xl font-semibold"
                   style={{ color: COLORS.azulCorp }}
                 >
-                  Abastecimento
+                  {t("solutions.fueling")}
                 </h3>
                 <ul className="list-disc ml-6 text-neutral-700 mt-2 space-y-1">
                   <li>Múltiplos usuários</li>
@@ -955,7 +970,7 @@ function SolucoesPage() {
                   className="text-xl font-semibold"
                   style={{ color: COLORS.azulCorp }}
                 >
-                  Rastreamento
+                  {t("solutions.tracking")}
                 </h3>
                 <ul className="list-disc ml-6 text-neutral-700 mt-2 space-y-1">
                   <li>Monitoramento em tempo real com atualização contínua</li>
@@ -1086,13 +1101,13 @@ function ParceirosCredenciarPage() {
           <input type="hidden" name="_subject" value="[Credenciamento] Novo parceiro" />
           <input type="hidden" name="Tipo" value={tipo} />
           <div className="grid md:grid-cols-2 gap-4">
-            <Input name="CNPJ" label="CNPJ" required />
-            <Input name="Razao Social" label="Razão social" required />
-            <Input name="Nome Fantasia" label="Nome Fantasia" required />
-            <Input name="Bairro" label="Bairro" />
-            <Input name="Endereco" label="Endereço c/ número" className="md:col-span-2" />
+            <Input name="CNPJ" label={t("form.cnpj")} required />
+            <Input name="Razao Social" label={t("form.companyName")} required />
+            <Input name="Nome Fantasia" label={t("form.tradeName")} required />
+            <Input name="Bairro" label={t("form.neighborhood")} />
+            <Input name="Endereco" label={t("form.address")} className="md:col-span-2" />
             <div>
-              <Label>Estado</Label>
+              <Label>{t("form.state")}</Label>
               <select
                 value={uf}
                 onChange={(e) => setUf(e.target.value)}
@@ -1106,15 +1121,15 @@ function ParceirosCredenciarPage() {
                 ))}
               </select>
             </div>
-            <Input name="Cidade" label="Cidade" />
-            <Input name="Email" type="email" label="E-mail" required />
-            <Input name="Responsavel" label="Responsável" />
-            <Input name="CPF_RG" label="CPF/RG" />
-            <Input name="DDD_Celular" label="DDD / Celular" />
-            <Input name="DDD_Fixo" label="DDD / Fixo" />
+            <Input name="Cidade" label={t("form.city")} />
+            <Input name="Email" type="email" label={t("form.email")} required />
+            <Input name="Responsavel" label={t("form.responsible")} />
+            <Input name="CPF_RG" label={t("form.cpfRg")} />
+            <Input name="DDD_Celular" label={t("form.mobilePhone")} />
+            <Input name="DDD_Fixo" label={t("form.landline")} />
             {tipo === "postos" && (
               <div className="md:col-span-2">
-                <Label> Bandeira </Label>
+                <Label>{t("form.flag")}</Label>
                 <select
                   name="Bandeira"
                   className="border rounded-xl px-3 py-2 w-full"
@@ -1132,7 +1147,7 @@ function ParceirosCredenciarPage() {
             )}
             {tipo === "linha" && (
               <div className="md:col-span-2">
-                <Label> Segmento de atuação </Label>
+                <Label>{t("form.segment")}</Label>
                 <select
                   name="Segmento de atuação"
                   className="border rounded-xl px-3 py-2 w-full"
@@ -1715,13 +1730,13 @@ function ContactForm() {
       <input type="hidden" name="_next" value={`${DOMAIN}/obrigado`} />
       
       <div className="grid md:grid-cols-2 gap-4">
-        <Input name="CNPJ" label="CNPJ" />
-        <Input name="Razao Social" label="Razão social" />
-        <Input name="Nome Fantasia" label="Nome Fantasia" />
-        <Input name="Bairro" label="Bairro" />
-        <Input name="Endereco" label="Endereço c/ número" className="md:col-span-2" />
+        <Input name="CNPJ" label={t("form.cnpj")} />
+        <Input name="Razao Social" label={t("form.companyName")} />
+        <Input name="Nome Fantasia" label={t("form.tradeName")} />
+        <Input name="Bairro" label={t("form.neighborhood")} />
+        <Input name="Endereco" label={t("form.address")} className="md:col-span-2" />
         <div>
-          <Label>Estado</Label>
+          <Label>{t("form.state")}</Label>
           <select
             value={uf}
             onChange={(e) => setUf(e.target.value)}
@@ -1735,11 +1750,11 @@ function ContactForm() {
             ))}
           </select>
         </div>
-        <Input name="Cidade" label="Cidade" />
-        <Input name="Email" type="email" label="E-mail" required />
-        <Input name="Responsavel" label="Responsável" />
+        <Input name="Cidade" label={t("form.city")} />
+        <Input name="Email" type="email" label={t("form.email")} required />
+        <Input name="Responsavel" label={t("form.responsible")} />
         <div>
-          <Label> Segmento de atuação </Label>
+          <Label>{t("form.segment")}</Label>
           <select
             name="Segmento de atuacao"
             className="border rounded-xl px-3 py-2 w-full"
@@ -1752,7 +1767,7 @@ function ContactForm() {
           </select>
         </div>
         <div>
-          <Label> Quantidade de veículos </Label>
+          <Label>{t("form.fleetSize")}</Label>
           <select
             name="Quantidade de veiculos"
             className="border rounded-xl px-3 py-2 w-full"
@@ -1764,10 +1779,10 @@ function ContactForm() {
             ))}
           </select>
         </div>
-        <Input name="DDD_Celular" label="DDD / Celular" />
-        <Input name="DDD_Fixo" label="DDD / Fixo" />
+        <Input name="DDD_Celular" label={t("form.mobilePhone")} />
+        <Input name="DDD_Fixo" label={t("form.landline")} />
         <div className="md:col-span-2">
-          <Label> Qual solução deseja contratar ? </Label>
+          <Label>{t("form.solution")}</Label>
           <select name="Solucao" className="border rounded-xl px-3 py-2 w-full">
             {[
               "Manutenção",
@@ -1783,7 +1798,7 @@ function ContactForm() {
           </select>
         </div>
       </div>
-      <GeoButton size="lg">Enviar</GeoButton>
+      <GeoButton size="lg">{t("form.send")}</GeoButton>
     </form>
   );
 }
