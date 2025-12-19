@@ -556,7 +556,7 @@ function Footer() {
     <footer className="border-t bg-slate-800 text-white">
       <section className="max-w-7xl mx-auto px-6 py-10 grid md:grid-cols-4 gap-8 items-start">
         <div>
-          <img src="/imagens/logo_rodapé.png" alt="InstaSolutions" className="h-16" style={{filter: "brightness(0) invert(1)"}} />
+          <img src="/imagens/logo_rodapé.png" alt="InstaSolutions" className="h-16" style={{mixBlendMode: "screen"}} />
           <div className="text-xs text-slate-300 mt-3">
             <div>
               <span className="font-semibold">{t("footer.cnpj")}:</span> 47.611.398/0001-66
