@@ -171,6 +171,7 @@ const translations: Record<Language, Record<string, string>> = {
     "footer.solutions": "Soluções",
     "footer.rights": "Todos os direitos reservados",
     "footer.overview": "Visão geral",
+    "footer.cnpj": "CNPJ",
     
     // Acesso ao sistema
     "access.welcome": "Bem vindo",
@@ -327,6 +328,7 @@ const translations: Record<Language, Record<string, string>> = {
     "footer.solutions": "Solutions",
     "footer.rights": "All rights reserved",
     "footer.overview": "Overview",
+    "footer.cnpj": "CNPJ",
     
     // System Access
     "access.welcome": "Welcome",
@@ -551,71 +553,76 @@ function Footer() {
   const { t } = useLanguage();
   
   return (
-    <footer className="border-t bg-white">
+    <footer className="border-t bg-slate-800 text-white">
       <section className="max-w-7xl mx-auto px-6 py-10 grid md:grid-cols-4 gap-8 items-start">
         <div>
           <img src="/imagens/logo_rodapé.png" alt="InstaSolutions" className="h-16" />
-          <div className="text-xs text-neutral-500 mt-3">
-            © {new Date().getFullYear()} {ORG_NAME}. {t("footer.rights")}.
+          <div className="text-xs text-slate-300 mt-3">
+            <div>
+              <span className="font-semibold">{t("footer.cnpj")}:</span> 47.611.398/0001-66
+            </div>
+            <div className="mt-2">
+              © {new Date().getFullYear()} {ORG_NAME}. {t("footer.rights")}.
+            </div>
           </div>
         </div>
         <div>
-          <div className="font-semibold mb-2">{t("footer.institutional")}</div>
-          <ul className="space-y-1 text-sm">
+          <div className="font-semibold mb-2 text-white">{t("footer.institutional")}</div>
+          <ul className="space-y-1 text-sm text-slate-300">
             <li>
-              <Link className="hover:underline" to="/sobre">
+              <Link className="hover:text-white transition" to="/sobre">
                 {t("nav.about")}
               </Link>
             </li>
             <li>
-              <Link className="hover:underline" to="/quem-somos">
+              <Link className="hover:text-white transition" to="/quem-somos">
                 Quem Somos
               </Link>
             </li>
             <li>
-              <Link className="hover:underline" to="/rede">
+              <Link className="hover:text-white transition" to="/rede">
                 {t("nav.network")}
               </Link>
             </li>
           </ul>
         </div>
         <div>
-          <div className="font-semibold mb-2">{t("footer.solutions")}</div>
-          <ul className="space-y-1 text-sm">
+          <div className="font-semibold mb-2 text-white">{t("footer.solutions")}</div>
+          <ul className="space-y-1 text-sm text-slate-300">
             <li>
-              <Link className="hover:underline" to="/solucoes">
+              <Link className="hover:text-white transition" to="/solucoes">
                 {t("footer.overview")}
               </Link>
             </li>
           </ul>
         </div>
         <div>
-          <div className="font-semibold mb-2">{t("footer.partners")}</div>
-          <ul className="space-y-1 text-sm">
+          <div className="font-semibold mb-2 text-white">{t("footer.partners")}</div>
+          <ul className="space-y-1 text-sm text-slate-300">
             <li>
-              <Link className="hover:underline" to="/parceiros/credenciar">
+              <Link className="hover:text-white transition" to="/parceiros/credenciar">
                 {t("nav.credential")}
               </Link>
             </li>
             <li>
-              <Link className="hover:underline" to="/parceiros/fornecedores">
+              <Link className="hover:text-white transition" to="/parceiros/fornecedores">
                 {t("nav.systemAccess")}
               </Link>
             </li>
             <li>
-              <Link className="hover:underline" to="/contato">
+              <Link className="hover:text-white transition" to="/contato">
                 {t("nav.contact")}
               </Link>
             </li>
           </ul>
-          <div className="flex gap-3 mt-4 text-sm">
-            <a className="underline" href="#" aria-label="Instagram">
+          <div className="flex gap-3 mt-4 text-sm text-slate-300">
+            <a className="hover:text-white transition" href="#" aria-label="Instagram">
               Instagram
             </a>
-            <a className="underline" href="#" aria-label="Facebook">
+            <a className="hover:text-white transition" href="#" aria-label="Facebook">
               Facebook
             </a>
-            <a className="underline" href="#" aria-label="YouTube">
+            <a className="hover:text-white transition" href="#" aria-label="YouTube">
               YouTube
             </a>
           </div>
