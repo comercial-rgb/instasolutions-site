@@ -553,11 +553,11 @@ function Footer() {
   const { t } = useLanguage();
   
   return (
-    <footer className="border-t bg-slate-800 text-white">
+    <footer className="border-t" style={{backgroundColor: COLORS.bgPill}}>
       <section className="max-w-7xl mx-auto px-6 py-10 grid md:grid-cols-4 gap-8 items-start">
         <div>
-          <img src="/imagens/logo_rodapé.png" alt="InstaSolutions" className="h-16" style={{mixBlendMode: "screen"}} />
-          <div className="text-xs text-slate-300 mt-3">
+          <img src="/imagens/logo_rodapé.png" alt="InstaSolutions" className="h-16" />
+          <div className="text-xs mt-3" style={{color: COLORS.azulCorp}}>
             <div>
               <span className="font-semibold">{t("footer.cnpj")}:</span> 47.611.398/0001-66
             </div>
@@ -567,62 +567,62 @@ function Footer() {
           </div>
         </div>
         <div>
-          <div className="font-semibold mb-2 text-white">{t("footer.institutional")}</div>
-          <ul className="space-y-1 text-sm text-slate-300">
+          <div className="font-semibold mb-2" style={{color: COLORS.azulCorp}}>{t("footer.institutional")}</div>
+          <ul className="space-y-1 text-sm" style={{color: COLORS.azulTech}}>
             <li>
-              <Link className="hover:text-white transition" to="/sobre">
+              <Link className="hover:underline transition" to="/sobre">
                 {t("nav.about")}
               </Link>
             </li>
             <li>
-              <Link className="hover:text-white transition" to="/quem-somos">
+              <Link className="hover:underline transition" to="/quem-somos">
                 Quem Somos
               </Link>
             </li>
             <li>
-              <Link className="hover:text-white transition" to="/rede">
+              <Link className="hover:underline transition" to="/rede">
                 {t("nav.network")}
               </Link>
             </li>
           </ul>
         </div>
         <div>
-          <div className="font-semibold mb-2 text-white">{t("footer.solutions")}</div>
-          <ul className="space-y-1 text-sm text-slate-300">
+          <div className="font-semibold mb-2" style={{color: COLORS.azulCorp}}>{t("footer.solutions")}</div>
+          <ul className="space-y-1 text-sm" style={{color: COLORS.azulTech}}>
             <li>
-              <Link className="hover:text-white transition" to="/solucoes">
+              <Link className="hover:underline transition" to="/solucoes">
                 {t("footer.overview")}
               </Link>
             </li>
           </ul>
         </div>
         <div>
-          <div className="font-semibold mb-2 text-white">{t("footer.partners")}</div>
-          <ul className="space-y-1 text-sm text-slate-300">
+          <div className="font-semibold mb-2" style={{color: COLORS.azulCorp}}>{t("footer.partners")}</div>
+          <ul className="space-y-1 text-sm" style={{color: COLORS.azulTech}}>
             <li>
-              <Link className="hover:text-white transition" to="/parceiros/credenciar">
+              <Link className="hover:underline transition" to="/parceiros/credenciar">
                 {t("nav.credential")}
               </Link>
             </li>
             <li>
-              <Link className="hover:text-white transition" to="/parceiros/fornecedores">
+              <Link className="hover:underline transition" to="/parceiros/fornecedores">
                 {t("nav.systemAccess")}
               </Link>
             </li>
             <li>
-              <Link className="hover:text-white transition" to="/contato">
+              <Link className="hover:underline transition" to="/contato">
                 {t("nav.contact")}
               </Link>
             </li>
           </ul>
-          <div className="flex gap-3 mt-4 text-sm text-slate-300">
-            <a className="hover:text-white transition" href="#" aria-label="Instagram">
+          <div className="flex gap-3 mt-4 text-sm" style={{color: COLORS.azulTech}}>
+            <a className="hover:underline transition" href="#" aria-label="Instagram">
               Instagram
             </a>
-            <a className="hover:text-white transition" href="#" aria-label="Facebook">
+            <a className="hover:underline transition" href="#" aria-label="Facebook">
               Facebook
             </a>
-            <a className="hover:text-white transition" href="#" aria-label="YouTube">
+            <a className="hover:underline transition" href="#" aria-label="YouTube">
               YouTube
             </a>
           </div>
