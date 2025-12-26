@@ -568,19 +568,43 @@ function Footer() {
         </div>
         <div>
           <div className="font-semibold mb-2" style={{color: COLORS.azulCorp}}>{t("footer.institutional")}</div>
-          <ul className="space-y-1 text-sm" style={{color: COLORS.azulTech}}>
+          <ul className="space-y-1 text-sm">
             <li>
-              <Link className="hover:underline transition" to="/sobre">
+              <Link 
+                className="px-3 py-1 rounded-full border text-[0.9rem] inline-block transition hover:opacity-80" 
+                to="/sobre"
+                style={{
+                  backgroundColor: COLORS.bgPill,
+                  borderColor: COLORS.borderPill,
+                  color: COLORS.azulCorp
+                }}
+              >
                 {t("nav.about")}
               </Link>
             </li>
             <li>
-              <Link className="hover:underline transition" to="/quem-somos">
+              <Link 
+                className="px-3 py-1 rounded-full border text-[0.9rem] inline-block transition hover:opacity-80" 
+                to="/quem-somos"
+                style={{
+                  backgroundColor: COLORS.bgPill,
+                  borderColor: COLORS.borderPill,
+                  color: COLORS.azulCorp
+                }}
+              >
                 Quem Somos
               </Link>
             </li>
             <li>
-              <Link className="hover:underline transition" to="/rede">
+              <Link 
+                className="px-3 py-1 rounded-full border text-[0.9rem] inline-block transition hover:opacity-80" 
+                to="/rede"
+                style={{
+                  backgroundColor: COLORS.bgPill,
+                  borderColor: COLORS.borderPill,
+                  color: COLORS.azulCorp
+                }}
+              >
                 {t("nav.network")}
               </Link>
             </li>
@@ -588,9 +612,17 @@ function Footer() {
         </div>
         <div>
           <div className="font-semibold mb-2" style={{color: COLORS.azulCorp}}>{t("footer.solutions")}</div>
-          <ul className="space-y-1 text-sm" style={{color: COLORS.azulTech}}>
+          <ul className="space-y-1 text-sm">
             <li>
-              <Link className="hover:underline transition" to="/solucoes">
+              <Link 
+                className="px-3 py-1 rounded-full border text-[0.9rem] inline-block transition hover:opacity-80" 
+                to="/solucoes"
+                style={{
+                  backgroundColor: COLORS.bgPill,
+                  borderColor: COLORS.borderPill,
+                  color: COLORS.azulCorp
+                }}
+              >
                 {t("footer.overview")}
               </Link>
             </li>
@@ -598,19 +630,43 @@ function Footer() {
         </div>
         <div>
           <div className="font-semibold mb-2" style={{color: COLORS.azulCorp}}>{t("footer.partners")}</div>
-          <ul className="space-y-1 text-sm" style={{color: COLORS.azulTech}}>
+          <ul className="space-y-1 text-sm">
             <li>
-              <Link className="hover:underline transition" to="/parceiros/credenciar">
+              <Link 
+                className="px-3 py-1 rounded-full border text-[0.9rem] inline-block transition hover:opacity-80" 
+                to="/parceiros/credenciar"
+                style={{
+                  backgroundColor: COLORS.bgPill,
+                  borderColor: COLORS.borderPill,
+                  color: COLORS.azulCorp
+                }}
+              >
                 {t("nav.credential")}
               </Link>
             </li>
             <li>
-              <Link className="hover:underline transition" to="/parceiros/fornecedores">
+              <Link 
+                className="px-3 py-1 rounded-full border text-[0.9rem] inline-block transition hover:opacity-80" 
+                to="/parceiros/fornecedores"
+                style={{
+                  backgroundColor: COLORS.bgPill,
+                  borderColor: COLORS.borderPill,
+                  color: COLORS.azulCorp
+                }}
+              >
                 {t("nav.systemAccess")}
               </Link>
             </li>
             <li>
-              <Link className="hover:underline transition" to="/contato">
+              <Link 
+                className="px-3 py-1 rounded-full border text-[0.9rem] inline-block transition hover:opacity-80" 
+                to="/contato"
+                style={{
+                  backgroundColor: COLORS.bgPill,
+                  borderColor: COLORS.borderPill,
+                  color: COLORS.azulCorp
+                }}
+              >
                 {t("nav.contact")}
               </Link>
             </li>
