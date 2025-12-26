@@ -93,8 +93,7 @@ O arquivo `vercel.json` já está configurado para suportar React Router:
 ## 📧 Contato
 
 - Email: comercial@instasolutions.com.br
-- Telefone: (11) 3336-6941
-- WhatsApp: (67) 98218-2448
+- WhatsApp: (11) 3336-6941
 
 ---
 

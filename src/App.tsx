@@ -1683,8 +1683,7 @@ function ContatoPage() {
                 </div>
                 <div>
                   <div className="font-medium">{t("contact.contactUs")}</div>
-                  <div>(11) 3336-6941</div>
-                  <div>(67) 98218-2448 - WhatsApp</div>
+                  <div>(11) 3336-6941 - WhatsApp</div>
                 </div>
                 <div>
                   <div className="font-medium">{t("contact.email")}</div>
