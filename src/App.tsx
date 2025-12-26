@@ -615,14 +615,47 @@ function Footer() {
               </Link>
             </li>
           </ul>
-          <div className="flex gap-3 mt-4 text-sm" style={{color: COLORS.azulTech}}>
-            <a className="hover:underline transition" href="#" aria-label="Instagram">
+          <div className="flex gap-3 mt-4 text-sm">
+            <a 
+              className="px-4 py-2 font-medium transition hover:opacity-80" 
+              href="#" 
+              aria-label="Instagram"
+              style={{
+                backgroundColor: COLORS.azulTech,
+                color: "white",
+                border: `2px solid ${COLORS.azulTech}`,
+                clipPath: "polygon(8% 0, 100% 0, 100% 75%, 92% 100%, 0 100%, 0 25%)",
+                display: "inline-block"
+              }}
+            >
               Instagram
             </a>
-            <a className="hover:underline transition" href="#" aria-label="Facebook">
+            <a 
+              className="px-4 py-2 font-medium transition hover:opacity-80" 
+              href="#" 
+              aria-label="Facebook"
+              style={{
+                backgroundColor: COLORS.azulTech,
+                color: "white",
+                border: `2px solid ${COLORS.azulTech}`,
+                clipPath: "polygon(8% 0, 100% 0, 100% 75%, 92% 100%, 0 100%, 0 25%)",
+                display: "inline-block"
+              }}
+            >
               Facebook
             </a>
-            <a className="hover:underline transition" href="#" aria-label="YouTube">
+            <a 
+              className="px-4 py-2 font-medium transition hover:opacity-80" 
+              href="#" 
+              aria-label="YouTube"
+              style={{
+                backgroundColor: COLORS.azulTech,
+                color: "white",
+                border: `2px solid ${COLORS.azulTech}`,
+                clipPath: "polygon(8% 0, 100% 0, 100% 75%, 92% 100%, 0 100%, 0 25%)",
+                display: "inline-block"
+              }}
+            >
               YouTube
             </a>
           </div>
