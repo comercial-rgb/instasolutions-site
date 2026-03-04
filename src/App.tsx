@@ -818,9 +818,10 @@ function HomePage() {
           <motion.div {...fadeUp} transition={{ duration: 0.5, delay: 0.05 }}>
             <ImageCarousel
               images={[
-                "/imagens/home_dashboard-1.png",
-                "/imagens/home_dashboard-2.png",
-                "/imagens/home_dashboard-3.png"
+                "/imagens/Home 1.png",
+                "/imagens/Home 2.png",
+                "/imagens/Home 3.png",
+                "/imagens/Home 4.png"
               ]}
               alt="Dashboard de Frotas"
             />
@@ -1013,9 +1014,10 @@ function SolucoesPage() {
               </div>
               <ImageCarousel
                 images={[
-                  "/imagens/soluções_manunteção-1.png",
-                  "/imagens/soluções_manunteção-2.png",
-                  "/imagens/soluções_manunteção-3.png"
+                  "/imagens/Manutenção  2.png",
+                  "/imagens/Manutenção  3.png",
+                  "/imagens/Manutenção 1.png",
+                  "/imagens/Manutenção.png"
                 ]}
                 alt="Manutenção"
                 objectFit="contain"
@@ -1050,9 +1052,10 @@ function SolucoesPage() {
               </div>
               <ImageCarousel
                 images={[
-                  "/imagens/solução_abastecimento-1.png",
-                  "/imagens/solução_abastecimento-2.png",
-                  "/imagens/solução_abastecimento-3.png"
+                  "/imagens/Abastecimento 2.png",
+                  "/imagens/Abastecimento 1.png",
+                  "/imagens/Abastecimento 3.png",
+                  "/imagens/Abastecimento.png"
                 ]}
                 alt="Abastecimento"
                 objectFit="contain"
@@ -1084,9 +1087,10 @@ function SolucoesPage() {
               </div>
               <ImageCarousel
                 images={[
-                  "/imagens/solução_rastreamento-1.png",
-                  "/imagens/solução_rastreamento-2.png",
-                  "/imagens/solução_rastreamento-3.png"
+                  "/imagens/Rastreamento.png",
+                  "/imagens/Rastreamento1.png",
+                  "/imagens/Rastreamento2.png",
+                  "/imagens/Rastreamento3.png"
                 ]}
                 alt="Rastreamento"
                 objectFit="contain"
@@ -1647,9 +1651,10 @@ function SobrePage() {
         <div>
           <ImageCarousel
             images={[
-              "/imagens/sobre_operaçãoinstasolutions-1.png",
-              "/imagens/sobre_operaçãoinstasolutions-2.png",
-              "/imagens/sobre_operaçãoinstasolutions-3.png"
+              "/imagens/Sobre.png",
+              "/imagens/Sobre1.png",
+              "/imagens/Sobre2.png",
+              "/imagens/Sobre3.png"
             ]}
             alt="Operação InstaSolutions"
             objectFit="contain"
