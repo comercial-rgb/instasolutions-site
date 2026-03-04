@@ -393,7 +393,7 @@ function ImageCarousel({ images, alt, objectFit = "cover" }: { images: string[];
   }, [images.length]);
 
   return (
-    <div className="relative aspect-[4/3] rounded-3xl shadow-xl ring-1 ring-black/5 overflow-hidden bg-white">
+    <div className="relative aspect-[4/3] rounded-3xl shadow-xl ring-1 ring-black/5 overflow-hidden">
       {images.map((img, idx) => (
         <img
           key={idx}
@@ -1020,7 +1020,6 @@ function SolucoesPage() {
                   "/imagens/Manutenção.png"
                 ]}
                 alt="Manutenção"
-                objectFit="contain"
               />
             </div>
           )}
@@ -1058,7 +1057,6 @@ function SolucoesPage() {
                   "/imagens/Abastecimento.png"
                 ]}
                 alt="Abastecimento"
-                objectFit="contain"
               />
             </div>
           )}
@@ -1093,7 +1091,6 @@ function SolucoesPage() {
                   "/imagens/Rastreamento3.png"
                 ]}
                 alt="Rastreamento"
-                objectFit="contain"
               />
             </div>
           )}
@@ -1659,7 +1656,6 @@ function SobrePage() {
               "/imagens/Sobre3.png"
             ]}
             alt="Operação InstaSolutions"
-            objectFit="contain"
           />
         </div>
       </Section>
