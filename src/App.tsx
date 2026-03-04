@@ -1543,11 +1543,12 @@ function RedePage() {
               <p>{t("network.desc3")}</p>
               <p><strong>{t("network.desc4")}</strong></p>
             </div>
-            <div className="mt-8">
+            <div className="mt-8 max-w-md overflow-hidden rounded-3xl shadow-lg">
               <img
                 src="/imagens/rede-01.png"
                 alt="Rede de atendimento"
-                className="rounded-3xl shadow-lg w-full max-w-md"
+                className="w-full h-full object-cover object-center"
+                style={{ aspectRatio: '4/3', objectFit: 'cover' }}
               />
             </div>
           </div>
@@ -1585,11 +1586,12 @@ function RedePage() {
                 />
               </CardContent>
             </Card>
-            <div className="mt-8">
+            <div className="mt-8 max-w-md mx-auto overflow-hidden rounded-3xl shadow-lg">
               <img
                 src="/imagens/rede-02.png"
                 alt="Cobertura da rede"
-                className="rounded-3xl shadow-lg w-full max-w-md mx-auto"
+                className="w-full h-full object-cover object-center"
+                style={{ aspectRatio: '4/3', objectFit: 'cover' }}
               />
             </div>
           </div>
