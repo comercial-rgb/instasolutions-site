@@ -399,9 +399,10 @@ function ImageCarousel({ images, alt, objectFit = "cover" }: { images: string[];
           key={idx}
           src={img}
           alt={`${alt} ${idx + 1}`}
-          className={`absolute inset-0 w-full h-full object-${objectFit} transition-opacity duration-500 ${
+          className={`absolute inset-0 w-full h-full transition-opacity duration-500 ${
             idx === currentIndex ? "opacity-100" : "opacity-0"
           }`}
+          style={{ objectFit }}
         />
       ))}
     </div>
