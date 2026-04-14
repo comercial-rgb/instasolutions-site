@@ -409,6 +409,113 @@ function ImageCarousel({ images, alt, objectFit = "cover" }: { images: string[];
   );
 }
 
+/*****************************
+ * APP DOWNLOAD BANNER       *
+ *****************************/
+const APP_DOWNLOAD_URLS: Record<string, { android: string; ios: string; label: string }> = {
+  combustiveis: {
+    android: "https://play.google.com/store/apps/details?id=br.com.instasolutions.combustiveis",
+    ios: "https://apps.apple.com/br/app/instasolutions-combust%C3%ADveis/id6760682249?l=en-GB",
+    label: "Combustíveis"
+  }
+};
+
+function AppDownloadBanner({ system }: { system: keyof typeof APP_DOWNLOAD_URLS }) {
+  const [copied, setCopied] = useState<string | null>(null);
+  const app = APP_DOWNLOAD_URLS[system];
+  if (!app) return null;
+
+  const isMobile = typeof navigator !== "undefined" && /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+  function copyUrl(url: string, platform: string) {
+    navigator.clipboard.writeText(url).then(() => {
+      setCopied(platform);
+      setTimeout(() => setCopied(null), 3000);
+    });
+  }
+
+  return (
+    <div className="mt-8 rounded-2xl overflow-hidden shadow-lg ring-1 ring-black/5">
+      <div
+        className="p-6"
+        style={{ background: `linear-gradient(135deg, ${COLORS.azulCorp} 0%, ${COLORS.azulTech} 100%)` }}
+      >
+        <div className="flex items-center gap-3 mb-4">
+          <div className="w-11 h-11 rounded-xl bg-white/15 flex items-center justify-center flex-shrink-0">
+            <Fuel className="w-6 h-6 text-white" />
+          </div>
+          <div>
+            <h4 className="text-white font-bold text-lg m-0">
+              Baixe o App — {app.label}
+            </h4>
+            <p className="text-white/80 text-sm m-0">
+              InstaSolutions {app.label} — disponível para Android e iOS
+            </p>
+          </div>
+        </div>
+        <div className="flex flex-wrap gap-3">
+          <a
+            href={app.android}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-3 bg-white/12 border border-white/25 rounded-xl px-5 py-3 text-white no-underline flex-1 min-w-[220px] transition-all hover:bg-white/20"
+          >
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 010 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z" />
+            </svg>
+            <div>
+              <div className="text-[11px] opacity-80 leading-none">Disponível no</div>
+              <div className="text-base font-semibold leading-tight">Google Play</div>
+            </div>
+          </a>
+          <a
+            href={app.ios}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-3 bg-white/12 border border-white/25 rounded-xl px-5 py-3 text-white no-underline flex-1 min-w-[220px] transition-all hover:bg-white/20"
+          >
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
+            </svg>
+            <div>
+              <div className="text-[11px] opacity-80 leading-none">Baixar na</div>
+              <div className="text-base font-semibold leading-tight">App Store</div>
+            </div>
+          </a>
+        </div>
+        {!isMobile && (
+          <div className="mt-4 space-y-2">
+            <p className="text-white/70 text-xs m-0">No computador? Copie o link e compartilhe via mensagem ou e-mail:</p>
+            <div className="flex flex-wrap gap-2">
+              <button
+                onClick={() => copyUrl(app.android, "android")}
+                className="flex items-center gap-2 bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-white text-xs cursor-pointer transition-all hover:bg-white/20"
+              >
+                <ExternalLink className="w-3.5 h-3.5" />
+                {copied === "android" ? "✓ Link copiado!" : "Copiar link Android"}
+              </button>
+              <button
+                onClick={() => copyUrl(app.ios, "ios")}
+                className="flex items-center gap-2 bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-white text-xs cursor-pointer transition-all hover:bg-white/20"
+              >
+                <ExternalLink className="w-3.5 h-3.5" />
+                {copied === "ios" ? "✓ Link copiado!" : "Copiar link iOS"}
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+      <div className="px-6 py-3 bg-amber-50 border-t-2 border-amber-300 flex items-start gap-2.5">
+        <ShieldCheck className="w-4 h-4 text-amber-700 mt-0.5 flex-shrink-0" />
+        <p className="text-xs text-amber-800 leading-relaxed m-0">
+          <strong>Informativo para Postos (iOS):</strong> Postos parceiros em dispositivos iOS utilizam apenas QR-Code para identificação.
+          A tecnologia NFC está disponível exclusivamente para Android.
+        </p>
+      </div>
+    </div>
+  );
+}
+
 function buildCanonical(path = "/") {
   if (!path.startsWith("/")) path = `/${path}`;
   return `${DOMAIN}${path === "/" ? "" : path}`;
@@ -609,6 +716,19 @@ function Footer() {
                 {t("nav.network")}
               </Link>
             </li>
+            <li>
+              <Link 
+                className="px-3 py-1 rounded-full border text-[0.9rem] inline-block transition hover:opacity-80" 
+                to="/politica-de-privacidade"
+                style={{
+                  backgroundColor: COLORS.bgPill,
+                  borderColor: COLORS.borderPill,
+                  color: COLORS.azulCorp
+                }}
+              >
+                Política de Privacidade
+              </Link>
+            </li>
           </ul>
         </div>
         <div>
@@ -628,6 +748,43 @@ function Footer() {
               </Link>
             </li>
           </ul>
+          {/* Apps por sistema */}
+          <div className="mt-4">
+            <div className="text-xs font-semibold uppercase tracking-wider mb-2" style={{color: COLORS.azulTech}}>
+              <Fuel className="w-3.5 h-3.5 inline mr-1" style={{verticalAlign: "-2px"}} />
+              App Combustíveis
+            </div>
+            <div className="flex flex-col gap-1.5">
+              <a
+                href="https://play.google.com/store/apps/details?id=br.com.instasolutions.combustiveis"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-3 py-1.5 rounded-full border text-[0.8rem] transition hover:opacity-80"
+                style={{
+                  backgroundColor: COLORS.bgPill,
+                  borderColor: COLORS.borderPill,
+                  color: COLORS.azulCorp
+                }}
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 010 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z"/></svg>
+                Google Play
+              </a>
+              <a
+                href="https://apps.apple.com/br/app/instasolutions-combust%C3%ADveis/id6760682249?l=en-GB"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-3 py-1.5 rounded-full border text-[0.8rem] transition hover:opacity-80"
+                style={{
+                  backgroundColor: COLORS.bgPill,
+                  borderColor: COLORS.borderPill,
+                  color: COLORS.azulCorp
+                }}
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                App Store
+              </a>
+            </div>
+          </div>
         </div>
         <div>
           <div className="font-semibold mb-2" style={{color: COLORS.azulCorp}}>{t("footer.partners")}</div>
@@ -718,6 +875,19 @@ function Footer() {
           </div>
         </div>
       </section>
+      <div className="border-t py-4 text-center" style={{ borderColor: COLORS.borderPill }}>
+        <Link
+          to="/politica-de-privacidade"
+          className="inline-flex items-center gap-2 px-6 py-2 rounded-full text-sm font-medium transition hover:opacity-80"
+          style={{
+            backgroundColor: COLORS.azulCorp,
+            color: "white"
+          }}
+        >
+          <ShieldCheck className="w-4 h-4" />
+          Política de Privacidade
+        </Link>
+      </div>
     </footer>
   );
 }
@@ -998,19 +1168,22 @@ function SolucoesPage() {
                   {t("solutions.maintenance")}
                 </h3>
                 <ul className="list-disc ml-6 text-neutral-700 mt-2 space-y-1">
-                  <li>Software moderno com acesso 24/7</li>
-                  <li>Controle de saldos</li>
-                  <li>Múltiplos usuários</li>
-                  <li>Relatórios personalizados</li>
-                  <li>Equipe de suporte</li>
+                  <li>App mobile para motoristas com registro de ocorrências</li>
+                  <li>Alertas de manutenção preventiva e corretiva</li>
+                  <li>Personalização completa conforme necessidade do cliente</li>
+                  <li>Ordens de serviço digitais com fluxo automático</li>
                   <li>Aprovação e auditoria de orçamentos em tempo real</li>
-                  <li>Histórico completo de serviços e peças utilizadas</li>
-                  <li>Rede nacional com mais de 500 oficinas homologadas</li>
-                  <li>Gestão de ordens de serviço com fluxos automáticos</li>
-                  <li>Indicadores de performance e custos por veículo ou centro de custo</li>
-                  <li>Cadastros de fornecedores e controle de garantias</li>
+                  <li>Rede nacional com +500 oficinas homologadas</li>
+                  <li>Histórico completo de serviços e peças por veículo</li>
                   <li>Comparação automática de preços e prazos</li>
+                  <li>Indicadores de performance e custo por centro de custo</li>
+                  <li>Controle de saldos e garantias</li>
                   <li>Registro fotográfico e documental integrado</li>
+                  <li>Relatórios personalizados e dashboards gerenciais</li>
+                  <li>Cadastro e gestão de fornecedores</li>
+                  <li>Múltiplos perfis de acesso com permissões</li>
+                  <li>Software moderno com acesso 24/7</li>
+                  <li>Suporte técnico especializado</li>
                 </ul>
               </div>
               <ImageCarousel
@@ -1025,6 +1198,7 @@ function SolucoesPage() {
             </div>
           )}
           {tab === "abast" && (
+            <>
             <div className="grid lg:grid-cols-2 gap-8 items-start">
               <div>
                 <h3
@@ -1034,20 +1208,22 @@ function SolucoesPage() {
                   {t("solutions.fueling")}
                 </h3>
                 <ul className="list-disc ml-6 text-neutral-700 mt-2 space-y-1">
-                  <li>Múltiplos usuários</li>
-                  <li>Relatórios personalizados</li>
-                  <li>Equipe de suporte</li>
-                  <li>Software moderno com acesso 24/7</li>
+                  <li>Alertas personalizáveis conforme necessidade do cliente</li>
+                  <li>App mobile com registro instantâneo de abastecimento</li>
+                  <li>Validação geográfica e antifraude em tempo real</li>
                   <li>Rede de postos parceiros em todo o Brasil</li>
-                  <li>Monitoramento de consumo e variações por veículo</li>
-                  <li>Prevenção ativa de fraudes em abastecimentos</li>
-                  <li>Relatórios detalhados por período, posto, motorista ou veículo</li>
+                  <li>Controle de consumo por veículo e motorista</li>
+                  <li>Relatórios por período, posto ou centro de custo</li>
                   <li>Conciliação automática de abastecimentos</li>
-                  <li>Importação de notas e integração com ERP</li>
-                  <li>Controle por centro de custo e regras personalizadas</li>
                   <li>Painel unificado de despesas de combustível</li>
-                  <li>Aplicativo com registro instantâneo e validações geográficas</li>
-                  <li>Economia</li>
+                  <li>Importação de notas e integração com ERP</li>
+                  <li>Regras de limite por veículo, motorista ou horário</li>
+                  <li>Identificação de variações anormais de consumo</li>
+                  <li>Múltiplos perfis de acesso com permissões</li>
+                  <li>Dashboards gerenciais em tempo real</li>
+                  <li>Economia comprovada na operação</li>
+                  <li>Software moderno com acesso 24/7</li>
+                  <li>Suporte técnico especializado</li>
                 </ul>
               </div>
               <ImageCarousel
@@ -1060,6 +1236,9 @@ function SolucoesPage() {
                 alt="Abastecimento"
               />
             </div>
+            {/* App Download Section - Combustíveis */}
+            <AppDownloadBanner system="combustiveis" />
+            </>
           )}
           {tab === "rast" && (
             <div className="grid lg:grid-cols-2 gap-8 items-start">
@@ -1071,17 +1250,22 @@ function SolucoesPage() {
                   {t("solutions.tracking")}
                 </h3>
                 <ul className="list-disc ml-6 text-neutral-700 mt-2 space-y-1">
+                  <li>Telemetria e videotelemetria completa</li>
+                  <li>Rastreamento com controle de portas e acessórios</li>
+                  <li>Alertas personalizáveis conforme necessidade do cliente</li>
                   <li>Monitoramento em tempo real com atualização contínua</li>
-                  <li>Alertas automáticos de velocidade, rota e comportamento de direção</li>
-                  <li>Cercas virtuais configuráveis para entradas e saídas de áreas</li>
-                  <li>Histórico completo de trajetos, eventos e deslocamentos</li>
-                  <li>Relatórios de telemetria e análise de condução</li>
+                  <li>Cercas virtuais configuráveis com alertas automáticos</li>
+                  <li>Alertas de velocidade, rota e comportamento de direção</li>
+                  <li>Histórico completo de trajetos e deslocamentos</li>
+                  <li>Relatórios de condução e análise de telemetria</li>
                   <li>Identificação de ociosidade e desvios operacionais</li>
-                  <li>Painel de manutenção preventiva baseado em quilometragem</li>
-                  <li>Integração com aplicativos e sistemas de gestão</li>
-                  <li>Rastreadores homologados e suporte técnico especializado</li>
-                  <li>Segurança reforçada com camadas de autenticação e controle</li>
-                  <li>Alertas inteligentes para manutenções preventivas</li>
+                  <li>Manutenção preventiva baseada em quilometragem</li>
+                  <li>Câmeras embarcadas com gravação de eventos</li>
+                  <li>Integração com sistemas de gestão e ERPs</li>
+                  <li>Rastreadores homologados pela Anatel</li>
+                  <li>Bloqueio remoto do veículo via plataforma</li>
+                  <li>Múltiplos perfis de acesso com permissões</li>
+                  <li>Suporte técnico especializado</li>
                 </ul>
               </div>
               <ImageCarousel
@@ -1902,6 +2086,230 @@ function ContactForm() {
   );
 }
 
+function PoliticaPrivacidadePage() {
+  return (
+    <Layout>
+      <Helmet>
+        <title>Política de Privacidade | InstaSolutions</title>
+        <meta name="description" content="Política de Privacidade dos aplicativos InstaSolutions - Combustível, Manutenção e Rastreamento." />
+        <link rel="canonical" href={buildCanonical("/politica-de-privacidade")} />
+      </Helmet>
+      <Section className="py-16">
+        <motion.div {...fadeUp} className="max-w-4xl mx-auto">
+          <h1 className="text-3xl md:text-4xl font-bold mb-2" style={{ color: COLORS.azulCorp }}>
+            Política de Privacidade
+          </h1>
+          <p className="text-sm text-neutral-500 mb-8">Última atualização: 06 de abril de 2026</p>
+
+          <div className="prose prose-neutral max-w-none space-y-6 text-neutral-700 leading-relaxed">
+            <p>
+              A <strong>InstaSolutions Produtos e Gestão Empresarial</strong> (CNPJ 47.611.398/0001-66), doravante denominada
+              simplesmente "InstaSolutions", é a responsável pelo tratamento dos dados pessoais coletados por meio de seus
+              aplicativos móveis: <strong>InstaSolutions Combustíveis</strong>, <strong>InstaSolutions Manutenção</strong> e{" "}
+              <strong>InstaSolutions Rastreamento</strong> (coletivamente, "Aplicativos").
+            </p>
+            <p>
+              Esta Política de Privacidade descreve como coletamos, utilizamos, armazenamos e protegemos suas informações
+              pessoais, em conformidade com a Lei Geral de Proteção de Dados (LGPD – Lei nº 13.709/2018) e demais legislações
+              aplicáveis.
+            </p>
+
+            <h2 className="text-xl font-semibold mt-10" style={{ color: COLORS.azulCorp }}>
+              1. Dados Pessoais Coletados
+            </h2>
+            <p>Ao utilizar nossos Aplicativos, podemos coletar as seguintes categorias de dados:</p>
+            <ul className="list-disc pl-6 space-y-1">
+              <li><strong>Dados de identificação:</strong> nome completo, CPF/RG, e-mail, telefone, empresa e cargo.</li>
+              <li><strong>Dados de autenticação:</strong> credenciais de login (e-mail e senha criptografada).</li>
+              <li><strong>Dados de localização:</strong> coordenadas GPS em tempo real, utilizadas para localizar postos de
+                combustível, oficinas próximas, rastreamento veicular e assistência em estrada.</li>
+              <li><strong>Dados de câmera e imagens:</strong> fotos capturadas para registro de ordens de serviço, perfil do
+                usuário, leitura de QR codes e documentação veicular.</li>
+              <li><strong>Dados de NFC:</strong> leitura de tags NFC para identificação de veículos e validação de
+                abastecimentos (aplicativo Combustíveis).</li>
+              <li><strong>Dados de uso do aplicativo:</strong> logs de acesso, interações, preferências e configurações.</li>
+              <li><strong>Dados de veículos:</strong> placa, modelo, quilometragem, consumo e histórico de manutenção e
+                abastecimento.</li>
+              <li><strong>Notificações push:</strong> tokens de dispositivo para envio de alertas operacionais, cercas virtuais
+                e atualizações de ordens de serviço.</li>
+            </ul>
+
+            <h2 className="text-xl font-semibold mt-10" style={{ color: COLORS.azulCorp }}>
+              2. Finalidades do Tratamento
+            </h2>
+            <p>Os dados coletados são utilizados para as seguintes finalidades:</p>
+            <ul className="list-disc pl-6 space-y-1">
+              <li>Fornecer, operar e manter os serviços dos Aplicativos.</li>
+              <li>Gerenciar abastecimentos, manutenções e rastreamento de frotas.</li>
+              <li>Exibir postos de combustível e oficinas credenciadas próximas à localização do usuário.</li>
+              <li>Enviar notificações e alertas operacionais relevantes.</li>
+              <li>Gerar relatórios, dashboards e indicadores de desempenho da frota.</li>
+              <li>Garantir a segurança e prevenir fraudes no uso dos serviços.</li>
+              <li>Cumprir obrigações legais e regulatórias.</li>
+              <li>Melhorar continuamente a experiência do usuário e dos Aplicativos.</li>
+            </ul>
+
+            <h2 className="text-xl font-semibold mt-10" style={{ color: COLORS.azulCorp }}>
+              3. Base Legal para o Tratamento
+            </h2>
+            <p>O tratamento de dados pessoais é realizado com base nas seguintes hipóteses legais previstas na LGPD:</p>
+            <ul className="list-disc pl-6 space-y-1">
+              <li><strong>Execução de contrato:</strong> para prestação dos serviços contratados.</li>
+              <li><strong>Consentimento:</strong> para coleta de localização e envio de notificações push.</li>
+              <li><strong>Legítimo interesse:</strong> para melhoria dos serviços e prevenção de fraudes.</li>
+              <li><strong>Obrigação legal:</strong> para cumprimento de exigências regulatórias.</li>
+            </ul>
+
+            <h2 className="text-xl font-semibold mt-10" style={{ color: COLORS.azulCorp }}>
+              4. Compartilhamento de Dados
+            </h2>
+            <p>
+              Seus dados pessoais poderão ser compartilhados com:
+            </p>
+            <ul className="list-disc pl-6 space-y-1">
+              <li><strong>Rede de credenciados:</strong> oficinas e postos de combustível parceiros, para a execução dos
+                serviços de manutenção e abastecimento.</li>
+              <li><strong>Prestadores de serviço:</strong> fornecedores de infraestrutura tecnológica (hospedagem, analytics),
+                sob contrato de confidencialidade.</li>
+              <li><strong>Autoridades públicas:</strong> quando exigido por lei, regulamento ou ordem judicial.</li>
+            </ul>
+            <p>
+              Não comercializamos, alugamos ou vendemos dados pessoais a terceiros para fins de marketing.
+            </p>
+
+            <h2 className="text-xl font-semibold mt-10" style={{ color: COLORS.azulCorp }}>
+              5. Armazenamento e Segurança
+            </h2>
+            <p>
+              Adotamos medidas técnicas e organizacionais adequadas para proteger seus dados contra acessos não autorizados,
+              perda, alteração ou destruição, incluindo:
+            </p>
+            <ul className="list-disc pl-6 space-y-1">
+              <li>Criptografia de dados em trânsito (TLS/SSL) e em repouso.</li>
+              <li>Controles de acesso baseados em perfis e permissões.</li>
+              <li>Armazenamento seguro de credenciais (hashing de senhas).</li>
+              <li>Monitoramento contínuo de vulnerabilidades e incidentes.</li>
+            </ul>
+            <p>
+              Os dados serão armazenados pelo período necessário ao cumprimento das finalidades descritas nesta Política ou
+              conforme exigido por obrigações legais.
+            </p>
+
+            <h2 className="text-xl font-semibold mt-10" style={{ color: COLORS.azulCorp }}>
+              6. Direitos do Titular
+            </h2>
+            <p>
+              Nos termos da LGPD, você possui os seguintes direitos em relação aos seus dados pessoais:
+            </p>
+            <ul className="list-disc pl-6 space-y-1">
+              <li>Confirmação da existência de tratamento de dados.</li>
+              <li>Acesso aos dados pessoais coletados.</li>
+              <li>Correção de dados incompletos, inexatos ou desatualizados.</li>
+              <li>Anonimização, bloqueio ou eliminação de dados desnecessários ou excessivos.</li>
+              <li>Portabilidade dos dados a outro fornecedor de serviço.</li>
+              <li>Eliminação dos dados tratados com consentimento.</li>
+              <li>Informação sobre o compartilhamento dos dados.</li>
+              <li>Revogação do consentimento a qualquer momento.</li>
+            </ul>
+            <p>
+              Para exercer seus direitos, entre em contato pelo e-mail{" "}
+              <a href={`mailto:${EMAIL}`} className="underline font-medium" style={{ color: COLORS.azulTech }}>
+                {EMAIL}
+              </a>.
+            </p>
+
+            <h2 className="text-xl font-semibold mt-10" style={{ color: COLORS.azulCorp }}>
+              7. Permissões dos Aplicativos
+            </h2>
+            <p>Nossos Aplicativos poderão solicitar as seguintes permissões no dispositivo:</p>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm border border-neutral-200 rounded-lg overflow-hidden mt-2">
+                <thead>
+                  <tr style={{ backgroundColor: COLORS.bgPill }}>
+                    <th className="text-left px-4 py-2 font-semibold border-b" style={{ color: COLORS.azulCorp }}>Permissão</th>
+                    <th className="text-left px-4 py-2 font-semibold border-b" style={{ color: COLORS.azulCorp }}>Finalidade</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="border-b">
+                    <td className="px-4 py-2">Localização (GPS)</td>
+                    <td className="px-4 py-2">Localizar postos/oficinas próximos; rastreamento veicular em tempo real.</td>
+                  </tr>
+                  <tr className="border-b" style={{ backgroundColor: COLORS.bgPill }}>
+                    <td className="px-4 py-2">Câmera</td>
+                    <td className="px-4 py-2">Leitura de QR codes, registro fotográfico de ordens de serviço e perfil.</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="px-4 py-2">NFC</td>
+                    <td className="px-4 py-2">Identificação de veículos e validação de abastecimentos.</td>
+                  </tr>
+                  <tr className="border-b" style={{ backgroundColor: COLORS.bgPill }}>
+                    <td className="px-4 py-2">Notificações</td>
+                    <td className="px-4 py-2">Alertas de cercas virtuais, atualizações de ordens de serviço e avisos operacionais.</td>
+                  </tr>
+                  <tr className="border-b">
+                    <td className="px-4 py-2">Galeria / Fotos</td>
+                    <td className="px-4 py-2">Seleção de imagem para perfil ou documentos.</td>
+                  </tr>
+                  <tr style={{ backgroundColor: COLORS.bgPill }}>
+                    <td className="px-4 py-2">Microfone</td>
+                    <td className="px-4 py-2">Captura de áudio quando necessário para operações específicas.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p className="text-sm mt-2">
+              Todas as permissões são solicitadas de forma explícita e podem ser revogadas a qualquer momento nas
+              configurações do seu dispositivo.
+            </p>
+
+            <h2 className="text-xl font-semibold mt-10" style={{ color: COLORS.azulCorp }}>
+              8. Cookies e Tecnologias Similares
+            </h2>
+            <p>
+              Nossos Aplicativos podem utilizar tecnologias de armazenamento local (como AsyncStorage e SecureStore) para
+              manter sessões, preferências e tokens de autenticação. Esses dados são armazenados localmente no dispositivo e
+              não são compartilhados com terceiros.
+            </p>
+
+            <h2 className="text-xl font-semibold mt-10" style={{ color: COLORS.azulCorp }}>
+              9. Alterações nesta Política
+            </h2>
+            <p>
+              Esta Política de Privacidade poderá ser atualizada periodicamente. Recomendamos a consulta regular desta página.
+              A data da última atualização será sempre indicada no topo do documento. Alterações significativas serão
+              comunicadas por meio dos Aplicativos ou por e-mail.
+            </p>
+
+            <h2 className="text-xl font-semibold mt-10" style={{ color: COLORS.azulCorp }}>
+              10. Contato
+            </h2>
+            <p>
+              Para dúvidas, solicitações ou reclamações relacionadas ao tratamento de seus dados pessoais, entre em contato:
+            </p>
+            <ul className="list-none pl-0 space-y-1">
+              <li><strong>Empresa:</strong> {ORG_NAME}</li>
+              <li><strong>CNPJ:</strong> 47.611.398/0001-66</li>
+              <li>
+                <strong>E-mail:</strong>{" "}
+                <a href={`mailto:${EMAIL}`} className="underline" style={{ color: COLORS.azulTech }}>
+                  {EMAIL}
+                </a>
+              </li>
+              <li>
+                <strong>Website:</strong>{" "}
+                <a href={DOMAIN} className="underline" style={{ color: COLORS.azulTech }}>
+                  {DOMAIN}
+                </a>
+              </li>
+            </ul>
+          </div>
+        </motion.div>
+      </Section>
+    </Layout>
+  );
+}
+
 function ObrigadoPage() {
   const { t } = useLanguage();
   
@@ -2382,6 +2790,8 @@ export default function App() {
         <Route path="/clientes/queroser" element={<ClientesQueroSerPage />} />
         <Route path="/clientes/acesso" element={<ClientesAcessoPage />} />
         <Route path="/clientes/financeiro" element={<ClientesFinanceiroPage />} />
+        {/* Institucional */}
+        <Route path="/politica-de-privacidade" element={<PoliticaPrivacidadePage />} />
       </Routes>
 
       {/* RUNTIME TESTS (não quebram build, apenas logam no console se algo errado) */}
