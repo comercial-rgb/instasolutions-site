@@ -409,6 +409,113 @@ function ImageCarousel({ images, alt, objectFit = "cover" }: { images: string[];
   );
 }
 
+/*****************************
+ * APP DOWNLOAD BANNER       *
+ *****************************/
+const APP_DOWNLOAD_URLS: Record<string, { android: string; ios: string; label: string }> = {
+  combustiveis: {
+    android: "https://play.google.com/store/apps/details?id=br.com.instasolutions.combustiveis",
+    ios: "https://apps.apple.com/br/app/instasolutions-combust%C3%ADveis/id6760682249?l=en-GB",
+    label: "Combustíveis"
+  }
+};
+
+function AppDownloadBanner({ system }: { system: keyof typeof APP_DOWNLOAD_URLS }) {
+  const [copied, setCopied] = useState<string | null>(null);
+  const app = APP_DOWNLOAD_URLS[system];
+  if (!app) return null;
+
+  const isMobile = typeof navigator !== "undefined" && /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+  function copyUrl(url: string, platform: string) {
+    navigator.clipboard.writeText(url).then(() => {
+      setCopied(platform);
+      setTimeout(() => setCopied(null), 3000);
+    });
+  }
+
+  return (
+    <div className="mt-8 rounded-2xl overflow-hidden shadow-lg ring-1 ring-black/5">
+      <div
+        className="p-6"
+        style={{ background: `linear-gradient(135deg, ${COLORS.azulCorp} 0%, ${COLORS.azulTech} 100%)` }}
+      >
+        <div className="flex items-center gap-3 mb-4">
+          <div className="w-11 h-11 rounded-xl bg-white/15 flex items-center justify-center flex-shrink-0">
+            <Fuel className="w-6 h-6 text-white" />
+          </div>
+          <div>
+            <h4 className="text-white font-bold text-lg m-0">
+              Baixe o App — {app.label}
+            </h4>
+            <p className="text-white/80 text-sm m-0">
+              InstaSolutions {app.label} — disponível para Android e iOS
+            </p>
+          </div>
+        </div>
+        <div className="flex flex-wrap gap-3">
+          <a
+            href={app.android}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-3 bg-white/12 border border-white/25 rounded-xl px-5 py-3 text-white no-underline flex-1 min-w-[220px] transition-all hover:bg-white/20"
+          >
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 010 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z" />
+            </svg>
+            <div>
+              <div className="text-[11px] opacity-80 leading-none">Disponível no</div>
+              <div className="text-base font-semibold leading-tight">Google Play</div>
+            </div>
+          </a>
+          <a
+            href={app.ios}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-3 bg-white/12 border border-white/25 rounded-xl px-5 py-3 text-white no-underline flex-1 min-w-[220px] transition-all hover:bg-white/20"
+          >
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
+            </svg>
+            <div>
+              <div className="text-[11px] opacity-80 leading-none">Baixar na</div>
+              <div className="text-base font-semibold leading-tight">App Store</div>
+            </div>
+          </a>
+        </div>
+        {!isMobile && (
+          <div className="mt-4 space-y-2">
+            <p className="text-white/70 text-xs m-0">No computador? Copie o link e compartilhe via mensagem ou e-mail:</p>
+            <div className="flex flex-wrap gap-2">
+              <button
+                onClick={() => copyUrl(app.android, "android")}
+                className="flex items-center gap-2 bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-white text-xs cursor-pointer transition-all hover:bg-white/20"
+              >
+                <ExternalLink className="w-3.5 h-3.5" />
+                {copied === "android" ? "✓ Link copiado!" : "Copiar link Android"}
+              </button>
+              <button
+                onClick={() => copyUrl(app.ios, "ios")}
+                className="flex items-center gap-2 bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-white text-xs cursor-pointer transition-all hover:bg-white/20"
+              >
+                <ExternalLink className="w-3.5 h-3.5" />
+                {copied === "ios" ? "✓ Link copiado!" : "Copiar link iOS"}
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+      <div className="px-6 py-3 bg-amber-50 border-t-2 border-amber-300 flex items-start gap-2.5">
+        <ShieldCheck className="w-4 h-4 text-amber-700 mt-0.5 flex-shrink-0" />
+        <p className="text-xs text-amber-800 leading-relaxed m-0">
+          <strong>Informativo para Postos (iOS):</strong> Postos parceiros em dispositivos iOS utilizam apenas QR-Code para identificação.
+          A tecnologia NFC está disponível exclusivamente para Android.
+        </p>
+      </div>
+    </div>
+  );
+}
+
 function buildCanonical(path = "/") {
   if (!path.startsWith("/")) path = `/${path}`;
   return `${DOMAIN}${path === "/" ? "" : path}`;
@@ -555,7 +662,7 @@ function Footer() {
   
   return (
     <footer className="border-t" style={{backgroundColor: COLORS.bgPill}}>
-      <section className="max-w-7xl mx-auto px-6 py-10 grid md:grid-cols-5 gap-8 items-start">
+      <section className="max-w-7xl mx-auto px-6 py-10 grid md:grid-cols-4 gap-8 items-start">
         <div>
           <img src="/imagens/logo_rodapé.png" alt="InstaSolutions" className="h-16" />
           <div className="text-xs mt-3" style={{color: COLORS.azulCorp}}>
@@ -641,6 +748,43 @@ function Footer() {
               </Link>
             </li>
           </ul>
+          {/* Apps por sistema */}
+          <div className="mt-4">
+            <div className="text-xs font-semibold uppercase tracking-wider mb-2" style={{color: COLORS.azulTech}}>
+              <Fuel className="w-3.5 h-3.5 inline mr-1" style={{verticalAlign: "-2px"}} />
+              App Combustíveis
+            </div>
+            <div className="flex flex-col gap-1.5">
+              <a
+                href="https://play.google.com/store/apps/details?id=br.com.instasolutions.combustiveis"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-3 py-1.5 rounded-full border text-[0.8rem] transition hover:opacity-80"
+                style={{
+                  backgroundColor: COLORS.bgPill,
+                  borderColor: COLORS.borderPill,
+                  color: COLORS.azulCorp
+                }}
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 010 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z"/></svg>
+                Google Play
+              </a>
+              <a
+                href="https://apps.apple.com/br/app/instasolutions-combust%C3%ADveis/id6760682249?l=en-GB"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-3 py-1.5 rounded-full border text-[0.8rem] transition hover:opacity-80"
+                style={{
+                  backgroundColor: COLORS.bgPill,
+                  borderColor: COLORS.borderPill,
+                  color: COLORS.azulCorp
+                }}
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                App Store
+              </a>
+            </div>
+          </div>
         </div>
         <div>
           <div className="font-semibold mb-2" style={{color: COLORS.azulCorp}}>{t("footer.partners")}</div>
@@ -727,33 +871,6 @@ function Footer() {
               }}
             >
               YouTube
-            </a>
-          </div>
-        </div>
-        <div>
-          <div className="font-semibold mb-2" style={{color: COLORS.azulCorp}}>Aplicativos</div>
-          <div className="space-y-2">
-            <a
-              href="#"
-              className="flex items-center gap-2 px-3 py-2 rounded-lg text-white text-sm font-medium transition hover:opacity-80"
-              style={{ backgroundColor: "#000" }}
-              aria-label="Baixar Combustíveis na App Store"
-            >
-              <svg viewBox="0 0 384 512" fill="currentColor" className="w-4 h-4 flex-shrink-0">
-                <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/>
-              </svg>
-              <span className="leading-tight text-xs">Combustíveis</span>
-            </a>
-            <a
-              href="#"
-              className="flex items-center gap-2 px-3 py-2 rounded-lg text-white text-sm font-medium transition hover:opacity-80"
-              style={{ backgroundColor: "#000" }}
-              aria-label="Baixar Combustíveis no Google Play"
-            >
-              <svg viewBox="0 0 512 512" fill="currentColor" className="w-4 h-4 flex-shrink-0">
-                <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/>
-              </svg>
-              <span className="leading-tight text-xs">Combustíveis</span>
             </a>
           </div>
         </div>
@@ -1081,6 +1198,7 @@ function SolucoesPage() {
             </div>
           )}
           {tab === "abast" && (
+            <>
             <div className="grid lg:grid-cols-2 gap-8 items-start">
               <div>
                 <h3
@@ -1118,6 +1236,9 @@ function SolucoesPage() {
                 alt="Abastecimento"
               />
             </div>
+            {/* App Download Section - Combustíveis */}
+            <AppDownloadBanner system="combustiveis" />
+            </>
           )}
           {tab === "rast" && (
             <div className="grid lg:grid-cols-2 gap-8 items-start">
