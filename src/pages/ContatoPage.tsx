@@ -10,6 +10,7 @@ import { useLanguage } from '../hooks/useLanguage';
 import { useToast } from '../hooks/useToast';
 import { COLORS, DOMAIN, EMAIL, SEGMENTOS_CLIENTE, TAMANHO_FROTA, SOLUCOES, UFS } from '../lib/constants';
 import { contatoSchema, type ContatoFormData } from '../lib/validators';
+import { maskCNPJ, maskPhoneBR } from '../lib/formUtils';
 
 export default function ContatoPage() {
   const { t } = useLanguage();
@@ -24,6 +25,10 @@ export default function ContatoPage() {
   } = useForm<ContatoFormData>({
     resolver: zodResolver(contatoSchema),
   });
+
+  // Masked field registrations
+  const cnpjField = register('cnpj');
+  const celularField = register('celular');
 
   async function onSubmit(data: ContatoFormData) {
     // Rate-limit: block submit < 3s
@@ -41,7 +46,7 @@ export default function ContatoPage() {
       await fetch(`https://formsubmit.co/${EMAIL}`, { method: 'POST', body: fd });
       navigate('/obrigado');
     } catch {
-      addToast({ type: 'error', message: t('contact.errorMsg') });
+      addToast('error', t('contact.errorMsg'));
     }
   }
 
@@ -98,7 +103,8 @@ export default function ContatoPage() {
               <div className="grid sm:grid-cols-2 gap-4">
                 <Input
                   label={t('form.cnpj')}
-                  {...register('cnpj')}
+                  {...cnpjField}
+                  onChange={(e) => { e.target.value = maskCNPJ(e.target.value); cnpjField.onChange(e); }}
                   error={errors.cnpj?.message}
                 />
                 <Input
@@ -124,7 +130,8 @@ export default function ContatoPage() {
                 />
                 <Input
                   label={t('form.mobilePhone')}
-                  {...register('celular')}
+                  {...celularField}
+                  onChange={(e) => { e.target.value = maskPhoneBR(e.target.value); celularField.onChange(e); }}
                   error={errors.celular?.message}
                 />
                 <Select

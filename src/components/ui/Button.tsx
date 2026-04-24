@@ -1,5 +1,4 @@
 import React from 'react';
-import { COLORS } from '../../lib/constants';
 
 type ButtonVariant = 'primary' | 'outline' | 'ghost';
 type ButtonSize = 'sm' | 'md' | 'lg';
@@ -30,21 +29,14 @@ export function Button({
     'inline-flex items-center justify-center gap-2 font-semibold rounded-xl transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed';
 
   const variants: Record<ButtonVariant, string> = {
-    primary: `bg-[${COLORS.azulTech}] text-white hover:opacity-90 focus-visible:ring-[${COLORS.azulTech}]`,
-    outline: `bg-transparent border-2 text-[${COLORS.azulTech}] border-[${COLORS.azulTech}] hover:bg-[${COLORS.azulTech}]/5 focus-visible:ring-[${COLORS.azulTech}]`,
-    ghost: `bg-transparent text-[${COLORS.azulCorp}] hover:bg-[${COLORS.bgPill}] focus-visible:ring-[${COLORS.azulCorp}]`,
-  };
-
-  const variantStyle: Record<ButtonVariant, React.CSSProperties> = {
-    primary: { backgroundColor: COLORS.azulTech, color: 'white' },
-    outline: { backgroundColor: 'transparent', color: COLORS.azulTech, border: `2px solid ${COLORS.azulTech}` },
-    ghost: { backgroundColor: 'transparent', color: COLORS.azulCorp },
+    primary: 'bg-azulTech text-white hover:opacity-90 focus-visible:ring-azulTech',
+    outline: 'bg-transparent border-2 text-azulTech border-azulTech hover:bg-azulTech/5 focus-visible:ring-azulTech',
+    ghost: 'bg-transparent text-azulCorp hover:bg-bgPill focus-visible:ring-azulCorp',
   };
 
   return (
     <button
-      className={`${base} ${sizeClasses[size]} ${className}`}
-      style={variantStyle[variant]}
+      className={`${base} ${variants[variant]} ${sizeClasses[size]} ${className}`}
       disabled={isLoading || disabled}
       aria-busy={isLoading}
       {...props}

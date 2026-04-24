@@ -1,22 +1,3 @@
-import { useState, useCallback } from 'react';
-import type { ToastMessage } from '../types';
-
-let toastId = 0;
-
-export function useToast() {
-  const [toasts, setToasts] = useState<ToastMessage[]>([]);
-
-  const addToast = useCallback((type: ToastMessage['type'], message: string) => {
-    const id = String(++toastId);
-    setToasts((prev) => [...prev, { id, type, message }]);
-    setTimeout(() => {
-      setToasts((prev) => prev.filter((t) => t.id !== id));
-    }, 5000);
-  }, []);
-
-  const removeToast = useCallback((id: string) => {
-    setToasts((prev) => prev.filter((t) => t.id !== id));
-  }, []);
-
-  return { toasts, addToast, removeToast };
-}
+// Delegates to ToastContext so all components share the same toast state.
+// Wrap the app tree with <ToastProvider> (done in App.tsx).
+export { useToastContext as useToast } from '../contexts/ToastContext';

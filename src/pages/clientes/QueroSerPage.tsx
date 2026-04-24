@@ -10,6 +10,7 @@ import { useLanguage } from '../../hooks/useLanguage';
 import { useToast } from '../../hooks/useToast';
 import { COLORS, DOMAIN, EMAIL, SEGMENTOS_CLIENTE, TAMANHO_FROTA, SOLUCOES, UFS } from '../../lib/constants';
 import { queroSerClienteSchema, type QueroSerClienteFormData } from '../../lib/validators';
+import { maskCNPJ, maskPhoneBR } from '../../lib/formUtils';
 
 export default function QueroSerPage() {
   const { t } = useLanguage();
@@ -25,6 +26,11 @@ export default function QueroSerPage() {
     resolver: zodResolver(queroSerClienteSchema),
   });
 
+  // Masked field registrations
+  const cnpjField = register('cnpj');
+  const celularField = register('celular');
+  const fixoField = register('fixo');
+
   async function onSubmit(data: QueroSerClienteFormData) {
     if (Date.now() - startTime.current < 3000) return;
     if ((data as any).website) return;
@@ -39,7 +45,7 @@ export default function QueroSerPage() {
       await fetch(`https://formsubmit.co/${EMAIL}`, { method: 'POST', body: fd });
       navigate('/obrigado');
     } catch {
-      addToast({ type: 'error', message: t('contact.errorMsg') });
+      addToast('error', t('contact.errorMsg'));
     }
   }
 
@@ -78,7 +84,7 @@ export default function QueroSerPage() {
           <input type="text" {...register('website' as any)} className="sr-only" tabIndex={-1} autoComplete="off" aria-hidden="true" />
 
           <div className="grid sm:grid-cols-2 gap-4">
-            <Input label="CNPJ" {...register('cnpj')} error={errors.cnpj?.message} />
+            <Input label={t('form.cnpj')} {...cnpjField} onChange={(e) => { e.target.value = maskCNPJ(e.target.value); cnpjField.onChange(e); }} error={errors.cnpj?.message} />
             <Input label={t('form.companyName')} {...register('razaoSocial')} error={errors.razaoSocial?.message} />
             <Input label={t('form.tradeName')} {...register('nomeFantasia')} error={errors.nomeFantasia?.message} />
             <Input label={t('form.neighborhood')} {...register('bairro')} error={errors.bairro?.message} />
@@ -104,8 +110,8 @@ export default function QueroSerPage() {
               {...register('tamanhoFrota')}
               error={errors.tamanhoFrota?.message}
             />
-            <Input label={t('form.mobilePhone')} {...register('celular')} error={errors.celular?.message} />
-            <Input label={t('form.landline')} {...register('fixo')} error={errors.fixo?.message} />
+            <Input label={t('form.mobilePhone')} {...celularField} onChange={(e) => { e.target.value = maskPhoneBR(e.target.value); celularField.onChange(e); }} error={errors.celular?.message} />
+            <Input label={t('form.landline')} {...fixoField} onChange={(e) => { e.target.value = maskPhoneBR(e.target.value); fixoField.onChange(e); }} error={errors.fixo?.message} />
             <Select
               label={t('form.solution')}
               options={SOLUCOES.map((s) => ({ value: s, label: s }))}

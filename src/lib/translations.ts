@@ -49,6 +49,22 @@ const translations = {
     'home.costBenefitDesc2':
       'Através de um software próprio e aplicativo, oferece aos clientes acesso a uma rede de credenciados que oferece seus serviços e produtos a um preço competitivo e condições de pagamento diferenciadas.',
 
+    // Seção de Soluções na HomePage
+    'home.solutions': 'Soluções integradas para sua frota',
+    'home.solutionsDesc':
+      'Manutenção, abastecimento e rastreamento em uma única plataforma — com dados em tempo real e controle total da operação.',
+
+    // Soluções card titles (usados na HomePage e SolucoesPage)
+    'solutions.manutencao.title': 'Manutenção',
+    'solutions.manutencao.desc':
+      'Rede de 500+ oficinas credenciadas, OS digitais, auditoria de orçamentos e aprovação remota.',
+    'solutions.abastecimento.title': 'Abastecimento',
+    'solutions.abastecimento.desc':
+      'Controle de consumo, prevenção de fraudes e relatórios por centro de custo integrados à rede de postos.',
+    'solutions.rastreamento.title': 'Rastreamento',
+    'solutions.rastreamento.desc':
+      'Localização em tempo real, alertas, cercas virtuais e análise de rotas e comportamento do motorista.',
+
     // Stats
     'stats.workshops': '+500 oficinas',
     'stats.workshopsLabel': 'Parceiros credenciados',
@@ -317,6 +333,22 @@ const translations = {
       'InstaSolutions acts as an intermediary in the contracting of automotive services and parts for companies and public institutions.',
     'home.costBenefitDesc2':
       'Through proprietary software and app, it offers clients access to a network of accredited providers offering their services and products at competitive prices and differentiated payment terms.',
+
+    // Home solutions section
+    'home.solutions': 'Integrated solutions for your fleet',
+    'home.solutionsDesc':
+      'Maintenance, fueling, and tracking on a single platform — with real-time data and full operational control.',
+
+    // Solution card titles
+    'solutions.manutencao.title': 'Maintenance',
+    'solutions.manutencao.desc':
+      'Network of 500+ accredited workshops, digital service orders, budget auditing and remote approval.',
+    'solutions.abastecimento.title': 'Fueling',
+    'solutions.abastecimento.desc':
+      'Consumption control, fraud prevention, and cost-center reports integrated with the gas station network.',
+    'solutions.rastreamento.title': 'Tracking',
+    'solutions.rastreamento.desc':
+      'Real-time location, alerts, virtual fences, and route and driver behavior analysis.',
 
     'stats.workshops': '+500 workshops',
     'stats.workshopsLabel': 'Certified partners',

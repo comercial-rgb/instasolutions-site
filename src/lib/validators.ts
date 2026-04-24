@@ -10,60 +10,64 @@ const cnpjField = z
 const emailField = z.string().min(1, 'E-mail é obrigatório').email('E-mail inválido');
 const phoneField = z.string().min(14, 'Telefone inválido');
 
+// Note: field names use camelCase to match react-hook-form register() calls.
+// FormSubmit receives these keys as-is; they are readable in the email table.
+
 export const credenciarSchema = z.object({
-  CNPJ: cnpjField,
-  'Razao Social': z.string().min(2, 'Razão Social é obrigatória'),
-  'Nome Fantasia': z.string().min(2, 'Nome Fantasia é obrigatório'),
-  Bairro: z.string().optional(),
-  Endereco: z.string().optional(),
-  Estado: z.string().min(2, 'Estado é obrigatório'),
-  Cidade: z.string().min(2, 'Cidade é obrigatória'),
-  Email: emailField,
-  Responsavel: z.string().optional(),
-  CPF_RG: z.string().optional(),
-  DDD_Celular: z.string().optional(),
-  DDD_Fixo: z.string().optional(),
-  Bandeira: z.string().optional(),
-  'Segmento de atuação': z.string().optional(),
+  cnpj: cnpjField,
+  razaoSocial: z.string().min(2, 'Razão Social é obrigatória'),
+  nomeFantasia: z.string().min(2, 'Nome Fantasia é obrigatório'),
+  bairro: z.string().optional(),
+  endereco: z.string().optional(),
+  estado: z.string().min(2, 'Estado é obrigatório'),
+  cidade: z.string().min(2, 'Cidade é obrigatória'),
+  email: emailField,
+  responsavel: z.string().optional(),
+  cpfRg: z.string().optional(),
+  celular: z.string().optional(),
+  fixo: z.string().optional(),
+  bandeira: z.string().optional(),
+  segmento: z.string().optional(),
   termos: z.literal(true, { errorMap: () => ({ message: 'É necessário aceitar os termos' }) }),
 });
 
 export type CredenciarFormData = z.infer<typeof credenciarSchema>;
 
 export const queroSerClienteSchema = z.object({
-  CNPJ: cnpjField,
-  'Razao Social': z.string().min(2, 'Razão Social é obrigatória'),
-  'Nome Fantasia': z.string().min(2, 'Nome Fantasia é obrigatório'),
-  Bairro: z.string().optional(),
-  Endereco: z.string().optional(),
-  Estado: z.string().min(2, 'Estado é obrigatório'),
-  Cidade: z.string().min(2, 'Cidade é obrigatória'),
-  Email: emailField,
-  Responsavel: z.string().optional(),
-  'Segmento de atuacao': z.string().min(1, 'Segmento é obrigatório'),
-  'Quantidade de veiculos': z.string().min(1, 'Quantidade é obrigatória'),
-  DDD_Celular: phoneField.or(z.literal('')),
-  DDD_Fixo: z.string().optional(),
-  Solucao: z.string().min(1, 'Solução é obrigatória'),
+  cnpj: cnpjField,
+  razaoSocial: z.string().min(2, 'Razão Social é obrigatória'),
+  nomeFantasia: z.string().min(2, 'Nome Fantasia é obrigatório'),
+  bairro: z.string().optional(),
+  endereco: z.string().optional(),
+  estado: z.string().min(2, 'Estado é obrigatório'),
+  cidade: z.string().min(2, 'Cidade é obrigatória'),
+  email: emailField,
+  responsavel: z.string().optional(),
+  segmento: z.string().min(1, 'Segmento é obrigatório'),
+  tamanhoFrota: z.string().min(1, 'Quantidade é obrigatória'),
+  celular: phoneField.or(z.literal('')),
+  fixo: z.string().optional(),
+  solucao: z.string().min(1, 'Solução é obrigatória'),
 });
 
 export type QueroSerClienteFormData = z.infer<typeof queroSerClienteSchema>;
 
 export const contatoSchema = z.object({
-  CNPJ: z.string().optional(),
-  'Razao Social': z.string().optional(),
-  'Nome Fantasia': z.string().optional(),
-  Bairro: z.string().optional(),
-  Endereco: z.string().optional(),
-  Estado: z.string().optional(),
-  Cidade: z.string().optional(),
-  Email: emailField,
-  Responsavel: z.string().min(2, 'Nome é obrigatório'),
-  'Segmento de atuacao': z.string().optional(),
-  'Quantidade de veiculos': z.string().optional(),
-  DDD_Celular: z.string().optional(),
-  DDD_Fixo: z.string().optional(),
-  Solucao: z.string().optional(),
+  cnpj: z.string().optional(),
+  razaoSocial: z.string().optional(),
+  nomeFantasia: z.string().optional(),
+  bairro: z.string().optional(),
+  endereco: z.string().optional(),
+  estado: z.string().optional(),
+  cidade: z.string().optional(),
+  email: emailField,
+  responsavel: z.string().min(2, 'Nome é obrigatório'),
+  segmento: z.string().optional(),
+  tamanhoFrota: z.string().optional(),
+  celular: z.string().optional(),
+  fixo: z.string().optional(),
+  solucao: z.string().optional(),
 });
 
 export type ContatoFormData = z.infer<typeof contatoSchema>;
+

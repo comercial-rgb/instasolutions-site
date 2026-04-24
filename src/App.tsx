@@ -1,6 +1,7 @@
 import React, { lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { LanguageProvider } from './contexts/LanguageContext';
+import { ToastProvider } from './contexts/ToastContext';
 import { Layout } from './components/layout/Layout';
 
 // Eager load for home page (critical path)
@@ -28,6 +29,7 @@ const ClientesFinanceiroPage = lazy(() => import('./pages/clientes/FinanceiroPag
 
 export default function App() {
   return (
+    <ToastProvider>
     <LanguageProvider>
       <Routes>
         <Route element={<Layout />}>
@@ -52,5 +54,6 @@ export default function App() {
         </Route>
       </Routes>
     </LanguageProvider>
+    </ToastProvider>
   );
 }

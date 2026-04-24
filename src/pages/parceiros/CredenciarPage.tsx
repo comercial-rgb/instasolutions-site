@@ -10,6 +10,7 @@ import { useLanguage } from '../../hooks/useLanguage';
 import { useToast } from '../../hooks/useToast';
 import { COLORS, DOMAIN, EMAIL, SEGMENTOS_ATUACAO, UFS, BANDEIRAS } from '../../lib/constants';
 import { credenciarSchema, type CredenciarFormData } from '../../lib/validators';
+import { maskCNPJ, maskPhoneBR } from '../../lib/formUtils';
 
 type Tipo = 'postos' | 'linha';
 
@@ -28,6 +29,11 @@ export default function CredenciarPage() {
     resolver: zodResolver(credenciarSchema),
   });
 
+  // Masked field registrations
+  const cnpjField = register('cnpj');
+  const celularField = register('celular');
+  const fixoField = register('fixo');
+
   async function onSubmit(data: CredenciarFormData) {
     if (Date.now() - startTime.current < 3000) return;
     if ((data as any).website) return;
@@ -43,7 +49,7 @@ export default function CredenciarPage() {
       await fetch(`https://formsubmit.co/${EMAIL}`, { method: 'POST', body: fd });
       setSuccess(true);
     } catch {
-      addToast({ type: 'error', message: t('contact.errorMsg') });
+      addToast('error', t('contact.errorMsg'));
     }
   }
 
@@ -101,7 +107,7 @@ export default function CredenciarPage() {
           <input type="text" {...register('website' as any)} className="sr-only" tabIndex={-1} autoComplete="off" aria-hidden="true" />
 
           <div className="grid sm:grid-cols-2 gap-4">
-            <Input label={t('form.cnpj')} {...register('cnpj')} error={errors.cnpj?.message} />
+            <Input label={t('form.cnpj')} {...cnpjField} onChange={(e) => { e.target.value = maskCNPJ(e.target.value); cnpjField.onChange(e); }} error={errors.cnpj?.message} />
             <Input label={t('form.companyName')} {...register('razaoSocial')} error={errors.razaoSocial?.message} />
             <Input label={t('form.tradeName')} {...register('nomeFantasia')} error={errors.nomeFantasia?.message} />
             <Input label={t('form.neighborhood')} {...register('bairro')} error={errors.bairro?.message} />
@@ -116,8 +122,8 @@ export default function CredenciarPage() {
             <Input label={t('form.email')} type="email" {...register('email')} error={errors.email?.message} />
             <Input label={t('form.responsible')} {...register('responsavel')} error={errors.responsavel?.message} />
             <Input label={t('form.cpfRg')} {...register('cpfRg')} error={errors.cpfRg?.message} />
-            <Input label={t('form.mobilePhone')} {...register('celular')} error={errors.celular?.message} />
-            <Input label={t('form.landline')} {...register('fixo')} error={errors.fixo?.message} />
+            <Input label={t('form.mobilePhone')} {...celularField} onChange={(e) => { e.target.value = maskPhoneBR(e.target.value); celularField.onChange(e); }} error={errors.celular?.message} />
+            <Input label={t('form.landline')} {...fixoField} onChange={(e) => { e.target.value = maskPhoneBR(e.target.value); fixoField.onChange(e); }} error={errors.fixo?.message} />
 
             {tipo === 'postos' && (
               <Select

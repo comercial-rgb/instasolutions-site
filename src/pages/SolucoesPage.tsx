@@ -199,10 +199,10 @@ export default function SolucoesPage() {
                 </div>
                 <Carousel
                   images={[
-                    { src: '/imagens/Rastreamento.png', alt: 'Rastreamento painel' },
-                    { src: '/imagens/Rastreamento1.png', alt: 'Rastreamento tela 1' },
-                    { src: '/imagens/Rastreamento2.png', alt: 'Rastreamento tela 2' },
-                    { src: '/imagens/Rastreamento3.png', alt: 'Rastreamento tela 3' },
+                    { src: '/imagens/rastreamento.png', alt: 'Rastreamento painel' },
+                    { src: '/imagens/rastreamento-1.png', alt: 'Rastreamento tela 1' },
+                    { src: '/imagens/rastreamento-2.png', alt: 'Rastreamento tela 2' },
+                    { src: '/imagens/rastreamento-3.png', alt: 'Rastreamento tela 3' },
                   ]}
                 />
               </div>
