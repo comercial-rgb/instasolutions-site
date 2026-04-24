@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Disallow: /obrigado
+Disallow: /politica-de-privacidade
+
+Sitemap: https://frotainstasolutions.com.br/sitemap.xml
