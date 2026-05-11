@@ -160,10 +160,18 @@ export function Footer() {
 
       {/* Sub footer */}
       <div
-        className="border-t py-4 text-center text-xs"
+        className="border-t py-4 text-center text-xs flex items-center justify-center gap-4"
         style={{ borderColor: COLORS.borderPill, color: COLORS.azulCorp }}
       >
-        © {year} {ORG_NAME}. {t('footer.rights')}.
+        <span>© {year} {ORG_NAME}. {t('footer.rights')}.</span>
+        <Link
+          to="/admin"
+          className="opacity-20 hover:opacity-60 transition-opacity text-xs"
+          style={{ color: COLORS.azulCorp }}
+          aria-label="Área restrita"
+        >
+          Área restrita
+        </Link>
       </div>
     </footer>
   );
