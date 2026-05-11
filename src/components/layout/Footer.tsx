@@ -69,8 +69,7 @@ export function Footer() {
             <FooterLink to="/quem-somos">{t('nav.whoWeAre')}</FooterLink>
             {/* TODO: Winner — adicionar /blog quando existir */}
             <li className="text-neutral-400 cursor-default">{t('footer.blog')} (em breve)</li>
-            {/* TODO: Winner — adicionar /carreiras quando existir */}
-            <li className="text-neutral-400 cursor-default">{t('footer.careers')} (em breve)</li>
+            <FooterLink to="/vagas">{t('footer.careers')}</FooterLink>
           </ul>
 
           {/* App links */}

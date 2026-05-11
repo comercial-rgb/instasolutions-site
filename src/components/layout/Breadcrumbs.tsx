@@ -13,6 +13,7 @@ const AUTO_BREADCRUMBS: Record<string, BreadcrumbItemType[]> = {
   '/rede': [{ label: 'Rede' }],
   '/sobre': [{ label: 'Sobre' }],
   '/quem-somos': [{ label: 'Quem Somos' }],
+  '/vagas': [{ label: 'Vagas' }],
   '/contato': [{ label: 'Contato' }],
   '/parceiros/credenciar': [{ label: 'Parceiros', href: '/parceiros/credenciar' }, { label: 'Credenciar' }],
   '/parceiros/fornecedores': [{ label: 'Parceiros' }, { label: 'Fornecedores' }],

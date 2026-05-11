@@ -19,6 +19,7 @@ const translations = {
     'nav.financial': 'Portal Financeiro',
     'nav.beClient': 'Quero ser Cliente',
     'nav.skipToContent': 'Pular para o conteúdo',
+    'nav.jobs': 'Vagas',
 
     // Home
     'home.fleetManagement': 'Gestão completa de frotas',
@@ -188,6 +189,38 @@ const translations = {
     'contact.errorMsg': 'Erro ao enviar. Tente novamente.',
     'contact.whatsapp': 'Falar no WhatsApp',
 
+    // Carreiras / Vagas
+    'jobs.title': 'Trabalhe na InstaSolutions',
+    'jobs.subtitle':
+      'Conheça nossas oportunidades e envie sua candidatura. Queremos pessoas que queiram impactar a gestão de frotas com tecnologia.',
+    'jobs.seoTitle': 'Vagas | InstaSolutions — Trabalhe conosco',
+    'jobs.seoDescription':
+      'Confira vagas abertas e candidate-se para integrar o time da InstaSolutions. Tecnologia, gestão de frotas e pessoas em um só lugar.',
+    'jobs.sectionOpenings': 'Vagas abertas',
+    'jobs.sectionApply': 'Candidatura',
+    'jobs.applyHint':
+      'Preencha os dados abaixo. Se anexar currículo, use PDF de até 5 MB. Retornamos por e-mail ou telefone.',
+    'jobs.applyFor': 'Candidatura para',
+    'jobs.chooseRole': 'Selecione a vaga',
+    'jobs.fullName': 'Nome completo',
+    'jobs.phone': 'DDD / Celular (WhatsApp)',
+    'jobs.role': 'Vaga de interesse',
+    'jobs.linkedin': 'LinkedIn ou link do perfil (opcional)',
+    'jobs.portfolio': 'Portfólio ou site (opcional)',
+    'jobs.coverLetter': 'Carta de apresentação / mensagem',
+    'jobs.cvOptional': 'Currículo em PDF (opcional)',
+    'jobs.cvHelp': 'Somente PDF · máximo 5 MB',
+    'jobs.expand': 'Ver descrição completa',
+    'jobs.collapse': 'Ocultar descrição',
+    'jobs.requirements': 'O que buscamos',
+    'jobs.submit': 'Enviar candidatura',
+    'jobs.errorSend': 'Não foi possível enviar. Tente novamente.',
+    'jobs.errorFileSize': 'O arquivo excede 5 MB. Envie um PDF menor.',
+    'jobs.errorFileType': 'Envie apenas PDF.',
+    'jobs.none': 'No momento não há vagas publicadas. Volte em breve ou envie seu currículo pelo contato geral.',
+    'jobs.applyNow': 'Candidatar-se',
+
+
     // Formulários
     'form.name': 'Nome',
     'form.email': 'E-mail',
@@ -305,6 +338,7 @@ const translations = {
     'nav.financial': 'Financial Portal',
     'nav.beClient': 'Become a Client',
     'nav.skipToContent': 'Skip to content',
+    'nav.jobs': 'Careers',
 
     'home.fleetManagement': 'Complete fleet management',
     // TODO: Winner — validate "18% in 90 days" figure with real metrics before publishing
@@ -464,6 +498,37 @@ const translations = {
     'contact.successMsg': 'Message sent successfully! We will contact you soon.',
     'contact.errorMsg': 'Error sending. Please try again.',
     'contact.whatsapp': 'Chat on WhatsApp',
+
+    'jobs.title': 'Work at InstaSolutions',
+    'jobs.subtitle':
+      'Explore open roles and apply. We want people excited to shape fleet management with technology.',
+    'jobs.seoTitle': 'Careers | InstaSolutions — Join our team',
+    'jobs.seoDescription':
+      'Browse open roles and apply to join the InstaSolutions team. Fleet technology built by talented people.',
+    'jobs.sectionOpenings': 'Open positions',
+    'jobs.sectionApply': 'Application',
+    'jobs.applyHint':
+      'Fill in the details below. If you attach a résumé, use a PDF up to 5 MB. We will follow up by email or phone.',
+    'jobs.applyFor': 'Applying for',
+    'jobs.chooseRole': 'Select a role',
+    'jobs.fullName': 'Full name',
+    'jobs.phone': 'Area code / Mobile (WhatsApp)',
+    'jobs.role': 'Role of interest',
+    'jobs.linkedin': 'LinkedIn or profile link (optional)',
+    'jobs.portfolio': 'Portfolio or website (optional)',
+    'jobs.coverLetter': 'Cover letter / message',
+    'jobs.cvOptional': 'Résumé as PDF (optional)',
+    'jobs.cvHelp': 'PDF only · max 5 MB',
+    'jobs.expand': 'See full description',
+    'jobs.collapse': 'Hide description',
+    'jobs.requirements': 'What we look for',
+    'jobs.submit': 'Submit application',
+    'jobs.errorSend': 'Could not send. Please try again.',
+    'jobs.errorFileSize': 'The file exceeds 5 MB. Please send a smaller PDF.',
+    'jobs.errorFileType': 'Please upload a PDF only.',
+    'jobs.none': 'There are no open positions at the moment. Check back soon or reach out via our contact page.',
+    'jobs.applyNow': 'Apply now',
+
 
     'form.name': 'Name',
     'form.email': 'Email',

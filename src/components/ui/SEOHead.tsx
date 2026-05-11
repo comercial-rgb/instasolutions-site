@@ -8,6 +8,12 @@ interface SEOHeadProps {
   canonical?: string;
   ogImage?: string;
   ogType?: string;
+  /** ex.: pt-BR ou en, atributo lang do html */
+  htmlLang?: string;
+  /** ex.: pt_BR ou en_US — og:locale */
+  ogLocale?: string;
+  /** og:locale:alternate quando há versão em outro idioma */
+  ogLocaleAlternate?: string;
   jsonLd?: object | object[];
   noindex?: boolean;
 }
@@ -18,6 +24,9 @@ export function SEOHead({
   canonical,
   ogImage,
   ogType = 'website',
+  htmlLang,
+  ogLocale = 'pt_BR',
+  ogLocaleAlternate,
   jsonLd,
   noindex = false,
 }: SEOHeadProps) {
@@ -28,7 +37,7 @@ export function SEOHead({
   const schemaArray = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 
   return (
-    <Helmet>
+    <Helmet htmlAttributes={htmlLang ? { lang: htmlLang } : undefined}>
       <title>{title}</title>
       <meta name="description" content={description} />
       {noindex ? (
@@ -47,7 +56,10 @@ export function SEOHead({
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <meta property="og:site_name" content="InstaSolutions" />
-      <meta property="og:locale" content="pt_BR" />
+      <meta property="og:locale" content={ogLocale} />
+      {ogLocaleAlternate ? (
+        <meta property="og:locale:alternate" content={ogLocaleAlternate} />
+      ) : null}
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />

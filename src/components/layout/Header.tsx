@@ -48,6 +48,7 @@ export function Header() {
             <NavPill to="/rede">{t('nav.network')}</NavPill>
             <NavPill to="/sobre">{t('nav.about')}</NavPill>
             <NavPill to="/quem-somos">{t('nav.whoWeAre')}</NavPill>
+            <NavPill to="/vagas">{t('nav.jobs')}</NavPill>
             <NavPill to="/contato">{t('nav.contact')}</NavPill>
           </nav>
 

@@ -71,3 +71,20 @@ export const contatoSchema = z.object({
 
 export type ContatoFormData = z.infer<typeof contatoSchema>;
 
+export const candidaturaSchema = z.object({
+  nomeCompleto: z.string().min(3, 'Nome completo é obrigatório'),
+  email: emailField,
+  celular: phoneField,
+  vagaId: z.string().min(1, 'Selecione uma vaga'),
+  estado: z.string().optional(),
+  cidade: z.string().optional(),
+  linkedin: z.string().optional(),
+  portfolioUrl: z.string().optional(),
+  mensagem: z
+    .string()
+    .min(30, 'Escreva pelo menos 30 caracteres sobre sua experiência e interesse na vaga.'),
+  website: z.string().optional(),
+});
+
+export type CandidaturaFormData = z.infer<typeof candidaturaSchema>;
+

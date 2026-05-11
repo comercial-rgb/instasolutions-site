@@ -13,6 +13,7 @@ const RedePage = lazy(() => import('./pages/RedePage'));
 const SobrePage = lazy(() => import('./pages/SobrePage'));
 const QuemSomosPage = lazy(() => import('./pages/QuemSomosPage'));
 const ContatoPage = lazy(() => import('./pages/ContatoPage'));
+const VagasPage = lazy(() => import('./pages/VagasPage'));
 const ObrigadoPage = lazy(() => import('./pages/ObrigadoPage'));
 const PoliticaPrivacidadePage = lazy(() => import('./pages/PoliticaPrivacidadePage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
@@ -38,6 +39,7 @@ export default function App() {
           <Route path="rede" element={<RedePage />} />
           <Route path="sobre" element={<SobrePage />} />
           <Route path="quem-somos" element={<QuemSomosPage />} />
+          <Route path="vagas" element={<VagasPage />} />
           <Route path="contato" element={<ContatoPage />} />
           <Route path="obrigado" element={<ObrigadoPage />} />
           <Route path="politica-de-privacidade" element={<PoliticaPrivacidadePage />} />

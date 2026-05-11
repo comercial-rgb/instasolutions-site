@@ -93,6 +93,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             <MobileLink to="/rede" onClose={onClose}>{t('nav.network')}</MobileLink>
             <MobileLink to="/sobre" onClose={onClose}>{t('nav.about')}</MobileLink>
             <MobileLink to="/quem-somos" onClose={onClose}>{t('nav.whoWeAre')}</MobileLink>
+            <MobileLink to="/vagas" onClose={onClose}>{t('nav.jobs')}</MobileLink>
             <MobileLink to="/contato" onClose={onClose}>{t('nav.contact')}</MobileLink>
 
             {/* Parceiros accordion */}
