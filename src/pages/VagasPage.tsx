@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Briefcase, ChevronDown, MapPin } from 'lucide-react';
+import { Briefcase, ChevronDown, Loader2, MapPin } from 'lucide-react';
 import { SEOHead } from '../components/ui/SEOHead';
 import { Button } from '../components/ui/Button';
 import { Input } from '../components/ui/Input';
@@ -10,11 +10,12 @@ import { Select } from '../components/ui/Select';
 import { Textarea } from '../components/ui/Textarea';
 import { useLanguage } from '../hooks/useLanguage';
 import { useToast } from '../hooks/useToast';
-import { COLORS, DOMAIN, EMAIL, UFS } from '../lib/constants';
+import { COLORS, DOMAIN, UFS } from '../lib/constants';
 import type { Language, TranslationKey } from '../lib/translations';
 import { maskPhoneBR } from '../lib/formUtils';
 import { candidaturaSchema, type CandidaturaFormData } from '../lib/validators';
 import { getActiveJobs, getJobById, pickLocalized, VAGAS_PAGE, type JobOpening } from '../lib/vagasContent';
+import { supabase, vagaRowToJobOpening } from '../lib/supabase';
 
 const MAX_CV_BYTES = 5 * 1024 * 1024;
 
@@ -26,8 +27,23 @@ export default function VagasPage() {
   const startTime = React.useRef(Date.now());
   const fileRef = React.useRef<HTMLInputElement>(null);
   const [expandedId, setExpandedId] = React.useState<string | null>(null);
+  const [vagasDb, setVagasDb] = React.useState<JobOpening[] | null>(null);
+  const [loadingVagas, setLoadingVagas] = React.useState(!!supabase);
 
-  const vagas = getActiveJobs();
+  React.useEffect(() => {
+    if (!supabase) return;
+    supabase
+      .from('vagas')
+      .select('*')
+      .eq('active', true)
+      .order('created_at', { ascending: false })
+      .then(({ data }) => {
+        setVagasDb(data ? data.map(vagaRowToJobOpening) : []);
+        setLoadingVagas(false);
+      });
+  }, []);
+
+  const vagas = vagasDb !== null ? vagasDb : getActiveJobs();
   const heroSrc = VAGAS_PAGE.heroImageSrc.trim();
   const heroAlt = pickLocalized({ pt: VAGAS_PAGE.heroImageAlt.pt, en: VAGAS_PAGE.heroImageAlt.en }, language);
 
@@ -95,28 +111,34 @@ export default function VagasPage() {
       return;
     }
 
-    const job = getJobById(data.vagaId);
-    const jobTitle = job ? pickLocalized(job.title, language) : data.vagaId;
-
-    const fd = new FormData();
-    fd.append('_subject', `[Site] Candidatura — ${jobTitle}`);
-    fd.append('_captcha', 'false');
-    fd.append('_template', 'table');
-    fd.append('idiomaPreferido', language);
-    fd.append('nomeCompleto', data.nomeCompleto);
-    fd.append('email', data.email);
-    fd.append('celular', data.celular);
-    fd.append('vagaId', data.vagaId);
-    fd.append('vagaTitulo', jobTitle);
-    if (data.estado?.trim()) fd.append('estado', data.estado);
-    if (data.cidade?.trim()) fd.append('cidade', data.cidade);
-    if (data.linkedin?.trim()) fd.append('linkedin', data.linkedin.trim());
-    if (data.portfolioUrl?.trim()) fd.append('portfolioUrl', data.portfolioUrl.trim());
-    fd.append('mensagem', data.mensagem);
-    if (file) fd.append('attachment', file, file.name);
+    const activeJob = vagasDb
+      ? vagasDb.find(j => j.id === data.vagaId)
+      : getJobById(data.vagaId);
+    const jobTitle = activeJob ? pickLocalized(activeJob.title, language) : data.vagaId;
 
     try {
-      await fetch(`https://formsubmit.co/${EMAIL}`, { method: 'POST', body: fd });
+      if (supabase) {
+        // Upload CV to Supabase Storage
+        const ext = file.name.split('.').pop();
+        const cvPath = `${Date.now()}-${data.nomeCompleto.replace(/\s+/g, '-').toLowerCase()}.${ext}`;
+        await supabase.storage.from('curriculos').upload(cvPath, file);
+
+        // Save candidatura to database
+        await supabase.from('candidaturas').insert({
+          vaga_id: data.vagaId || null,
+          vaga_titulo: jobTitle,
+          nome_completo: data.nomeCompleto,
+          email: data.email,
+          celular: data.celular,
+          estado: data.estado || null,
+          cidade: data.cidade || null,
+          linkedin: data.linkedin?.trim() || null,
+          portfolio_url: data.portfolioUrl?.trim() || null,
+          mensagem: data.mensagem,
+          cv_path: cvPath,
+          idioma: language,
+        });
+      }
       if (fileInput) fileInput.value = '';
       navigate('/obrigado');
     } catch {
@@ -157,7 +179,11 @@ export default function VagasPage() {
             <p className="text-center text-neutral-600 max-w-2xl mx-auto leading-relaxed">{t('jobs.subtitle')}</p>
           </header>
         )}
-        {vagas.length === 0 ? (
+        {loadingVagas ? (
+          <div className="flex justify-center py-16">
+            <Loader2 className="w-8 h-8 animate-spin" style={{ color: COLORS.azulTech }} />
+          </div>
+        ) : vagas.length === 0 ? (
           <p className="text-center text-neutral-500 py-16">{t('jobs.none')}</p>
         ) : (
           <>

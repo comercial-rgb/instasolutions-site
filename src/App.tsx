@@ -17,6 +17,7 @@ const VagasPage = lazy(() => import('./pages/VagasPage'));
 const ObrigadoPage = lazy(() => import('./pages/ObrigadoPage'));
 const PoliticaPrivacidadePage = lazy(() => import('./pages/PoliticaPrivacidadePage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
+const AdminPage = lazy(() => import('./pages/AdminPage'));
 
 // Parceiros
 const CredenciarPage = lazy(() => import('./pages/parceiros/CredenciarPage'));
@@ -33,6 +34,8 @@ export default function App() {
     <ToastProvider>
     <LanguageProvider>
       <Routes>
+        {/* Admin — sem header/footer do site */}
+        <Route path="admin" element={<AdminPage />} />
         <Route element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route path="solucoes" element={<SolucoesPage />} />
