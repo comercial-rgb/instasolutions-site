@@ -109,12 +109,8 @@ export default function SolucoesPage() {
                   </ul>
                 </div>
                 <Carousel
-                  images={[
-                    { src: '/imagens/manutencao-2.png', alt: 'Manutenção tela 2' },
-                    { src: '/imagens/manutencao-3.png', alt: 'Manutenção tela 3' },
-                    { src: '/imagens/manutencao-1.png', alt: 'Manutenção tela 1' },
-                    { src: '/imagens/manutencao.png', alt: 'Manutenção painel' },
-                  ]}
+                  items={['/imagens/manutencao-2.png', '/imagens/manutencao-3.png', '/imagens/manutencao-1.png', '/imagens/manutencao.png']}
+                  alt="Manutenção"
                 />
               </div>
             )}
@@ -153,12 +149,8 @@ export default function SolucoesPage() {
                     </ul>
                   </div>
                   <Carousel
-                    images={[
-                      { src: '/imagens/abastecimento-2.png', alt: 'Abastecimento tela 2' },
-                      { src: '/imagens/abastecimento-1.png', alt: 'Abastecimento tela 1' },
-                      { src: '/imagens/abastecimento-3.png', alt: 'Abastecimento tela 3' },
-                      { src: '/imagens/abastecimento.png', alt: 'Abastecimento painel' },
-                    ]}
+                    items={['/imagens/abastecimento-2.png', '/imagens/abastecimento-1.png', '/imagens/abastecimento-3.png', '/imagens/abastecimento.png']}
+                    alt="Abastecimento"
                   />
                 </div>
                 <AppDownloadBanner system="combustiveis" />
@@ -198,12 +190,8 @@ export default function SolucoesPage() {
                   </ul>
                 </div>
                 <Carousel
-                  images={[
-                    { src: '/imagens/rastreamento.png', alt: 'Rastreamento painel' },
-                    { src: '/imagens/rastreamento-1.png', alt: 'Rastreamento tela 1' },
-                    { src: '/imagens/rastreamento-2.png', alt: 'Rastreamento tela 2' },
-                    { src: '/imagens/rastreamento-3.png', alt: 'Rastreamento tela 3' },
-                  ]}
+                  items={['/imagens/rastreamento.png', '/imagens/rastreamento-1.png', '/imagens/rastreamento-2.png', '/imagens/rastreamento-3.png']}
+                  alt="Rastreamento"
                 />
               </div>
             )}

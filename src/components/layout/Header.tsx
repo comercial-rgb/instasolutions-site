@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { Globe, Menu, X, Phone } from 'lucide-react';
+import { Globe, Menu, X } from 'lucide-react';
 import { useLanguage } from '../../hooks/useLanguage';
 import { NavPill } from '../navigation/NavPill';
 import { NavDropdown, DropdownItem } from '../navigation/NavDropdown';
 import { MobileMenu } from './MobileMenu';
 import { Button } from '../ui/Button';
-import { COLORS, PHONE_DISPLAY } from '../../lib/constants';
+import { COLORS } from '../../lib/constants';
 
 export function Header() {
   const { language, setLanguage, t } = useLanguage();
@@ -54,18 +54,6 @@ export function Header() {
 
           {/* Right side */}
           <div className="flex items-center gap-2">
-            {/* Phone — only on wide screens */}
-            <a
-              href={`tel:+5511333669410`}
-              className="hidden xl:flex items-center gap-1.5 text-sm text-neutral-600 hover:text-blue-700 transition-colors"
-              aria-label="Ligar para (11) 3336-6941"
-            >
-              <Phone className="w-3.5 h-3.5" />
-              <span>{PHONE_DISPLAY}</span>
-              <span className="text-neutral-400">·</span>
-              <span className="text-xs">Seg-Sex 8h–18h</span>
-            </a>
-
             {/* Language switch */}
             <button
               onClick={() => setLanguage(language === 'pt' ? 'en' : 'pt')}

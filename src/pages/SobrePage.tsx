@@ -41,12 +41,8 @@ export default function SobrePage() {
           </div>
         </div>
         <Carousel
-          images={[
-            { src: '/imagens/sobre.png', alt: 'Operação InstaSolutions' },
-            { src: '/imagens/sobre-1.png', alt: 'Operação InstaSolutions 2' },
-            { src: '/imagens/sobre-2.png', alt: 'Operação InstaSolutions 3' },
-            { src: '/imagens/sobre-3.png', alt: 'Operação InstaSolutions 4' },
-          ]}
+          items={['/imagens/sobre.png', '/imagens/sobre-1.png', '/imagens/sobre-2.png', '/imagens/sobre-3.png']}
+          alt="Operação InstaSolutions"
         />
       </section>
     </>

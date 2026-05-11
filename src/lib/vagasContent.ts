@@ -39,82 +39,43 @@ export interface JobOpening {
   active?: boolean;
 }
 
-export const VAGAS: JobOpening[] = [
-  {
-    id: 'desenvolvedor-full-stack',
-    imageSrc: '/imagens/vagas/desenvolvedor-full-stack.jpg',
-    title: {
-      pt: 'Desenvolvedor(a) Full Stack',
-      en: 'Full Stack Developer',
-    },
-    location: {
-      pt: 'Barueri · SP · Híbrido',
-      en: 'Barueri · SP · Hybrid',
-    },
-    excerpt: {
-      pt: 'Atue em produto SaaS de gestão de frotas, com stack moderna e time colaborativo.',
-      en: 'Work on our fleet-management SaaS product with a modern stack and a collaborative team.',
-    },
-    body: [
-      {
-        pt: 'Buscamos pessoas que gostem de entregar valor com qualidade, participem de decisões técnicas e evoluam nossas integrações e APIs.',
-        en: 'We look for people who enjoy shipping quality work, take part in technical decisions, and evolve our integrations and APIs.',
-      },
-      {
-        pt: 'Você terá contato com frontend e backend, boas práticas de segurança e ambiente ágil.',
-        en: 'You will work across frontend and backend, security best practices, and an agile environment.',
-      },
-    ],
-    requirements: [
-      {
-        pt: 'Experiência com React e TypeScript',
-        en: 'Experience with React and TypeScript',
-      },
-      {
-        pt: 'Conforto com APIs REST e versionamento (Git)',
-        en: 'Comfort with REST APIs and Git',
-      },
-      {
-        pt: 'Boa comunicação e autonomia',
-        en: 'Strong communication and autonomy',
-      },
-    ],
-    active: true,
-  },
-  {
-    id: 'customer-success',
-    imageSrc: '/imagens/vagas/customer-success.jpg',
-    title: {
-      pt: 'Especialista em Sucesso do Cliente',
-      en: 'Customer Success Specialist',
-    },
-    location: {
-      pt: 'Barueri · SP',
-      en: 'Barueri · SP',
-    },
-    excerpt: {
-      pt: 'Garanta adoção, resultados e relacionamento com clientes corporativos e rede de parceiros.',
-      en: 'Drive adoption, outcomes, and relationships with corporate clients and partner networks.',
-    },
-    body: [
-      {
-        pt: 'Você será ponte entre clientes, produto e operações, acompanhando indicadores e propondo melhorias.',
-        en: 'You will connect clients, product, and operations, tracking metrics and proposing improvements.',
-      },
-    ],
-    requirements: [
-      {
-        pt: 'Experiência em CS ou consultoria B2B',
-        en: 'Experience in CS or B2B consulting',
-      },
-      {
-        pt: 'Organização e visão de processos',
-        en: 'Organization and process mindset',
-      },
-    ],
-    active: true,
-  },
-];
+/**
+ * ─── COMO ADICIONAR UMA VAGA REAL ────────────────────────────────────────────
+ *
+ * 1. Copie o bloco de exemplo abaixo e cole dentro do array VAGAS (antes do `]`).
+ * 2. Defina um `id` único em kebab-case (ex.: 'analista-de-ti').
+ * 3. Coloque a imagem em `public/imagens/vagas/` e aponte em `imageSrc`
+ *    — deixe `''` para exibir o placeholder padrão (ícone de maleta).
+ * 4. Preencha `title`, `location`, `excerpt`, `body` e `requirements` em PT e EN.
+ * 5. Certifique-se de que `active: true` esteja definido.
+ * 6. Salve o arquivo — a vaga aparecerá automaticamente em /vagas.
+ *
+ * Para DESATIVAR uma vaga sem apagá-la, mude `active` para `false`.
+ *
+ * Exemplo:
+ * ─────────────────────────────────────────────────────────────────────────────
+ * {
+ *   id: 'analista-de-ti',
+ *   imageSrc: '/imagens/vagas/analista-de-ti.jpg',  // ou '' para placeholder
+ *   title: { pt: 'Analista de TI', en: 'IT Analyst' },
+ *   location: { pt: 'Barueri · SP · Híbrido', en: 'Barueri · SP · Hybrid' },
+ *   excerpt: {
+ *     pt: 'Resumo curto exibido no card da vaga.',
+ *     en: 'Short summary shown on the job card.',
+ *   },
+ *   body: [
+ *     { pt: 'Parágrafo 1 da descrição completa.', en: 'Full description paragraph 1.' },
+ *     { pt: 'Parágrafo 2 (adicione quantos quiser).', en: 'Paragraph 2.' },
+ *   ],
+ *   requirements: [
+ *     { pt: 'Requisito 1', en: 'Requirement 1' },
+ *     { pt: 'Requisito 2', en: 'Requirement 2' },
+ *   ],
+ *   active: true,
+ * },
+ * ─────────────────────────────────────────────────────────────────────────────
+ */
+export const VAGAS: JobOpening[] = [];
 
 export function pickLocalized(copy: LocalizedCopy, lang: Language): string {
   const v = lang === 'en' ? copy.en : copy.pt;

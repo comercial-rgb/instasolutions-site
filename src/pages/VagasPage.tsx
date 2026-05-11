@@ -81,16 +81,18 @@ export default function VagasPage() {
 
     const fileInput = fileRef.current;
     const file = fileInput?.files?.[0];
-    if (file) {
-      if (file.size > MAX_CV_BYTES) {
-        addToast('error', t('jobs.errorFileSize'));
-        return;
-      }
-      const okType = file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf');
-      if (!okType) {
-        addToast('error', t('jobs.errorFileType'));
-        return;
-      }
+    if (!file) {
+      addToast('error', t('jobs.errorFileRequired'));
+      return;
+    }
+    if (file.size > MAX_CV_BYTES) {
+      addToast('error', t('jobs.errorFileSize'));
+      return;
+    }
+    const okType = file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf');
+    if (!okType) {
+      addToast('error', t('jobs.errorFileType'));
+      return;
     }
 
     const job = getJobById(data.vagaId);
@@ -234,13 +236,14 @@ export default function VagasPage() {
 
             <div>
               <label htmlFor="cv-file" className="text-sm font-medium text-neutral-700 block mb-1">
-                {t('jobs.cvOptional')}
+                {t('jobs.cvLabel')} <span className="text-red-500">*</span>
               </label>
               <input
                 id="cv-file"
                 ref={fileRef}
                 type="file"
                 accept="application/pdf,.pdf"
+                required
                 className="block w-full text-sm text-neutral-600 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-white file:text-blue-700 hover:file:bg-neutral-50 border border-neutral-300 rounded-xl px-2 py-1.5"
               />
               <p className="text-xs text-neutral-500 mt-1">{t('jobs.cvHelp')}</p>
